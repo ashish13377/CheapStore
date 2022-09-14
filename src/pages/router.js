@@ -1,4 +1,3 @@
-import Home01 from "./Home01";
 import Home02 from "./Home02";
 import Explore01 from './Explore01'
 import Explore02 from './Explore02'
@@ -15,8 +14,7 @@ import Register from './Register'
 import Contact from './Contact'
 
 const routes = [
-    { path: '/', component: <Home01 />},
-    { path: '/home-02', component: <Home02 />},
+    { path: '/', component: <Home02 />},
     { path: '/explore-01', component: <Explore01 />},
     { path: '/explore-02', component: <Explore02 />},
     { path: '/creator', component: <Creator />},
