@@ -1,6 +1,6 @@
-import React , { useRef , useState , useEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import TopBar from './TopBar';
-import { Link , useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import logo from '../../assets/images/logo/logo_dark.png'
 import logo2x from '../../assets/images/logo/logo_dark@2x.png'
 import logolight from '../../assets/images/logo/logo.png'
@@ -12,8 +12,9 @@ import { Dropdown } from 'react-bootstrap';
 import icon from '../../assets/images/icon/connect-wallet.svg'
 
 const Header = () => {
+    const [isLogin,setIsLogin]=useState(false);
     const { pathname } = useLocation();
-    const headerRef = useRef (null)
+    const headerRef = useRef(null)
     useEffect(() => {
         window.addEventListener('scroll', isSticky);
         return () => {
@@ -23,7 +24,7 @@ const Header = () => {
     const isSticky = (e) => {
         const header = document.querySelector('.js-header');
         const scrollTop = window.scrollY;
-        
+
         scrollTop >= 100 ? header.classList.add('is-fixed') : header.classList.remove('is-fixed');
         scrollTop >= 120 ? header.classList.add('is-small') : header.classList.remove('is-small');
     };
@@ -39,12 +40,12 @@ const Header = () => {
 
     const [activeIndex, setActiveIndex] = useState(null);
     const handleOnClick = index => {
-        setActiveIndex(index); 
+        setActiveIndex(index);
     };
 
     return <div>
 
-      <header id="header_main" className="header_1 js-header" ref={headerRef}>
+        <header id="header_main" className="header_1 js-header" ref={headerRef}>
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-md-12">
@@ -58,7 +59,18 @@ const Header = () => {
                                     </Link>
                                 </div>
                             </div>
-                    
+
+                            <form className="form-search">
+                                <input list="ice-cream-flavors" id="ice-cream-choice" placeholder='College Name' name="ice-cream-choice" style={{ width: '300px' }} />
+
+                                <datalist id="ice-cream-flavors">
+                                    <option value="Chocolate" />
+                                    <option value="Coconut" />
+                                    <option value="Mint" />
+                                    <option value="Strawberry" />
+                                    <option value="Vanilla" />
+                                </datalist>
+                            </form>
                             <form className="form-search">
                                 <input type="text" placeholder="Search here" />
                                 <button><i className="far fa-search"></i></button>
@@ -86,12 +98,28 @@ const Header = () => {
                                     }
                                 </ul>
                             </nav> */}
-                            <div className="button-connect-wallet">
-                                <Link to="/connect-wallet" className="sc-button wallet  style-2">
-                                    <img src={icon} alt="icon" />
-                                    <span>Sell</span>
+
+                            <div style={{ fontSize: '30px',margin:'0 20px' }}>
+                                <Link to="/connect-wallet" >
+                                <i class="fa-sharp fa-solid fa-comment"></i>
                                 </Link>
                             </div>
+                            <div style={{ fontSize: '30px',margin:'0 20px' }} className={!isLogin?'d-none':null}>
+                                <Link to="/connect-wallet" >
+                                <i class="fa-solid fa-user-graduate"></i>
+                                </Link>
+                            </div>
+                            <div style={{ fontSize: '16px',margin:'0 20px' }}>
+                            <Link to='/' >
+                                <span onClick={()=>setIsLogin(!isLogin)}>Login/Signup</span>
+                            </Link>
+                        </div>
+                            <div className="button-connect-wallet">
+                            <Link to="/connect-wallet" className="sc-button wallet  style-2">
+                                <img src={icon} alt="icon" />
+                                <span>Sell</span>
+                            </Link>
+                        </div>
 
                             <DarkMode />
                         </div>
@@ -99,7 +127,7 @@ const Header = () => {
                 </div>
             </div>
         </header>
-  </div>;
+    </div>;
 };
 
 export default Header;
