@@ -801,6 +801,11 @@ h6 a {
   background: var(--bg-section-color-1);
 }
 
+.bg-color-11 {
+  background: var(--bg-section-color-11);
+}
+
+
 .bg-color-2 {
   background: var(--bg-section-color-2);
 }
@@ -1076,6 +1081,7 @@ a:focus {
   --bg-slider-2: #14141f;
   --bg-footer: #030303;
   --bg-section-color-1: #030303;
+  --bg-section-color-11: #222232;
   --bg-section-color-2: #0d0d12;
   --bg-section-color-3: rgba(99, 69, 237, 0.05);
   --color-1: #fff;

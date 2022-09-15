@@ -49,26 +49,7 @@ const SliderItem = props => (
                             </div>
                         </div>
                         <div className="slider-img flex">
-                            <div className="img-left">
-                                <div className="img-1"><img src={props.item.img1}
-                                        alt="Bidzen" /></div>
-                                <div className="img-2"><img src={props.item.img2}
-                                        alt="Bidzen" /></div>
-                            </div>
-                            <div className="img-right">
-                                <img src={props.item.img3} alt="Bidzen" />
-                                <div className="box-avatar flex">
-                                    <div className="list-avatar flex">
-                                        <img src={props.item.avt1} alt="Bidzen" />
-                                        <img src={props.item.avt2} alt="Bidzen" />
-                                        <img src={props.item.avt3} alt="Bidzen" />
-                                        <img src={props.item.avt4} alt="Bidzen" />
-                                    </div>
-                                    <div className="icon-plus">
-                                        <Link to="#"><i className="fas fa-plus"></i></Link>
-                                    </div>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                     </div>

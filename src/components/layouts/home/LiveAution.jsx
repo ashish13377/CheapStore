@@ -7,7 +7,7 @@ import Countdown from "react-countdown";
 const LiveAution = props => {
     const data = props.data;
   return (
-    <section className="tf-live-auctions tf-section bg-color-1">
+    <section className="tf-live-auctions tf-section bg-color-11">
     <div className="container">
         <div className="row">
             <div className="col-md-12">

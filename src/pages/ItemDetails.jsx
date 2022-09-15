@@ -4,8 +4,7 @@ import Header from '../components/header/Header';
 import Countdown from 'react-countdown';
 import { Tab, Tabs, TabList, TabPanel  } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
-import LiveAution from '../components/layouts/home02/LiveAution';
-import dataLiveAution from '../assets/fake-data/dataLiveAution'
+
 import  Newsletters from '../components/layouts/Newsletters';
 import Footer from '../components/footer/Footer';
 
@@ -208,7 +207,7 @@ const ItemDetails = () => {
                     </div>
                 </div>
         </section>
-        <LiveAution data={dataLiveAution} />
+       
         <Newsletters />
         <Footer />
   </div>;
