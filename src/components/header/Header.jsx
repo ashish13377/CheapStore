@@ -1,19 +1,17 @@
 import React, { useRef, useState, useEffect } from 'react';
-import TopBar from './TopBar';
-import { Link, useLocation } from 'react-router-dom'
+import './Header.css'
+import { Link } from 'react-router-dom'
 import logo from '../../assets/images/logo/logo_dark.png'
 import logo2x from '../../assets/images/logo/logo_dark@2x.png'
 import logolight from '../../assets/images/logo/logo.png'
 import logolight2x from '../../assets/images/logo/logo@2x.png'
-import menus from "../../pages/menu";
 import DarkMode from "./DarkMode"
-import { Dropdown } from 'react-bootstrap';
+
 
 import icon from '../../assets/images/icon/connect-wallet.svg'
 
 const Header = () => {
     const [isLogin,setIsLogin]=useState(false);
-    const { pathname } = useLocation();
     const headerRef = useRef(null)
     useEffect(() => {
         window.addEventListener('scroll', isSticky);
@@ -29,15 +27,6 @@ const Header = () => {
         scrollTop >= 120 ? header.classList.add('is-small') : header.classList.remove('is-small');
     };
 
-    const menuLeft = useRef(null)
-    const btnToggle = useRef(null)
-
-    const menuToggle = () => {
-        menuLeft.current.classList.toggle('active');
-        btnToggle.current.classList.toggle('active');
-    }
-
-
     const [activeIndex, setActiveIndex] = useState(null);
     const handleOnClick = index => {
         setActiveIndex(index);
@@ -45,11 +34,10 @@ const Header = () => {
 
     return <div>
 
-        <header id="header_main" className="header_1 js-header" ref={headerRef}>
+        <header id="header_main" className="header_1 js-header p-0 res-header" ref={headerRef}>
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-md-12">
-                        <div className="mobile-button" ref={btnToggle} onClick={menuToggle}><span></span></div>
                         <div id="site-header-inner" className="flex">
                             <div id="site-logo" className="clearfix">
                                 <div id="site-logo-inner">
@@ -61,14 +49,11 @@ const Header = () => {
                             </div>
 
                             <form className="form-search">
-                                <input list="ice-cream-flavors" id="ice-cream-choice" placeholder='College Name' name="ice-cream-choice" style={{ width: '300px' }} />
+                                <input list="ice-cream-flavors"  placeholder='College Name' name="ice-cream-choice" style={{ width: '300px',paddingBottom:"20px",marginTop:'1px',display:'flex',alignItems:'center' }} />
 
                                 <datalist id="ice-cream-flavors">
                                     <option value="Chocolate" />
                                     <option value="Coconut" />
-                                    <option value="Mint" />
-                                    <option value="Strawberry" />
-                                    <option value="Vanilla" />
                                 </datalist>
                             </form>
                             <form className="form-search">
@@ -99,7 +84,7 @@ const Header = () => {
                                 </ul>
                             </nav> */}
 
-                            <div style={{ fontSize: '30px',margin:'0 20px' }}>
+                            <div style={{ fontSize: '30px',margin:'0 10px'}}>
                                 <Link to="/connect-wallet" >
                                 <i class="fa-sharp fa-solid fa-comment"></i>
                                 </Link>
@@ -111,11 +96,11 @@ const Header = () => {
                             </div>
                             <div style={{ fontSize: '16px',margin:'0 20px' }}>
                             <Link to='/' >
-                                <span onClick={()=>setIsLogin(!isLogin)}>Login/Signup</span>
+                                <span onClick={()=>setIsLogin(!isLogin)}>Login</span>
                             </Link>
                         </div>
-                            <div className="button-connect-wallet">
-                            <Link to="/connect-wallet" className="sc-button wallet  style-2">
+                            <div className="button-connect-wallet res-hide">
+                            <Link to="/connect-wallet" className="sc-button wallet style-2">
                                 <img src={icon} alt="icon" />
                                 <span>Sell</span>
                             </Link>
