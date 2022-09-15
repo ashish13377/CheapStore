@@ -14,7 +14,7 @@ import Register from './Register'
 import Contact from './Contact'
 
 const routes = [
-    { path: '/', component: <Home/>},
+    { path: '/', component: <Home />},
     { path: '/explore-01', component: <Explore01 />},
     { path: '/explore-02', component: <Explore02 />},
     { path: '/creator', component: <Creator />},
