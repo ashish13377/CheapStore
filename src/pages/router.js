@@ -7,6 +7,7 @@ import ItemDetails from './ItemDetails'
 import Blog from './Blog'
 import BlogDetails from './BlogDetails'
 import Authors from './Authors'
+import Profile from './Profile'
 import ConnectWallet from './ConnectWallet'
 import CreateItem from './CreateItem'
 import Login from './Login'
@@ -15,6 +16,7 @@ import Contact from './Contact'
 
 const routes = [
     { path: '/', component: <Home />},
+    { path: '/profile', component: <Profile />},
     { path: '/explore-01', component: <Explore01 />},
     { path: '/explore-02', component: <Explore02 />},
     { path: '/creator', component: <Creator />},
