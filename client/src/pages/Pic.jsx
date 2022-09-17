@@ -43,7 +43,6 @@ const Pic = () => {
     }
   };
   const updateProfilePic = async (e) => {
-    console.log(imageurl);
     e.preventDefault();
     try {
       const res = await axios.post(
@@ -61,7 +60,13 @@ const Pic = () => {
           confirmButtonText: "OK",
         });
       }
-    } catch (err) {}
+    } catch (err) {
+      Swal.fire({
+        title: err.response.data.msg,
+        icon: "success",
+        confirmButtonText: "OK",
+      });
+    }
   };
   useEffect(() => {
     getRootUser();

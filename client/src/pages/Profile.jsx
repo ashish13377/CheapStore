@@ -57,7 +57,7 @@ const Profile = () => {
           <div className="row">
             <div className="col-xl-4 col-lg-12 col-md-12">
               <div className="profile-pic">
-                <img src={userData.profileimage} />
+                <img src={userData.profileimage} alt="profile image" />
                 <Link to="/editprofile/pic">
                   <button
                     name="submit"
