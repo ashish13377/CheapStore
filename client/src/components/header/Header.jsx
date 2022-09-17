@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import "./Header.css";
+import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import logo from "../../assets/images/logo/logo_dark.png";
 import logo2x from "../../assets/images/logo/logo_dark@2x.png";
@@ -12,6 +13,7 @@ import axios from "axios";
 
 const Header = () => {
   const [isLogin, setIsLogin] = useState(false);
+  const [userData, setUserData] = useState({});
   const headerRef = useRef(null);
   useEffect(() => {
     window.addEventListener("scroll", isSticky);
@@ -40,8 +42,24 @@ const Header = () => {
       });
       console.log(res);
       if (res.status === 200) {
-        alert("Hi");
         setIsLogin(true);
+        setUserData(res.data.user);
+      }
+    } catch (err) {}
+  };
+  const logout = async () => {
+    try {
+      const res = await axios.get("http://localhost:4000/api/user/logout", {
+        withCredentials: true,
+      });
+      console.log(res);
+      if (res.status === 200) {
+        Swal.fire({
+          title: res.data.msg,
+          icon: "success",
+          confirmButtonText: "OK",
+        });
+        setIsLogin(false);
       }
     } catch (err) {}
   };
@@ -139,7 +157,7 @@ const Header = () => {
                   style={{ fontSize: "30px", margin: "0 20px" }}
                   className={!isLogin ? "d-none" : "d-block"}
                 >
-                  <Link to="/connect-wallet">
+                  <Link to="/profile">
                     <i class="fa-solid fa-user-graduate"></i>
                   </Link>
                 </div>
@@ -160,10 +178,14 @@ const Header = () => {
                   </Link>
                 </div>
                 <div
-                  style={{ fontSize: "16px", margin: "0 20px" }}
+                  style={{
+                    fontSize: "16px",
+                    margin: "0 20px",
+                    cursor: "pointer",
+                  }}
                   className={!isLogin ? "d-none" : "d-block"}
                 >
-                  <span>Logout</span>
+                  <span onClick={logout}>Logout</span>
                 </div>
                 <div className="button-connect-wallet res-hide">
                   <Link
