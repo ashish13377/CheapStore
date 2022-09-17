@@ -14,9 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(router);
 
-app.get("/", (req, res) => {
-  res.send("hello basu");
-});
+
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
