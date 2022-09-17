@@ -1,7 +1,7 @@
 import Home from "./Home";
 import Explore01 from './Explore01'
 import Explore02 from './Explore02'
-import Creator from './Creator'
+import Post from './post'
 import Item from './Item'
 import ItemDetails from './ItemDetails'
 import Blog from './Blog'
@@ -15,6 +15,7 @@ import CreateItem from './CreateItem'
 import Login from './Login'
 import Register from './Register'
 import Contact from './Contact'
+import Notfound from "./404";
 
 const routes = [
     { path: '/', component: <Home />},
@@ -23,7 +24,7 @@ const routes = [
     { path: '/profile', component: <Profile />},
     { path: '/explore-01', component: <Explore01 />},
     { path: '/explore-02', component: <Explore02 />},
-    { path: '/creator', component: <Creator />},
+    { path: '/post', component: <Post />},
     { path: '/item', component: <Item />},
     { path: '/item-details', component: <ItemDetails />},
     { path: '/blog', component: <Blog />},
@@ -33,7 +34,8 @@ const routes = [
     { path: '/create-item', component: <CreateItem />},
     { path: '/login', component: <Login />},
     { path: '/register', component: <Register />},
-    { path: '/contact', component: <Contact />}
+    { path: '/contact', component: <Contact />},
+    { path: '*', component: <Notfound />},
 ]
 
 export default routes;
