@@ -1,5 +1,6 @@
-import React,{useState} from "react";
-import axios from 'axios'
+import React, { useState } from "react";
+import axios from "axios";
+import Swal from "sweetalert2";
 import DarkMode from "../components/header/DarkMode";
 import img from "../assets/images/background/img-register.jpg";
 
@@ -16,6 +17,7 @@ const Register = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
+
     try {
       const res = await axios.post(
         "http://localhost:4000/api/register/user",
@@ -26,11 +28,28 @@ const Register = () => {
       );
       if (res.status === 200) {
         const data = res.data;
-        alert(data.msg);
-        setRegistrationData({});
+        Swal.fire({
+          title: data.msg,
+          icon: "success",
+          confirmButtonText: "OK",
+        });
+        setRegistrationData({
+          firstName: "",
+          lastName: "",
+          phoneNumber: "",
+          userName: "",
+          studentID: "",
+          email: "",
+          passowrd: "",
+          cPassword: "",
+        });
       }
     } catch (err) {
-      alert(err.response.data.msg);
+      Swal.fire({
+        title: err.response.data.msg,
+        icon: "danger",
+        confirmButtonText: "OK",
+      });
     }
   };
 
