@@ -7,8 +7,6 @@ import Header from "../components/header/Header";
 import Newsletters from "../components/layouts/Newsletters";
 import Footer from "../components/footer/Footer";
 
-const socket = io.connect("http://localhost:4000");
-
 const chat = () => {
   return (
     <div>
