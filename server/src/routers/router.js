@@ -86,6 +86,20 @@ router.post("/api/user/update/profilepic", auth, async (req, res) => {
   } catch (err) {
     res.status(422).json({ msg: "Image updation Failed" });
   }
+}); // Api for Update the profilr Information
+
+router.post("/api/user/update/profileinfo", auth, async (req, res) => {
+  const { firstName, lastName, about, phoneNumber, email } = req.body;
+  try {
+    const isUpdated = await User.updateOne(
+      { _id: req.user_id },
+      { firstName, lastName, about, phoneNumber, email }
+    );
+    console.log(isUpdated);
+    res.status(200).json({ msg: "Profile Updated" });
+  } catch (err) {
+    res.status(422).json({ msg: "Profile updation Failed" });
+  }
 });
 
 // Api for Remove/Reject the store

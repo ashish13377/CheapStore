@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import "./Header.css";
+import Avatar from "react-avatar";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import logo from "../../assets/images/logo/logo_dark.png";
@@ -77,7 +78,7 @@ const Header = () => {
         <div className="container-fluid">
           <div className="row">
             <div className="col-md-12">
-              <div id="site-header-inner" className="flex">
+              <div id="site-header-inner" className="flex px-0">
                 <div id="site-logo" className="clearfix">
                   <div id="site-logo-inner">
                     <Link to="/" rel="home" className="main-logo">
@@ -99,15 +100,25 @@ const Header = () => {
                   </div>
                 </div>
 
-                <form className="form-search">
+                <form
+                  className="form-search res-hide"
+                  style={{
+                    width: "200px",
+                    textAlign: "center",
+                    display: "flex",
+                    margin: "0",
+                    alignItems: "center",
+                  }}
+                >
                   <input
                     list="ice-cream-flavors"
                     placeholder="College Name"
                     name="ice-cream-choice"
                     style={{
-                      width: "300px",
+                      width: "200px",
                       paddingBottom: "20px",
-                      marginTop: "1px",
+                      textAlign: "center",
+                      margin: "3px 0 0 0",
                       display: "flex",
                       alignItems: "center",
                     }}
@@ -118,7 +129,14 @@ const Header = () => {
                     <option value="Coconut" />
                   </datalist>
                 </form>
-                <form className="form-search">
+                <form
+                  className="form-search"
+                  style={{
+                    width: "800px",
+                    marginLeft: "20px",
+                    marginTop: "3px",
+                  }}
+                >
                   <input type="text" placeholder="Search here" />
                   <button>
                     <i class="fa-solid fa-magnifying-glass"></i>
@@ -147,57 +165,66 @@ const Header = () => {
                                     }
                                 </ul>
                             </nav> */}
-
-                <div style={{ fontSize: "30px", margin: "0 10px" }}>
-                  <Link to="/connect-wallet">
-                    <i class="fa-sharp fa-solid fa-comment"></i>
-                  </Link>
-                </div>
-                <div
-                  style={{ fontSize: "30px", margin: "0 20px" }}
-                  className={!isLogin ? "d-none" : "d-block"}
-                >
-                  <Link to="/profile">
-                    <i class="fa-solid fa-user-graduate"></i>
-                  </Link>
-                </div>
-                <div
-                  style={{ fontSize: "16px", margin: "0 20px" }}
-                  className={isLogin ? "d-none" : "d-block"}
-                >
-                  <Link to="/login">
-                    <span>Login</span>
-                  </Link>
-                </div>
-                <div
-                  style={{ fontSize: "16px", margin: "0 20px" }}
-                  className={isLogin ? "d-none" : "d-block"}
-                >
-                  <Link to="/register">
-                    <span onClick={() => setIsLogin(!isLogin)}>Register</span>
-                  </Link>
-                </div>
                 <div
                   style={{
-                    fontSize: "16px",
-                    margin: "0 20px",
+                    display: "flex",
+                    justifyContent: "flex-end",
+                    alignItems: "center",
+                    width: "40%",
+                  }}
+                >
+                  <div style={{ fontSize: "40px", margin: "0 30px" }}>
+                    <Link to="/notification">
+                      <i class="fa-sharp fa-solid fa-bell"></i>
+                    </Link>
+                  </div>
+                  <div className="button-connect-wallet res-hide">
+                    <Link
+                      to="/connect-wallet"
+                      className="sc-button wallet style-2"
+                    >
+                      <img src={icon} alt="icon" />
+                      <span>Sell</span>
+                    </Link>
+                  </div>
+                  <div
+                    style={{ fontSize: "30px", margin: "0 20px" }}
+                    className={!isLogin ? "d-none" : "d-block"}
+                  >
+                    <Link to="/profile">
+                      <Avatar
+                        name={userData.firstName}
+                        size="40"
+                        round={true}
+                        src={userData.profileimage}
+                      />
+                    </Link>
+                  </div>
+                  <div
+                    style={{ fontSize: "16px", margin: "0 20px" }}
+                    className={isLogin ? "d-none" : "d-block"}
+                  >
+                    <Link to="/login">
+                      <span>Login</span>
+                    </Link>
+                  </div>
+                </div>
+
+                <DarkMode />
+                <div
+                  style={{
+                    fontSize: "26px",
+                    marginRight: "0",
+                    marginLeft: "50px",
+                    textAlign: "right",
                     cursor: "pointer",
                   }}
                   className={!isLogin ? "d-none" : "d-block"}
                 >
-                  <span onClick={logout}>Logout</span>
+                  <span onClick={logout}>
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                  </span>
                 </div>
-                <div className="button-connect-wallet res-hide">
-                  <Link
-                    to="/connect-wallet"
-                    className="sc-button wallet style-2"
-                  >
-                    <img src={icon} alt="icon" />
-                    <span>Sell</span>
-                  </Link>
-                </div>
-
-                <DarkMode />
               </div>
             </div>
           </div>
