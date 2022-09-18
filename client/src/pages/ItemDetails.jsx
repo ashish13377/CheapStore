@@ -1,11 +1,10 @@
-import React , {useState} from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
 import Header from '../components/header/Header';
-import Countdown from 'react-countdown';
-import { Tab, Tabs, TabList, TabPanel  } from 'react-tabs';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 
-import  Newsletters from '../components/layouts/Newsletters';
+import Newsletters from '../components/layouts/Newsletters';
 import Footer from '../components/footer/Footer';
 
 import img1 from '../assets/images/avatar/avt-6.jpg'
@@ -13,33 +12,32 @@ import img2 from '../assets/images/avatar/avt-2.jpg'
 import img3 from '../assets/images/avatar/avt-4.jpg'
 import imgdetail1 from '../assets/images/product-item/auction-detail.jpg'
 import avt1 from '../assets/images/avatar/avt-4.jpg'
-import avt2 from '../assets/images/avatar/avt-6.jpg'
-import avt3 from '../assets/images/avatar/avt-3.jpg'
+
 
 const ItemDetails = () => {
     const [dataHistory] = useState(
         [
             {
                 img: img1,
-                name:"@Johnson",
+                name: "@Johnson",
                 time: "8 hours ago ",
                 price: "25 ETH ",
             },
             {
                 img: img2,
-                name:"@Johnson",
+                name: "@Johnson",
                 time: "8 hours ago ",
                 price: "25 ETH ",
             },
             {
                 img: img3,
-                name:"@Johnson",
+                name: "@Johnson",
                 time: "8 hours ago ",
                 price: "25 ETH ",
             },
         ]
     )
-  return <div className='item-details'>
+    return <div className='item-details'>
         <Header />
         <section className="fl-page-title">
             <div className="overlay"></div>
@@ -48,12 +46,12 @@ const ItemDetails = () => {
                     <div className="col-md-12">
                         <div className="page-title-inner flex">
                             <div className="page-title-heading">
-                                <h2 className="heading">Auctions Details</h2>
+                                <h2 className="heading">Product Details</h2>
                             </div>
                             <div className="breadcrumbs">
                                 <ul>
                                     <li><Link to="/">Home</Link></li>
-                                    <li>Auctions Details</li>
+                                    <li>Product Details</li>
                                 </ul>
                             </div>
                         </div>
@@ -62,81 +60,57 @@ const ItemDetails = () => {
             </div>
         </section>
         <section className="tf-section item-details-page">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-xl-6 col-lg-12 col-md-12">
-                            <div className="item-media">
-                                <div className="media">
-                                    <img src={imgdetail1} alt="Bidzen" />
+            <div className="container">
+                <div className="row">
+                    <div className="col-xl-6 col-lg-12 col-md-12">
+                        <div className="item-media">
+                            <div className="media">
+                                <img src={imgdetail1} alt="Bidzen" />
+                            </div>
+
+                        </div>
+                    </div>
+                    <div className="col-xl-6 col-lg-12 col-md-12">
+                        <div className="content-item">
+                            <h3 > iPhone 8 Plus with all accessories</h3>
+                            <h4 style={{ paddingBottom: "10px" }}> Rs. 11,999/-</h4>
+                            <h6 style={{ paddingBottom: "10px" }}> Product Description</h6>
+                            <p className="mg-bt-42">13.97 cm (5.5 inch) Retina HD Display <br></br>
+
+                                12MP + 12MP | 7MP Front Camera
+                                <br></br>
+                                A11 Bionic Chip with 64-bit Architecture, Neural Engine, Embedded M11 Motion Coprocessor Processor
+
+                            </p>
+                            <hr></hr>
+                            <div className="author-item">
+                                <div className="avatar">
+                                    <img src={avt1} alt="Bidzen" />
                                 </div>
-                                <div className="countdown style-2">
-                                    <Countdown  date={Date.now() + 500000000} />
+                                <div className="infor">
+                                    <div className="create">Owner By</div>
+                                    <h6><Link to="/authors">Santosh Kumar Rai</Link> </h6>
+                                    <div className="widget-social">
+                                        <ul>
+                                            <li><Link to="#" className="active"><i className="fab fa-facebook-f"></i></Link>
+                                            </li>
+                                            <li><Link to="#"><i className="fab fa-twitter"></i></Link></li>
+                                            <li><Link to="#"><i className="fab fa-instagram"></i></Link></li>
+                                            <li><Link to="#"><i className="fab fa-linkedin-in"></i></Link></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className="col-xl-6 col-lg-12 col-md-12">
-                            <div className="content-item">
-                                <h3> Mission For Ghost Fighter</h3>
-                                <p className="mg-bt-42">Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                                    accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo
-                                    inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
-                                    ipsam voluptatem quia voluptas sit aspernatur aut</p>
-                                <div className="author-item">
-                                    <div className="avatar">
-                                        <img src={avt1} alt="Bidzen" />
-                                    </div>
-                                    <div className="infor">
-                                        <div className="create">Owner By</div>
-                                        <h6><Link to="/authors">Duane M. Mendoza</Link> </h6>
-                                        <div className="widget-social">
-                                            <ul>
-                                                <li><Link to="#" className="active"><i className="fab fa-facebook-f"></i></Link>
-                                                </li>
-                                                <li><Link to="#"><i className="fab fa-twitter"></i></Link></li>
-                                                <li><Link to="#"><i className="fab fa-instagram"></i></Link></li>
-                                                <li><Link to="#"><i className="fab fa-linkedin-in"></i></Link></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <ul className="list-details-item">
-                                    <li><span className="name">Current Price 1.5 ETH</span><span
-                                            className="price">$500.89</span> <span className="pagi">1 of 5</span> </li>
-                                    <li>Size 14000 x 14000 px</li>
-                                    <li> Volume Traded 64.1</li>
-                                </ul>
-                                <div className="author-bid">
-                                    <div className="author-item">
-                                        <div className="avatar">
-                                            <img src={avt2} alt="Bidzen" />
-                                        </div>
-                                        <div className="infor">
-                                            <h6><Link to="/authors">Keith J. Kelley</Link> </h6>
-                                            <div className="create">Creators</div>
-                                        </div>
-                                    </div>
-                                    <div className="author-item">
-                                        <div className="avatar">
-                                            <img src={avt3} alt="Bidzen" />
-                                        </div>
-                                        <div className="infor">
-                                            <h6><Link to="/authors">David Michels</Link> </h6>
-                                            <div className="create">Collection</div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div className="infor-bid">
-                                    <div className="content-left">
-                                        <h6>Highest Bid</h6>
-                                        <div className="price">9.3 BNB</div>
-                                    </div>
-                                    <div className="pagi">1 Of 9</div>
-                                </div>
-                                <Link to="/connect-wallet"
-                                    className="sc-button style letter style-2 style-item-details"><span>Place Bid</span>
-                                </Link>
-                                <div className="flat-tabs themesflat-tabs">
+                            <ul className="list-details-item">
+                                <li><span className="name">Email: trojan2277@gmail.com</span> </li>
+                                <li>College Name: Heritage Institute of Technology</li>
+                                <li>Department: AEIE</li>
+                                <li>Call Now: <a href="tel:+916204477640">+91 62044 77640  </a></li>
+                            </ul>
+                            <Link to="/connect-wallet"
+                                className="sc-button style letter style-2 style-item-details"><span>Chat with Seller</span>
+                            </Link>
+                            {/* <div className="flat-tabs themesflat-tabs">
                                 <Tabs>
                                         <TabList>
                                         <Tab>Bid</Tab>
@@ -201,16 +175,16 @@ const ItemDetails = () => {
                                             </div>
                                         </TabPanel>
                                     </Tabs>
-                                </div>
-                            </div>
+                                </div> */}
                         </div>
                     </div>
                 </div>
+            </div>
         </section>
-       
+
         <Newsletters />
         <Footer />
-  </div>;
+    </div>;
 };
 
 export default ItemDetails;

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import Header from '../components/header/Header';
 import BestSeller from '../components/layouts/BestSeller';
-import dataBestSeller from '../assets/fake-data/dataBestSeller';
+import dataBestSeller from '../assets/fake-data/postdata';
 import TopSeller from '../components/layouts/authors/BestSeller';
 import HotCollection from '../components/layouts/authors/HotCollection';
 import dataHotCollection2 from '../assets/fake-data/dataHotCollection2';

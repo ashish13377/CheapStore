@@ -2152,7 +2152,7 @@ blockquote .author::before {
 #create-item-1 textarea,
 #create-item-1 select {
     height       : 65px;
-    padding      : 0 35px;
+    padding      : 0 46px;
     background   : rgba(99, 69, 237, 0.07);
     border       : 1px solid rgba(99, 69, 237, 0.12);
     border-radius: 7px;
@@ -2186,7 +2186,7 @@ blockquote .author::before {
 #create-item-1 .uploadFile,
 #create-item-1 select {
     position   : relative;
-    width      : 100%;
+    /* width      : 100%; */
     line-height: 65px;
     border     : 1px solid rgba(99, 69, 237, 0.12);
 }
@@ -3036,7 +3036,7 @@ blockquote .author::before {
 ---------------------------*/
 .item-details-page .item-media {
     position: relative;
-    padding-top: 49px;
+
 }
 .item-details-page .item-media .countdown {
     position: absolute;
@@ -3059,7 +3059,7 @@ blockquote .author::before {
 }
 .item-details-page .content-item h3 {
     font-size: 30px;
-    line-height: 75px;
+    line-height: 55px;
 }
 .item-details-page .content-item p {
     font-size: 15px;
