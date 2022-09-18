@@ -28,7 +28,7 @@ const routes = [
   { path: "/explore-02", component: <Explore02 /> },
   { path: "/post", component: <Post /> },
   { path: "/item", component: <Item /> },
-  { path: "/item-details", component: <ItemDetails /> },
+  { path: "/item-details/:id", component: <ItemDetails /> },
   { path: "/blog", component: <Blog /> },
   { path: "/blog-details", component: <BlogDetails /> },
   { path: "/authors", component: <Authors /> },

@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
+
 const ItemsSchema = new mongoose.Schema({
   itemName: {
     type: String,
@@ -13,7 +12,6 @@ const ItemsSchema = new mongoose.Schema({
   },
   sellerName: {
     type: String,
-    unique: true,
   },
   sellerNumber: {
     type: String,
@@ -27,9 +25,11 @@ const ItemsSchema = new mongoose.Schema({
   sellerLocation: {
     type: String,
   },
-
-  date: {
+  sellerImage: {
     type: String,
+  },
+  sellerID: {
+    type: mongoose.SchemaTypes.ObjectId,
   },
   images: [
     {
@@ -37,14 +37,6 @@ const ItemsSchema = new mongoose.Schema({
     },
   ],
 });
-ItemsSchema.pre("save", async function (next) {
-  const date = new Date();
-  let day = date.getDate();
-  let month = date.getMonth() + 1;
-  let year = date.getFullYear();
-  let currentDate = `${day}/${month}/${year}`;
-  this.date = currentDate;
-  next();
-});
+
 const Item = new mongoose.model("Item", ItemsSchema);
 module.exports = Item;

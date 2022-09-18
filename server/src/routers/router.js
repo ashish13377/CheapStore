@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/users");
+const Item = require("../models/items");
 const bcrypt = require("bcryptjs");
 const auth = require("../middlewares/auth");
 //Testing server
@@ -163,4 +164,69 @@ router.get("/api/user/logout", (req, res) => {
   });
   res.status(200).json({ msg: "Log out" });
 });
+
+// API for creating items
+
+router.post("/api/user/create/item", auth, async (req, res) => {
+  console.log("Hit");
+  const {
+    itemName,
+    itemPrice,
+    description,
+    sellerName,
+    sellerNumber,
+    sellerEmail,
+    sellerDepartment,
+    sellerLocation,
+  } = req.body.itemData;
+  try {
+    const item = new Item({
+      itemName,
+      itemPrice,
+      description,
+      sellerName,
+      sellerNumber,
+      sellerEmail,
+      sellerDepartment,
+      sellerLocation,
+      sellerID: req.user_id,
+      sellerImage: req.rootUser.profileimage,
+      images: req.body.images,
+    });
+    await item.save();
+    console.log(req.body.images);
+    res.status(200).json({
+      msg: "Item Added successfully",
+    });
+  } catch (err) {
+    res.status(422).json({ msg: "Item adding Failed" });
+  }
+});
+
+// sending all product deatails
+
+router.get("/api/get/products", async (req, res) => {
+  console.log("HIT");
+  try {
+    const products = await Item.find();
+    console.log(products);
+    res.status(200).json({ msg: "Products sent", products });
+  } catch (err) {
+    res.status(422).json({ msg: "Sent Failed" });
+  }
+});
+
+// sending a product
+
+router.post("/api/get/product/byid", async (req, res) => {
+  console.log(req.body.id);
+  try {
+    const product = await Item.findById(req.body.id);
+    console.log(product);
+    res.status(200).json({ msg: "Products sent", product });
+  } catch (err) {
+    res.status(422).json({ msg: "Sent Failed" });
+  }
+});
+
 module.exports = router;
