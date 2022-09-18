@@ -42,6 +42,7 @@ const Register = () => {
           email: "",
           passowrd: "",
           cPassword: "",
+          collegeName: "",
         });
       }
     } catch (err) {
@@ -110,6 +111,14 @@ const Register = () => {
                       />
                     </div>
 
+                    <input
+                      name="collegeName"
+                      value={registrationData.collegeName}
+                      onChange={handleRegistration}
+                      type="text"
+                      placeholder="College Name"
+                      required
+                    />
                     <input
                       name="studentID"
                       value={registrationData.studentID}

@@ -18,6 +18,7 @@ router.post("/api/register/user", async (req, res) => {
     lastName,
     phoneNumber,
     userName,
+    collegeName,
     studentID,
     email,
     password,
@@ -32,6 +33,7 @@ router.post("/api/register/user", async (req, res) => {
         lastName,
         phoneNumber,
         userName,
+        collegeName,
         studentID,
         email,
         password,
@@ -189,6 +191,8 @@ router.post("/api/user/create/item", auth, async (req, res) => {
       sellerEmail,
       sellerDepartment,
       sellerLocation,
+      sellerCollegeName:req.rootUser.collegeName,
+      category: req.body.name,
       sellerID: req.user_id,
       sellerImage: req.rootUser.profileimage,
       images: req.body.images,
@@ -209,6 +213,19 @@ router.get("/api/get/products", async (req, res) => {
   console.log("HIT");
   try {
     const products = await Item.find();
+    console.log(products);
+    res.status(200).json({ msg: "Products sent", products });
+  } catch (err) {
+    res.status(422).json({ msg: "Sent Failed" });
+  }
+});
+
+// sending all product deatails
+
+router.post("/api/get/products/filter", async (req, res) => {
+  console.log(req.body.cat);
+  try {
+    const products = await Item.find({ category: req.body.cat });
     console.log(products);
     res.status(200).json({ msg: "Products sent", products });
   } catch (err) {

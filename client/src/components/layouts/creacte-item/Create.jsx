@@ -4,7 +4,7 @@ import Loader from "../../Loader/Loader";
 import Swal from "sweetalert2";
 import img from "../../../assets/images/background/img-create-item.jpg";
 
-const Create = () => {
+const Create = ({ name }) => {
   const [itemData, setItemData] = useState({});
   const [images, setImages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -45,7 +45,7 @@ const Create = () => {
     try {
       const res = await axios.post(
         "http://localhost:4000/api/user/create/item",
-        { itemData, images },
+        { itemData, name, images },
         {
           withCredentials: true,
         }

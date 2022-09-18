@@ -5,8 +5,8 @@ import { Dropdown } from "react-bootstrap";
 
 const PopularCollection = (props) => {
   const [products, setProducts] = useState([]);
+  const [category, setCategory] = useState("select category");
   const data = props.data;
-
   const [visible, setVisible] = useState(12);
   const showMoreItems = () => {
     setVisible((prevValue) => prevValue + 4);
@@ -19,6 +19,22 @@ const PopularCollection = (props) => {
       const res = await axios.get("http://localhost:4000/api/get/products", {
         withCredentials: true,
       });
+      if (res.status === 200) {
+        setProducts(res.data.products);
+      }
+    } catch (err) {
+      alert(err);
+    }
+  };
+  const getAllProductsByFilter = async (cat) => {
+    try {
+      const res = await axios.post(
+        "http://localhost:4000/api/get/products/filter",
+        { cat },
+        {
+          withCredentials: true,
+        }
+      );
       if (res.status === 200) {
         setProducts(res.data.products);
       }
@@ -41,18 +57,37 @@ const PopularCollection = (props) => {
                   className="btn-selector nolink"
                   id="dropdown-basic"
                 >
-                  <span>All Categories</span>
+                  <span>{category}</span>
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
-                  <Dropdown.Item href="#">
-                    <span>NFT</span>
+                  <Dropdown.Item onClick={getAllProducts}>
+                    <span>All</span>
                   </Dropdown.Item>
-                  <Dropdown.Item href="#">
-                    <span>Crypto</span>
+                  <Dropdown.Item
+                    onClick={() => getAllProductsByFilter("Electronics")}
+                  >
+                    <span>Electronics</span>
                   </Dropdown.Item>
-                  <Dropdown.Item href="#">
-                    <span>Token</span>
+                  <Dropdown.Item
+                    onClick={() => getAllProductsByFilter("Stationery")}
+                  >
+                    <span>Stationery</span>
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    onClick={() => getAllProductsByFilter("Books")}
+                  >
+                    <span>Books</span>
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    onClick={() => getAllProductsByFilter("Fashions")}
+                  >
+                    <span>Fashions</span>
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    onClick={() => getAllProductsByFilter("Furniture")}
+                  >
+                    <span>Furniture</span>
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>

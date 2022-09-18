@@ -16,7 +16,13 @@ const ItemsSchema = new mongoose.Schema({
   sellerNumber: {
     type: String,
   },
+  sellerCollegeName: {
+    type: String,
+  },
   sellerEmail: {
+    type: String,
+  },
+  category: {
     type: String,
   },
   sellerDepartment: {

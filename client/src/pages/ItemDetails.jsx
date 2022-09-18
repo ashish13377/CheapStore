@@ -154,7 +154,7 @@ const ItemDetails = () => {
                   <li>
                     <span className="name">Email: {product.sellerEmail}</span>{" "}
                   </li>
-                  <li>College Name: Heritage Institute of Technology</li>
+                  <li>College Name: {product.sellerCollegeName}</li>
                   <li>Department: {product.sellerDepartment}</li>
                   <li>
                     Call Now:{" "}
