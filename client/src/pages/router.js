@@ -15,6 +15,7 @@ import CreateItem from "./CreateItem";
 import Login from "./Login";
 import Register from "./Register";
 import Contact from "./Contact";
+import Notification from "./Notification";
 import Chat from "./Chat";
 import Notfound from "./404";
 
@@ -36,7 +37,8 @@ const routes = [
   { path: "/login", component: <Login /> },
   { path: "/register", component: <Register /> },
   { path: "/contact", component: <Contact /> },
-  { path: "/chat", component: <Chat /> },
+  { path: "/notification", component: <Notification /> },
+  { path: "/chat/:id", component: <Chat /> },
   { path: "*", component: <Notfound /> },
 ];
 

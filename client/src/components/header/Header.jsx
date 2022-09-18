@@ -101,7 +101,7 @@ const Header = () => {
                 </div>
 
                 <form
-                  className="form-search"
+                  className="form-search res-hide"
                   style={{
                     width: "200px",
                     textAlign: "center",
@@ -174,8 +174,8 @@ const Header = () => {
                   }}
                 >
                   <div style={{ fontSize: "40px", margin: "0 30px" }}>
-                    <Link to="/connect-wallet">
-                      <i class="fa-brands fa-rocketchat"></i>
+                    <Link to="/notification">
+                      <i class="fa-sharp fa-solid fa-bell"></i>
                     </Link>
                   </div>
                   <div className="button-connect-wallet res-hide">

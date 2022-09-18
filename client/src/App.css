@@ -7,6 +7,14 @@
   pointer-events: none;
 }
 
+.card-notification {
+  width: 650px;
+  border: none;
+  border-radius: 20px;
+  background-color: #800c8f;
+  cursor: pointer;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -38,8 +46,8 @@
   left: 50%;
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 .notfound {
@@ -57,7 +65,7 @@
 }
 
 .notfound .notfound-404 h1 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 236px;
   font-weight: 200;
   margin: 0px;
@@ -67,12 +75,11 @@
   left: 50%;
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 .notfound .notfound-404 h2 {
-
   font-size: 28px;
   font-weight: 400;
   text-transform: uppercase;
@@ -86,8 +93,6 @@
   left: 0;
   right: 0;
 }
-
-
 
 @media only screen and (max-width: 767px) {
   .notfound .notfound-404 h1 {
@@ -111,8 +116,6 @@
     font-size: 14px;
   }
 }
-
-
 
 @keyframes App-logo-spin {
   from {
