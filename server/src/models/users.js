@@ -23,6 +23,9 @@ const UsersSchema = new mongoose.Schema({
   userName: {
     type: String,
   },
+  collegeName: {
+    type: String,
+  },
   studentID: {
     type: String,
   },

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 import Header from "../components/header/Header";
 
 import "react-tabs/style/react-tabs.css";
@@ -12,9 +12,12 @@ import img2 from "../assets/images/avatar/avt-2.jpg";
 import img3 from "../assets/images/avatar/avt-4.jpg";
 import imgdetail1 from "../assets/images/product-item/auction-detail.jpg";
 import avt1 from "../assets/images/avatar/avt-4.jpg";
+import axios from "axios";
 
 const ItemDetails = () => {
-  const [mainImage, setMainImage] = useState("https://i.imgur.com/Dhebu4F.jpg");
+  const [product, setProduct] = useState({});
+  const { id } = useParams();
+  const [mainImage, setMainImage] = useState("");
   const [dataHistory] = useState([
     {
       img: img1,
@@ -35,6 +38,23 @@ const ItemDetails = () => {
       price: "25 ETH ",
     },
   ]);
+
+  const getProduct = async (id) => {
+    try {
+      const res = await axios.post(
+        "http://localhost:4000/api/get/product/byid",
+        { id }
+      );
+      if (res.status === 200) {
+        setProduct(res.data.product);
+        setMainImage(res.data.product.images[0]);
+      }
+    } catch (err) {}
+  };
+
+  useEffect(() => {
+    getProduct(id);
+  }, []);
   return (
     <div className="item-details">
       <Header />
@@ -69,46 +89,40 @@ const ItemDetails = () => {
                   <img id="main-image" src={mainImage} width="250" />
                 </div>
                 <div class="thumbnail text-center">
-                  <img
-                    onClick={(e) =>
-                      setMainImage("https://i.imgur.com/Dhebu4F.jpg")
-                    }
-                    src="https://i.imgur.com/Dhebu4F.jpg"
-                    width="60"
-                    style={{ margin: "0 20px" }}
-                  />
-                  <img
-                    onClick={(e) =>
-                      setMainImage("https://i.imgur.com/Dhebu4F.jpg")
-                    }
-                    src="https://i.imgur.com/Dhebu4F.jpg"
-                    width="60"
-                    style={{ margin: "0 20px" }}
-                  />
+                  {product.images?.map((img) => {
+                    return (
+                      <img
+                        onClick={(e) => setMainImage(img)}
+                        src={img}
+                        width="60"
+                        style={{ margin: "0 20px" }}
+                      />
+                    );
+                  })}
                 </div>
               </div>
             </div>
             <div className="col-xl-6 col-lg-12 col-md-12">
               <div className="content-item">
-                <h3> iPhone 8 Plus with all accessories</h3>
-                <h4 style={{ paddingBottom: "10px" }}> Rs. 11,999/-</h4>
+                <h3> {product.itemName}</h3>
+                <h4 style={{ paddingBottom: "10px" }}>
+                  {" "}
+                  Rs. {product.itemPrice}
+                </h4>
                 <h6 style={{ paddingBottom: "10px" }}> Product Description</h6>
                 <p className="mg-bt-42">
-                  13.97 cm (5.5 inch) Retina HD Display <br></br>
-                  12MP + 12MP | 7MP Front Camera
+                  {product.description}
                   <br></br>
-                  A11 Bionic Chip with 64-bit Architecture, Neural Engine,
-                  Embedded M11 Motion Coprocessor Processor
                 </p>
                 <hr></hr>
                 <div className="author-item">
                   <div className="avatar">
-                    <img src={avt1} alt="Bidzen" />
+                    <img src={product.sellerImage} alt="Bidzen" />
                   </div>
                   <div className="infor">
-                    <div className="create">Owner By</div>
+                    <div className="create">Owned By</div>
                     <h6>
-                      <Link to="/authors">Santosh Kumar Rai</Link>{" "}
+                      <Link to="/authors">{product.sellerName}</Link>{" "}
                     </h6>
                     <div className="widget-social">
                       <ul>
@@ -138,12 +152,15 @@ const ItemDetails = () => {
                 </div>
                 <ul className="list-details-item">
                   <li>
-                    <span className="name">Email: trojan2277@gmail.com</span>{" "}
+                    <span className="name">Email: {product.sellerEmail}</span>{" "}
                   </li>
-                  <li>College Name: Heritage Institute of Technology</li>
-                  <li>Department: AEIE</li>
+                  <li>College Name: {product.sellerCollegeName}</li>
+                  <li>Department: {product.sellerDepartment}</li>
                   <li>
-                    Call Now: <a href="tel:+916204477640">+91 62044 77640 </a>
+                    Call Now:{" "}
+                    <a href={`tel:+91${product.sellerNumber}`}>
+                      +91 {product.sellerNumber}{" "}
+                    </a>
                   </li>
                 </ul>
                 <Link

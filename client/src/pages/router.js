@@ -10,6 +10,7 @@ import Authors from "./Authors";
 import Info from "./info";
 import Pic from "./Pic";
 import Profile from "./Profile";
+import Admin from "./Admin";
 import ConnectWallet from "./ConnectWallet";
 import CreateItem from "./CreateItem";
 import Login from "./Login";
@@ -28,12 +29,13 @@ const routes = [
   { path: "/explore-02", component: <Explore02 /> },
   { path: "/post", component: <Post /> },
   { path: "/item", component: <Item /> },
-  { path: "/item-details", component: <ItemDetails /> },
+  { path: "/item-details/:id", component: <ItemDetails /> },
   { path: "/blog", component: <Blog /> },
   { path: "/blog-details", component: <BlogDetails /> },
   { path: "/authors", component: <Authors /> },
+  { path: "/admin", component: <Admin /> },
   { path: "/connect-wallet", component: <ConnectWallet /> },
-  { path: "/create-item", component: <CreateItem /> },
+  { path: "/create-item/:name", component: <CreateItem /> },
   { path: "/login", component: <Login /> },
   { path: "/register", component: <Register /> },
   { path: "/contact", component: <Contact /> },

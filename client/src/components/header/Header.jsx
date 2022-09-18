@@ -179,10 +179,7 @@ const Header = () => {
                     </Link>
                   </div>
                   <div className="button-connect-wallet res-hide">
-                    <Link
-                      to="/connect-wallet"
-                      className="sc-button wallet style-2"
-                    >
+                    <Link to="/post" className="sc-button wallet style-2">
                       <img src={icon} alt="icon" />
                       <span>Sell</span>
                     </Link>
