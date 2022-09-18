@@ -1,116 +1,158 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom'
-import Header from '../components/header/Header';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import 'react-tabs/style/react-tabs.css';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import Header from "../components/header/Header";
 
-import Newsletters from '../components/layouts/Newsletters';
-import Footer from '../components/footer/Footer';
+import "react-tabs/style/react-tabs.css";
 
-import img1 from '../assets/images/avatar/avt-6.jpg'
-import img2 from '../assets/images/avatar/avt-2.jpg'
-import img3 from '../assets/images/avatar/avt-4.jpg'
-import imgdetail1 from '../assets/images/product-item/auction-detail.jpg'
-import avt1 from '../assets/images/avatar/avt-4.jpg'
+import Newsletters from "../components/layouts/Newsletters";
+import Footer from "../components/footer/Footer";
 
+import img1 from "../assets/images/avatar/avt-6.jpg";
+import img2 from "../assets/images/avatar/avt-2.jpg";
+import img3 from "../assets/images/avatar/avt-4.jpg";
+import imgdetail1 from "../assets/images/product-item/auction-detail.jpg";
+import avt1 from "../assets/images/avatar/avt-4.jpg";
 
 const ItemDetails = () => {
-    const [dataHistory] = useState(
-        [
-            {
-                img: img1,
-                name: "@Johnson",
-                time: "8 hours ago ",
-                price: "25 ETH ",
-            },
-            {
-                img: img2,
-                name: "@Johnson",
-                time: "8 hours ago ",
-                price: "25 ETH ",
-            },
-            {
-                img: img3,
-                name: "@Johnson",
-                time: "8 hours ago ",
-                price: "25 ETH ",
-            },
-        ]
-    )
-    return <div className='item-details'>
-        <Header />
-        <section className="fl-page-title">
-            <div className="overlay"></div>
-            <div className="container">
-                <div className="row">
-                    <div className="col-md-12">
-                        <div className="page-title-inner flex">
-                            <div className="page-title-heading">
-                                <h2 className="heading">Product Details</h2>
-                            </div>
-                            <div className="breadcrumbs">
-                                <ul>
-                                    <li><Link to="/">Home</Link></li>
-                                    <li>Product Details</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+  const [mainImage, setMainImage] = useState("https://i.imgur.com/Dhebu4F.jpg");
+  const [dataHistory] = useState([
+    {
+      img: img1,
+      name: "@Johnson",
+      time: "8 hours ago ",
+      price: "25 ETH ",
+    },
+    {
+      img: img2,
+      name: "@Johnson",
+      time: "8 hours ago ",
+      price: "25 ETH ",
+    },
+    {
+      img: img3,
+      name: "@Johnson",
+      time: "8 hours ago ",
+      price: "25 ETH ",
+    },
+  ]);
+  return (
+    <div className="item-details">
+      <Header />
+      <section className="fl-page-title">
+        <div className="overlay"></div>
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12">
+              <div className="page-title-inner flex">
+                <div className="page-title-heading">
+                  <h2 className="heading">Product Details</h2>
                 </div>
+                <div className="breadcrumbs">
+                  <ul>
+                    <li>
+                      <Link to="/">Home</Link>
+                    </li>
+                    <li>Product Details</li>
+                  </ul>
+                </div>
+              </div>
             </div>
-        </section>
-        <section className="tf-section item-details-page">
-            <div className="container">
-                <div className="row">
-                    <div className="col-xl-6 col-lg-12 col-md-12">
-                        <div className="item-media">
-                            <div className="media">
-                                <img src={imgdetail1} alt="Bidzen" />
-                            </div>
-
-                        </div>
+          </div>
+        </div>
+      </section>
+      <section className="tf-section item-details-page">
+        <div className="container">
+          <div className="row">
+            <div className="col-xl-6 col-lg-12 col-md-12">
+              <div class="images p-3 item-media">
+                <div class="text-center p-4 media">
+                  <img id="main-image" src={mainImage} width="250" />
+                </div>
+                <div class="thumbnail text-center">
+                  <img
+                    onClick={(e) =>
+                      setMainImage("https://i.imgur.com/Dhebu4F.jpg")
+                    }
+                    src="https://i.imgur.com/Dhebu4F.jpg"
+                    width="60"
+                    style={{ margin: "0 20px" }}
+                  />
+                  <img
+                    onClick={(e) =>
+                      setMainImage("https://i.imgur.com/Dhebu4F.jpg")
+                    }
+                    src="https://i.imgur.com/Dhebu4F.jpg"
+                    width="60"
+                    style={{ margin: "0 20px" }}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="col-xl-6 col-lg-12 col-md-12">
+              <div className="content-item">
+                <h3> iPhone 8 Plus with all accessories</h3>
+                <h4 style={{ paddingBottom: "10px" }}> Rs. 11,999/-</h4>
+                <h6 style={{ paddingBottom: "10px" }}> Product Description</h6>
+                <p className="mg-bt-42">
+                  13.97 cm (5.5 inch) Retina HD Display <br></br>
+                  12MP + 12MP | 7MP Front Camera
+                  <br></br>
+                  A11 Bionic Chip with 64-bit Architecture, Neural Engine,
+                  Embedded M11 Motion Coprocessor Processor
+                </p>
+                <hr></hr>
+                <div className="author-item">
+                  <div className="avatar">
+                    <img src={avt1} alt="Bidzen" />
+                  </div>
+                  <div className="infor">
+                    <div className="create">Owner By</div>
+                    <h6>
+                      <Link to="/authors">Santosh Kumar Rai</Link>{" "}
+                    </h6>
+                    <div className="widget-social">
+                      <ul>
+                        <li>
+                          <Link to="#" className="active">
+                            <i className="fab fa-facebook-f"></i>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to="#">
+                            <i className="fab fa-twitter"></i>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to="#">
+                            <i className="fab fa-instagram"></i>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to="#">
+                            <i className="fab fa-linkedin-in"></i>
+                          </Link>
+                        </li>
+                      </ul>
                     </div>
-                    <div className="col-xl-6 col-lg-12 col-md-12">
-                        <div className="content-item">
-                            <h3 > iPhone 8 Plus with all accessories</h3>
-                            <h4 style={{ paddingBottom: "10px" }}> Rs. 11,999/-</h4>
-                            <h6 style={{ paddingBottom: "10px" }}> Product Description</h6>
-                            <p className="mg-bt-42">13.97 cm (5.5 inch) Retina HD Display <br></br>
-
-                                12MP + 12MP | 7MP Front Camera
-                                <br></br>
-                                A11 Bionic Chip with 64-bit Architecture, Neural Engine, Embedded M11 Motion Coprocessor Processor
-
-                            </p>
-                            <hr></hr>
-                            <div className="author-item">
-                                <div className="avatar">
-                                    <img src={avt1} alt="Bidzen" />
-                                </div>
-                                <div className="infor">
-                                    <div className="create">Owner By</div>
-                                    <h6><Link to="/authors">Santosh Kumar Rai</Link> </h6>
-                                    <div className="widget-social">
-                                        <ul>
-                                            <li><Link to="#" className="active"><i className="fab fa-facebook-f"></i></Link>
-                                            </li>
-                                            <li><Link to="#"><i className="fab fa-twitter"></i></Link></li>
-                                            <li><Link to="#"><i className="fab fa-instagram"></i></Link></li>
-                                            <li><Link to="#"><i className="fab fa-linkedin-in"></i></Link></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <ul className="list-details-item">
-                                <li><span className="name">Email: trojan2277@gmail.com</span> </li>
-                                <li>College Name: Heritage Institute of Technology</li>
-                                <li>Department: AEIE</li>
-                                <li>Call Now: <a href="tel:+916204477640">+91 62044 77640  </a></li>
-                            </ul>
-                            <Link to="/connect-wallet"
-                                className="sc-button style letter style-2 style-item-details"><span>Chat with Seller</span>
-                            </Link>
-                            {/* <div className="flat-tabs themesflat-tabs">
+                  </div>
+                </div>
+                <ul className="list-details-item">
+                  <li>
+                    <span className="name">Email: trojan2277@gmail.com</span>{" "}
+                  </li>
+                  <li>College Name: Heritage Institute of Technology</li>
+                  <li>Department: AEIE</li>
+                  <li>
+                    Call Now: <a href="tel:+916204477640">+91 62044 77640 </a>
+                  </li>
+                </ul>
+                <Link
+                  to="/connect-wallet"
+                  className="sc-button style letter style-2 style-item-details"
+                >
+                  <span>Chat with Seller</span>
+                </Link>
+                {/* <div className="flat-tabs themesflat-tabs">
                                 <Tabs>
                                         <TabList>
                                         <Tab>Bid</Tab>
@@ -176,15 +218,16 @@ const ItemDetails = () => {
                                         </TabPanel>
                                     </Tabs>
                                 </div> */}
-                        </div>
-                    </div>
-                </div>
+              </div>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        <Newsletters />
-        <Footer />
-    </div>;
+      <Newsletters />
+      <Footer />
+    </div>
+  );
 };
 
 export default ItemDetails;
