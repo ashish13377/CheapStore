@@ -14,8 +14,51 @@ import axios from "axios";
 
 const Header = () => {
   const [isLogin, setIsLogin] = useState(false);
+  const [searchText, setSearchText] = useState("");
   const [userData, setUserData] = useState({});
   const headerRef = useRef(null);
+
+  const [products, setProducts] = useState([]);
+  const [isDisplay, setIsDisplay] = useState(false);
+  const [filterProducts, setFilterProducts] = useState([]);
+
+  const handleSearch = (e) => {
+    setSearchText(e.target.value);
+    const newFilter = products.filter((val) => {
+      return val.toLowerCase().includes(e.target.value.toLowerCase());
+    });
+    console.log(searchText);
+    if (e.target.value === "") {
+      setFilterProducts([]);
+    } else {
+      setFilterProducts(newFilter);
+    }
+
+    console.log(products);
+  };
+
+  // Getting all products
+
+  const getAllProducts = async () => {
+    try {
+      const res = await axios.get(
+        "http://localhost:4000/api/get/products/name",
+        {
+          withCredentials: true,
+        }
+      );
+      if (res.status === 200) {
+        setProducts(res.data.productsName);
+      }
+    } catch (err) {
+      alert(err);
+    }
+  };
+
+  useEffect(() => {
+    getAllProducts();
+  }, []);
+
   useEffect(() => {
     window.addEventListener("scroll", isSticky);
     return () => {
@@ -137,11 +180,46 @@ const Header = () => {
                     marginTop: "3px",
                   }}
                 >
-                  <input type="text" placeholder="Search here" />
+                  <input
+                    type="text"
+                    placeholder="Search here"
+                    value={searchText}
+                    onChange={handleSearch}
+                  />
                   <button>
                     <i class="fa-solid fa-magnifying-glass"></i>
                   </button>
                 </form>
+                {filterProducts.length !== 0 && (
+                  <div
+                    style={{
+                      width: "300px",
+                      height: "auto",
+                      backgroundColor: "#ffff",
+                      position: "absolute",
+                      left: "400px",
+                      top: "70px",
+                      borderRadius: "10px",
+                    }}
+                  >
+                    <ul>
+                      {filterProducts?.map((fl) => {
+                        return (
+                          <li
+                            style={{
+                              color: "#000",
+                              margin: "30px",
+                              fontWeight: "bold",
+                              cursor: "pointer",
+                            }}
+                          >
+                            {fl}
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                )}
 
                 {/* <nav id="main-nav" className="main-nav" ref={menuLeft}>
                                 <ul id="menu-primary-menu" className="menu">

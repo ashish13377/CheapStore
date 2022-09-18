@@ -191,7 +191,7 @@ router.post("/api/user/create/item", auth, async (req, res) => {
       sellerEmail,
       sellerDepartment,
       sellerLocation,
-      sellerCollegeName:req.rootUser.collegeName,
+      sellerCollegeName: req.rootUser.collegeName,
       category: req.body.name,
       sellerID: req.user_id,
       sellerImage: req.rootUser.profileimage,
@@ -215,6 +215,15 @@ router.get("/api/get/products", async (req, res) => {
     const products = await Item.find();
     console.log(products);
     res.status(200).json({ msg: "Products sent", products });
+  } catch (err) {
+    res.status(422).json({ msg: "Sent Failed" });
+  }
+});
+router.get("/api/get/products/name", async (req, res) => {
+  try {
+    const products = await Item.find();
+    const productsName = products.map((item) => item.itemName);
+    res.status(200).json({ msg: "Products sent", productsName });
   } catch (err) {
     res.status(422).json({ msg: "Sent Failed" });
   }
