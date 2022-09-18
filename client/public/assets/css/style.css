@@ -707,9 +707,10 @@ input[type="button"]:focus,
 input[type="reset"]:focus,
 input[type="submit"]:focus {
   outline: 0;
-  border: 1px solid var(--primary-color3);
-  color: var(--primary-color3);
-  /* background: transparent; */
+  color: #fff;
+  border: 1px solid #4b68eb;
+
+  background: #4b68eb
 }
 
 /* Placeholder color */
@@ -1352,7 +1353,8 @@ a:focus {
 
 /* logo  */
 .header_1 #site-logo {
-  margin-right: 3.5%;
+  margin-right: 0.8%;
+  margin-left: 20px;
 }
 .logo-light,
 .is_dark .logo-dark {
@@ -1364,8 +1366,8 @@ a:focus {
 }
 
 .header_1 #site-logo .main-logo img {
-  width: 151px;
-  height: 45px;
+  width: 160px;
+
 }
 
 /* form search */

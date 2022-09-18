@@ -9,212 +9,191 @@ const Chat = () => {
   return (
     <div>
       <Header />
-      <section>
-        <div class="container">
-          <div class="row d-flex justify-content-center">
-            <div class="col-md-8 col-lg-10 col-xl-12">
-              <div class="card w-5" style={{ backgroundColor: "#06060e" }}>
-                <div
-                  class="card-header d-flex justify-content-between align-items-center"
-                  style={{ backgroundColor: "#000" }}
-                >
-                  <h5 class="mb-0" style={{ backgroundColor: "#000" }}>
-                    {id}
-                  </h5>
+      <section className="item-details-page" style={{ marginTop: "3%" }}>
+        <div className="container">
+          <div className="row clearfix">
+            <div className="col-lg-12">
+              <div className="card chat-app">
+                <div className="people-header">
+                  <h4>Inbox</h4>
                 </div>
-                <div
-                  class="card-body"
-                  data-mdb-perfect-scrollbar="true"
+                <div id="plist" className="people-list">
+                  <ul className="list-unstyled chat-list mt-2 mb-0">
+                    <li className="clearfix">
+                      <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="avatar" />
+                      <div className="about">
+                        <div className="name">Vincent Porter</div>
+                        <div className="status"> <i className="fa fa-circle offline" /> left 7 mins ago </div>
+                      </div>
+                    </li>
+                    <li className="clearfix active">
+                      <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="avatar" />
+                      <div className="about">
+                        <div className="name">Aiden Chavez</div>
+                        <div className="status"> <i className="fa fa-circle online" /> online </div>
+                      </div>
+                    </li>
+                    <li className="clearfix">
+                      <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="avatar" />
+                      <div className="about">
+                        <div className="name">Mike Thomas</div>
+                        <div className="status"> <i className="fa fa-circle online" /> online </div>
+                      </div>
+                    </li>
+                    <li className="clearfix">
+                      <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="avatar" />
+                      <div className="about">
+                        <div className="name">Christian Kelly</div>
+                        <div className="status"> <i className="fa fa-circle offline" /> left 10 hours ago </div>
+                      </div>
+                    </li>
+                    <li className="clearfix">
+                      <img src="https://bootdey.com/img/Content/avatar/avatar8.png" alt="avatar" />
+                      <div className="about">
+                        <div className="name">Monica Ward</div>
+                        <div className="status"> <i className="fa fa-circle online" /> online </div>
+                      </div>
+                    </li>
+                    <li className="clearfix">
+                      <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="avatar" />
+                      <div className="about">
+                        <div className="name">Dean Henry</div>
+                        <div className="status"> <i className="fa fa-circle offline" /> offline since Oct 28 </div>
+                      </div>
+                    </li>
+                    <li className="clearfix">
+                      <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="avatar" />
+                      <div className="about">
+                        <div className="name">Dean Henry</div>
+                        <div className="status"> <i className="fa fa-circle offline" /> offline since Oct 28 </div>
+                      </div>
+                    </li>
+                    <li className="clearfix">
+                      <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="avatar" />
+                      <div className="about">
+                        <div className="name">Dean Henry</div>
+                        <div className="status"> <i className="fa fa-circle offline" /> offline since Oct 28 </div>
+                      </div>
+                    </li>
+                    <li className="clearfix">
+                      <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="avatar" />
+                      <div className="about">
+                        <div className="name">Dean Henry</div>
+                        <div className="status"> <i className="fa fa-circle offline" /> offline since Oct 28 </div>
+                      </div>
+                    </li>
+                    <li className="clearfix">
+                      <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="avatar" />
+                      <div className="about">
+                        <div className="name">Dean Henry</div>
+                        <div className="status"> <i className="fa fa-circle offline" /> offline since Oct 28 </div>
+                      </div>
+                    </li>
+                    <li className="clearfix">
+                      <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="avatar" />
+                      <div className="about">
+                        <div className="name">Dean Henry</div>
+                        <div className="status"> <i className="fa fa-circle offline" /> offline since Oct 28 </div>
+                      </div>
+                    </li>
+                    <li className="clearfix">
+                      <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="avatar" />
+                      <div className="about">
+                        <div className="name">Dean Henry</div>
+                        <div className="status"> <i className="fa fa-circle offline" /> offline since Oct 28 </div>
+                      </div>
+                    </li>
+                    <li className="clearfix">
+                      <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="avatar" />
+                      <div className="about">
+                        <div className="name">Dean Henry</div>
+                        <div className="status"> <i className="fa fa-circle offline" /> offline since Oct 28 </div>
+                      </div>
+                    </li>
+
+                  </ul>
+                </div>
+                <div className="chat">
+                  <div className="chat-header clearfix">
+                    <div className="row">
+                      <div className="col-lg-6" style={{display: "flex", alignItems: "center"}}>
+                        <a href="javascript:void(0);" data-toggle="modal" data-target="#view_info">
+                          <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="avatar" />
+                        </a>
+                        <div className="chat-about">
+                          <h6 className="m-b-0">Aiden Chavez</h6>
+                          <small>Last seen: 2 hours ago</small>
+                        </div>
+                      </div>
+                      <div className="col-lg-6 hidden-sm text-right" style={{ display: "flex", alignItems: "center", justifyContent: "flex-end"}}>
+                        <a href="javascript:void(0);" className="btn btn-outline-secondary" style={{margin:"5px", borderRadius: "8px"}}><i className="fa fa-camera" style={{fontSize:"18px"}} /></a>
+                        <a href="javascript:void(0);" className="btn btn-outline-primary" style={{margin:"5px", borderRadius: "8px"}}><i className="fa fa-image" style={{fontSize:"18px"}} /></a>
+                        <a href="javascript:void(0);" className="btn btn-outline-info" style={{margin:"5px", borderRadius: "8px"}}><i className="fa fa-cogs" style={{fontSize:"18px"}}/></a>
+                        <a href="javascript:void(0);" className="btn btn-outline-warning" style={{margin:"5px",borderRadius: "8px"}}><i className="fa fa-question" style={{fontSize:"18px"}} /></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="chat-history">
+                    <ul className="m-b-0">
+                      <li className="clearfix">
+                        <div className="message-data text-right">
+                          <span className="message-data-time">10:10 AM, Today</span>
+                          <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="avatar" />
+                        </div>
+                        <div className="message other-message float-right"> Hi Aiden, how are you? How is the project coming along? </div>
+                      </li>
+                      <li className="clearfix">
+                        <div className="message-data">
+                          <span className="message-data-time">10:12 AM, Today</span>
+                        </div>
+                        <div className="message my-message">Are we meeting today?</div>
+                      </li>
+                      <li className="clearfix">
+                        <div className="message-data">
+                          <span className="message-data-time">10:15 AM, Today</span>
+                        </div>
+                        <div className="message my-message">Project has been already finished and I have results to show you.</div>
+                      </li>
+                      <li className="clearfix">
+                        <div className="message-data text-right">
+                          <span className="message-data-time">10:10 AM, Today</span>
+                          <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="avatar" />
+                        </div>
+                        <div className="message other-message float-right"> Hi Aiden, how are you? How is the project coming along? </div>
+                      </li>
+                      <li className="clearfix">
+                        <div className="message-data text-right">
+                          <span className="message-data-time">10:10 AM, Today</span>
+                          <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="avatar" />
+                        </div>
+                        <div className="message other-message float-right"> Hi Aiden, how are you? How is the project coming along? </div>
+                      </li>
+                      <li className="clearfix">
+                        <div className="message-data text-right">
+                          <span className="message-data-time">10:10 AM, Today</span>
+                          <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="avatar" />
+                        </div>
+                        <div className="message other-message float-right"> Hi Aiden, how are you? How is the project coming along? </div>
+                      </li>
+                    </ul>
+                  </div>
+                  
+                  <div className="chat-message clearfix">
+                  <form
+                  className="form-search"
                   style={{
-                    position: "relative",
-                    height: "400px",
-                    marginBottom: "25px",
-                    overflow: "hidden",
-                    overflowY: "scroll",
-                    padding: "20px 0",
+                    width: "auto",
+                    display: "flex",
                   }}
                 >
-                  <div class="d-flex justify-content-between">
-                    <p class="small mb-1">Timona Siera</p>
-                    <p class="small mb-1 text-muted">23 Jan 2:00 pm</p>
-                  </div>
-                  <div class="d-flex flex-row justify-content-start">
-                    <img
-                      src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava5-bg.webp"
-                      alt="avatar 1"
-                      style={{ width: "45px", height: "100%" }}
-                    />
-                    <div>
-                      <p
-                        class="small p-2 ms-3 mb-3 rounded-3"
-                        style={{
-                          backgroundColor: "#dc39fc",
-                          borderRadius: "10px",
-                          fontSize: "20px",
-                          fontFamily: "'Montserrat', sans-serif",
-                          maxWidth: "500px",
-                        }}
-                      >
-                        For what reason would it be advisable for me to think
-                        about business content?
-                      </p>
-                    </div>
-                  </div>
-
-                  <div class="d-flex justify-content-between">
-                    <p class="small mb-1 text-muted">23 Jan 2:05 pm</p>
-                    <p class="small mb-1">Johny Bullock</p>
-                  </div>
-                  <div class="d-flex flex-row justify-content-end mb-4 pt-1">
-                    <div>
-                      <p
-                        class="small p-2 me-3 mb-3 text-dark rounded-5"
-                        style={{
-                          color: "black",
-                          backgroundColor: "#ffff",
-                          borderRadius: "10px",
-                          fontSize: "20px",
-                          fontFamily: "'Montserrat', sans-serif",
-                          maxWidth: "500px",
-                        }}
-                      >
-                        Thank you for your believe in our supports
-                      </p>
-                    </div>
-                    <img
-                      src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
-                      alt="avatar 1"
-                      style={{ width: "45px", height: "100%" }}
-                    />
-                  </div>
-
-                  <div class="d-flex justify-content-between">
-                    <p class="small mb-1">Timona Siera</p>
-                    <p class="small mb-1 text-muted">23 Jan 5:37 pm</p>
-                  </div>
-                  <div class="d-flex flex-row justify-content-start">
-                    <img
-                      src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava5-bg.webp"
-                      alt="avatar 1"
-                      style={{ width: "45px", height: "100%" }}
-                    />
-                    <div>
-                      <p
-                        class="small p-2 ms-3 mb-3 rounded-3"
-                        style={{
-                          backgroundColor: "#dc39fc",
-                          borderRadius: "10px",
-                          maxWidth: "500px",
-                          fontSize: "20px",
-                          fontFamily: "'Montserrat', sans-serif",
-                        }}
-                      >
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit
-                        similique quae consequatur
-                      </p>
-                    </div>
-                  </div>
-
-                  <div class="d-flex justify-content-between">
-                    <p class="small mb-1 text-muted">23 Jan 6:10 pm</p>
-                    <p class="small mb-1">Johny Bullock</p>
-                  </div>
-                  <div class="d-flex flex-row justify-content-end mb-4 pt-1">
-                    <div>
-                      <p
-                        class="small p-2 me-3 mb-3 text-dark rounded-5"
-                        style={{
-                          color: "black",
-                          backgroundColor: "#ffff",
-                          borderRadius: "10px",
-                          maxWidth: "500px",
-                          fontSize: "20px",
-                          fontFamily: "'Montserrat', sans-serif",
-                        }}
-                      >
-                        Dolorum quasi voluptates quas amet in repellendus
-                        perspiciatis fugiat
-                      </p>
-                    </div>
-                    <img
-                      src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
-                      alt="avatar 1"
-                      style={{ width: "45px", height: "100%" }}
-                    />
-                  </div>
-                  <div class="d-flex justify-content-between">
-                    <p class="small mb-1 text-muted">23 Jan 6:10 pm</p>
-                    <p class="small mb-1">Johny Bullock</p>
-                  </div>
-                  <div class="d-flex flex-row justify-content-end mb-4 pt-1">
-                    <div>
-                      <p
-                        class="small p-2 me-3 mb-3 text-dark rounded-5"
-                        style={{
-                          color: "black",
-                          backgroundColor: "#ffff",
-                          borderRadius: "10px",
-                          maxWidth: "500px",
-                          fontSize: "20px",
-                          fontFamily: "'Montserrat', sans-serif",
-                        }}
-                      >
-                        Dolorum quasi voluptates quas amet in repellendus
-                        perspiciatis fugiat
-                      </p>
-                    </div>
-                    <img
-                      src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
-                      alt="avatar 1"
-                      style={{ width: "45px", height: "100%" }}
-                    />
-                  </div>
-                  <div class="d-flex justify-content-between">
-                    <p class="small mb-1 text-muted">23 Jan 6:10 pm</p>
-                    <p class="small mb-1">Johny Bullock</p>
-                  </div>
-                  <div class="d-flex flex-row justify-content-end mb-4 pt-1">
-                    <div>
-                      <p
-                        class="small p-2 me-3 mb-3 text-dark rounded-5"
-                        style={{
-                          color: "black",
-                          backgroundColor: "#ffff",
-                          borderRadius: "10px",
-                          maxWidth: "500px",
-                          fontSize: "20px",
-                          fontFamily: "'Montserrat', sans-serif",
-                        }}
-                      >
-                        Dolorum quasi voluptates quas amet in repellendus
-                        perspiciatis fugiat
-                      </p>
-                    </div>
-                    <img
-                      src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
-                      alt="avatar 1"
-                      style={{ width: "45px", height: "100%" }}
-                    />
-                  </div>
-                </div>
-                <div class="card-footer text-muted d-flex justify-content-start align-items-center p-3">
-                  <div class="input-group mb-0">
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Type message"
-                      aria-label="Recipient's username"
-                      aria-describedby="button-addon2"
-                    />
-                    <button
-                      class=" sc-button style-1"
-                      type="button"
-                      style={{
-                        padding: "24px",
-                      }}
-                    >
-                      <i class="fa-regular fa-paper-plane"></i>
-                    </button>
+                  <input type="text" placeholder="Search here" style={{marginRight: "10px", border: "1px solid rgb(192 191 197)", borderRadius: "30px"}}/>
+                  <button style={{ marginRight: "10px", fontSize:"20px" }}>
+                    <i class="fa-regular fa-paper-plane"></i>
+                  </button>
+                  <button style={{backgroundColor: "#dc39fc00", fontSize: "20px"}}>
+                    <i class="fa-regular fa-paper-plane" ></i>
+                  </button>
+                </form>
                   </div>
                 </div>
               </div>

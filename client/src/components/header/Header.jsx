@@ -159,7 +159,7 @@ const Header = () => {
                     name="ice-cream-choice"
                     style={{
                       width: "200px",
-                      paddingBottom: "20px",
+                      padding: "16px",
                       textAlign: "center",
                       margin: "3px 0 0 0",
                       display: "flex",
@@ -175,7 +175,7 @@ const Header = () => {
                 <form
                   className="form-search"
                   style={{
-                    width: "800px",
+                    width: "660px",
                     marginLeft: "20px",
                     marginTop: "3px",
                   }}
@@ -248,10 +248,10 @@ const Header = () => {
                     display: "flex",
                     justifyContent: "flex-end",
                     alignItems: "center",
-                    width: "40%",
+                    width: "25%",
                   }}
                 >
-                  <div style={{ fontSize: "40px", margin: "0 30px" }}>
+                  <div style={{ fontSize: "30px", margin: "0 30px" }}>
                     <Link to="/notification">
                       <i class="fa-sharp fa-solid fa-bell"></i>
                     </Link>
@@ -290,7 +290,7 @@ const Header = () => {
                   style={{
                     fontSize: "26px",
                     marginRight: "0",
-                    marginLeft: "50px",
+                    marginLeft: "30px",
                     textAlign: "right",
                     cursor: "pointer",
                   }}
