@@ -1,9 +1,9 @@
-import img1 from "../images/avatar/avt-1.jpg";
-import img2 from "../images/avatar/avt-2.jpg";
-import img3 from "../images/avatar/avt-3.jpg";
-import img4 from "../images/avatar/avt-4.jpg";
-import img5 from "../images/avatar/avt-5.jpg";
-import img6 from "../images/avatar/avt-6.jpg";
+import img1 from "../images/avatar/avt-5.png";
+import img2 from "../images/avatar/avt-4.png";
+import img3 from "../images/avatar/avt-1.png";
+import img4 from "../images/avatar/avt-2.png";
+import img5 from "../images/avatar/avt-3.png";
+import img6 from "../images/avatar/avt-6.png";
 const postdata = [
   {
     img: img1,

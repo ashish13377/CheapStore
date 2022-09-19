@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import DarkMode from "../components/header/DarkMode";
 
 import img1 from "../assets/images/background/img-login.jpg";
@@ -52,10 +52,13 @@ const Login = () => {
   };
   return (
     <div>
-      <section className="tf-section login-page">
-        <div className="container">
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", paddingBottom: "5px" }}>
+        <DarkMode />
+      </div>
+      <section className="login-page">
+        <div className="container" style={{ width: "1000px" }}>
           <div className="row">
-            <DarkMode />
+
             <div className="col-md-12">
               <div className="form-create-item-content">
                 <div className="form-create-item">
@@ -95,7 +98,9 @@ const Login = () => {
                     >
                       <span>Sign In</span>
                     </button>
+
                   </form>
+                  <p style={{ padding: "10px", font: "20px" }}><Link to="/register"> Sign-up </Link>and discover great amount of new opportunities!</p>
                 </div>
                 <div className="form-background">
                   <img src={img1} alt="Bidzen" />
