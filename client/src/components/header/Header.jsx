@@ -131,7 +131,9 @@ const Header = () => {
           title: res.data.msg,
           icon: "success",
           confirmButtonText: "OK",
-        });
+        })
+          .then((res) => navigate("/"))
+          .catch((err) => {});
         setIsLogin(false);
       }
     } catch (err) {}
