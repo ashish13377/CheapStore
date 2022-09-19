@@ -25,7 +25,7 @@ const Notification = () => {
         icon: "warning",
         confirmButtonText: "OK",
       })
-        .then((res) => navigate("/login"))
+        .then((res) => navigate("/"))
         .catch((err) => console.log(err));
     }
   };

@@ -18,6 +18,7 @@ import Register from "./Register";
 import Contact from "./Contact";
 import Notification from "./Notification";
 import Chat from "./Chat";
+import SearchResult from "./SearchResult";
 import Notfound from "./404";
 
 const routes = [
@@ -39,6 +40,7 @@ const routes = [
   { path: "/login", component: <Login /> },
   { path: "/register", component: <Register /> },
   { path: "/contact", component: <Contact /> },
+  { path: "/search/:name", component: <SearchResult /> },
   { path: "/notification", component: <Notification /> },
   { path: "/chat/:id", component: <Chat /> },
   { path: "*", component: <Notfound /> },
