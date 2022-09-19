@@ -45,8 +45,23 @@ const SearchResult = () => {
                     className="fl-item col-xl-3 col-lg-4 col-md-6"
                   >
                     <div className="sc-product-item style-5">
-                      <div className="product-img">
-                        <img src={item.images[0]} alt="Bidzen" />
+                      <div
+                        className="product-img"
+                        style={{
+                          height: "300px",
+                          display: "flex",
+                          justifyContent: "center",
+                        }}
+                      >
+                        <img
+                          src={item.images[0]}
+                          alt="Bidzen"
+                          style={{
+                            width: "90%",
+                            height: "90%",
+                            objectFit: "cover",
+                          }}
+                        />
                         <Link
                           to={`/item-details/${item._id}`}
                           className="sc-button style letter"
