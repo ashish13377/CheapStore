@@ -27,50 +27,57 @@ const SearchResult = () => {
 
   useEffect(() => {
     GetAllProductsByFilter();
-  }, []);
+  }, [name]);
 
   return (
     <div className="home-1">
       <Header />
       <div className="container">
-        <div className="row m-5">
-          <div className="col-md-12">
-            {products.map((item, index) => (
-              <>
-                <div key={index} className="fl-item col-xl-3 col-lg-4 col-md-6">
-                  <div className="sc-product-item style-5">
-                    <div className="product-img">
-                      <img src={item.images[0]} alt="Bidzen" />
-                      <Link
-                        to={`/item-details/${item._id}`}
-                        className="sc-button style letter"
-                      >
-                        <span>View Details</span>
-                      </Link>
-                      <label>{"$ " + item.itemPrice}</label>
-                    </div>
-                    <div className="product-content">
-                      <h5 className="title">
-                        <Link to={`/item-details/${item._id}`}>
-                          {item.itemName}
-                        </Link>{" "}
-                      </h5>
-                      <div className="product-author flex">
-                        <div className="avatar">
-                          <img src={item.sellerImage} alt="Bidzen" />
-                        </div>
-                        <div className="infor">
-                          <div className="author-name">
-                            <Link to="/authors">{item.sellerName}</Link>
+        <div className="row m-5 d-flex">
+          <div className="col-md-12 d-flex">
+            {products.length === 0 ? (
+              <h1>No Products Found</h1>
+            ) : (
+              products.map((item, index) => (
+                <>
+                  <div
+                    key={index}
+                    className="fl-item col-xl-3 col-lg-4 col-md-6"
+                  >
+                    <div className="sc-product-item style-5">
+                      <div className="product-img">
+                        <img src={item.images[0]} alt="Bidzen" />
+                        <Link
+                          to={`/item-details/${item._id}`}
+                          className="sc-button style letter"
+                        >
+                          <span>View Details</span>
+                        </Link>
+                        <label>{"$ " + item.itemPrice}</label>
+                      </div>
+                      <div className="product-content">
+                        <h5 className="title">
+                          <Link to={`/item-details/${item._id}`}>
+                            {item.itemName}
+                          </Link>{" "}
+                        </h5>
+                        <div className="product-author flex">
+                          <div className="avatar">
+                            <img src={item.sellerImage} alt="Bidzen" />
                           </div>
-                          <span>Creator</span>
+                          <div className="infor">
+                            <div className="author-name">
+                              <Link to="/authors">{item.sellerName}</Link>
+                            </div>
+                            <span>Creator</span>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </>
-            ))}
+                </>
+              ))
+            )}
           </div>
         </div>
       </div>

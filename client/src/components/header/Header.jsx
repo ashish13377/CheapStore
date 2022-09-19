@@ -64,7 +64,7 @@ const Header = () => {
         withCredentials: true,
       });
       if (res.status === 200) {
-        setColleges(res.data.productsName);
+        setColleges(res.data.newArray);
       }
     } catch (err) {
       alert(err);
@@ -97,10 +97,13 @@ const Header = () => {
   const getAllProductsByFilter = async (e) => {
     e.preventDefault();
     navigate(`/search/${searchText}`);
+    setFilterProducts([]);
+    setSearchText("");
   };
   const getAllProductsByFilterCollege = async (e) => {
     e.preventDefault();
     navigate(`/search/${searchCollegeText}`);
+    setSearchCollegeText("");
   };
 
   // Getting root user data

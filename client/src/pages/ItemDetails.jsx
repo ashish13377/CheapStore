@@ -95,7 +95,9 @@ const ItemDetails = () => {
                         onClick={(e) => setMainImage(img)}
                         src={img}
                         width="60"
-                        style={{ margin: "0 20px" }}
+                        style={{
+                          margin: "0 20px",
+                        }}
                       />
                     );
                   })}

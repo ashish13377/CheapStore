@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/users");
 const Item = require("../models/items");
+const Room = require("../models/rooms");
 const bcrypt = require("bcryptjs");
 const auth = require("../middlewares/auth");
 //Testing server
@@ -12,7 +13,6 @@ router.get("/", (req, res) => {
 // User Registration API
 
 router.post("/api/register/user", async (req, res) => {
-  console.log("Hit");
   const {
     firstName,
     lastName,
@@ -78,18 +78,18 @@ router.post("/api/approve/request", async (req, res) => {
 // Api for Update the profilr pic
 
 router.post("/api/user/update/profilepic", auth, async (req, res) => {
-  console.log(req.body);
   try {
     const isUpdated = await User.updateOne(
       { _id: req.user_id },
       { profileimage: req.body.imageurl }
     );
-    console.log(isUpdated);
+
     res.status(200).json({ msg: "Image Updated" });
   } catch (err) {
     res.status(422).json({ msg: "Image updation Failed" });
   }
-}); // Api for Update the profilr Information
+});
+// Api for Update the profilr Information
 
 router.post("/api/user/update/profileinfo", auth, async (req, res) => {
   const { firstName, lastName, about, phoneNumber, email } = req.body;
@@ -98,7 +98,7 @@ router.post("/api/user/update/profileinfo", auth, async (req, res) => {
       { _id: req.user_id },
       { firstName, lastName, about, phoneNumber, email }
     );
-    console.log(isUpdated);
+
     res.status(200).json({ msg: "Profile Updated" });
   } catch (err) {
     res.status(422).json({ msg: "Profile updation Failed" });
@@ -156,6 +156,15 @@ router.get("/api/user/islogin", auth, (req, res) => {
   res.status(200).json({ msg: "User is logged in", user: req.rootUser });
 });
 
+router.post("/api/user/islogin", auth, async (req, res) => {
+  try {
+    const user = await User.findOne({ _id: req.body.id });
+    res.status(200).json({ msg: "User is logged in", user });
+  } catch (err) {
+    res.status(422).json({ msg: "failed to get Buyer info" });
+  }
+});
+
 //API for logout user
 
 router.get("/api/user/logout", (req, res) => {
@@ -170,7 +179,6 @@ router.get("/api/user/logout", (req, res) => {
 // API for creating items
 
 router.post("/api/user/create/item", auth, async (req, res) => {
-  console.log("Hit");
   const {
     itemName,
     itemPrice,
@@ -210,7 +218,6 @@ router.post("/api/user/create/item", auth, async (req, res) => {
 // sending all product deatails
 
 router.get("/api/get/products", async (req, res) => {
-  console.log("HIT");
   try {
     const products = await Item.find();
 
@@ -232,8 +239,8 @@ router.get("/api/get/colleges", async (req, res) => {
   try {
     const products = await Item.find();
     const productsName = products.map((item) => item.sellerCollegeName);
-    console.log(productsName);
-    res.status(200).json({ msg: "Products sent", productsName });
+    let newArray = [...new Set(productsName)];
+    res.status(200).json({ msg: "Products sent", newArray });
   } catch (err) {
     res.status(422).json({ msg: "Sent Failed" });
   }
@@ -244,7 +251,6 @@ router.get("/api/get/colleges", async (req, res) => {
 router.post("/api/get/products/filter", async (req, res) => {
   try {
     const products = await Item.find({ category: req.body.cat });
-    console.log(products);
     res.status(200).json({ msg: "Products sent", products });
   } catch (err) {
     res.status(422).json({ msg: "Sent Failed" });
@@ -253,9 +259,9 @@ router.post("/api/get/products/filter", async (req, res) => {
 router.post("/api/get/products/filter/name", async (req, res) => {
   try {
     const products = await Item.find({
-      $or: [{ itemname: req.body.name }, { sellerCollegeName: req.body.name }],
+      $or: [{ itemName: req.body.name }, { sellerCollegeName: req.body.name }],
     });
-    console.log(products);
+
     res.status(200).json({ msg: "Products sent", products });
   } catch (err) {
     res.status(422).json({ msg: "Sent Failed" });
@@ -265,13 +271,82 @@ router.post("/api/get/products/filter/name", async (req, res) => {
 // sending a product
 
 router.post("/api/get/product/byid", async (req, res) => {
-  console.log(req.body.id);
   try {
     const product = await Item.findById(req.body.id);
-    console.log(product);
+
     res.status(200).json({ msg: "Products sent", product });
   } catch (err) {
     res.status(422).json({ msg: "Sent Failed" });
+  }
+});
+
+// Room creation
+
+router.post("/api/create/room", auth, async (req, res) => {
+  const user = await User.findOne({ _id: req.body.id });
+  const room = await Room.findOne({ roomID: req.body.id });
+  if (room) {
+    res.status(422).json({ msg: "Room already Exist!" });
+  } else {
+    try {
+      const room = new Room({
+        roomName: user.firstName + " " + user.lastName,
+        roomID: req.body.id,
+        roomPic: user.profileimage,
+      });
+      await room.save();
+      res.status(200).json({
+        msg: "Room Created",
+      });
+    } catch (err) {
+      res.status(422).json({ msg: "Room creation Failed" });
+    }
+  }
+}); // sending a product
+
+router.post("/api/get/product/byid", async (req, res) => {
+  try {
+    const product = await Item.findById(req.body.id);
+
+    res.status(200).json({ msg: "Products sent", product });
+  } catch (err) {
+    res.status(422).json({ msg: "Sent Failed" });
+  }
+});
+
+// Room creation
+
+router.post("/api/create/room", async (req, res) => {
+  console.log(req.body);
+  try {
+    const room = await Room.findOne({ roomID: req.body.id });
+
+    if (room) {
+      res.status(200).json({ msg: "Room already Exist!" });
+    } else {
+      const user = await User.findOne({ _id: req.body.id });
+      const room = new Room({
+        roomName: user.firstName,
+        roomID: req.body.id,
+        roomPic: user.profileimage,
+      });
+      await room.save();
+      res.status(200).json({
+        msg: "Room Created",
+      });
+    }
+  } catch (err) {
+    res.status(422).json({ msg: "Room creation failed 2" });
+  }
+});
+
+// Rooms sending
+router.get("/api/get/rooms", async (req, res) => {
+  try {
+    const rooms = await Room.find();
+    res.status(200).json({ msg: "Rooms found", rooms });
+  } catch (err) {
+    res.status(422).json({ msg: "Rooms not found" });
   }
 });
 
