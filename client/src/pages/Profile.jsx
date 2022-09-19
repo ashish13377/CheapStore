@@ -72,13 +72,13 @@ const Profile = () => {
             <div className="container">
               <div className="row">
                 <div className="col-xl-4 col-lg-12 col-md-12">
-                  <div className="profile-pic">
-                    <img src={userData.profileimage} alt="profile image" />
-                    <Link to="/editprofile/pic">
+                  <div className="profile-pic" style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                    <img src={userData.profileimage} alt="profile image" style={{ borderRadius: "20px", width: "50%" }} />
+                    <Link to="/editprofile/pic" >
                       <button
                         name="submit"
                         type="submit"
-                        style={{ backgroundColor: "#dc39fc00" }}
+                        style={{ backgroundColor: "#dc39fc00", margin: "10px" }}
                       >
                         <span>Edit</span>{" "}
                       </button>
@@ -106,7 +106,7 @@ const Profile = () => {
                     Style is a reflection of your attitude and your personality.
                   </p>
                   <hr></hr>
-                  <div
+                  {/* <div
                     style={{
                       display: "flex",
                       alignItems: "center",
@@ -139,6 +139,122 @@ const Profile = () => {
                     >
                       <span>Start Selling</span>
                     </button>
+                  </div> */}
+
+                  <div className="Addbox">
+                    <div class="row">
+                      <div class="col-sm-3 Addbox1"  >  
+                          <p> From: Feb 20, 20</p>
+                          <p>To: May 21, 20</p>
+                      </div>
+                      <div class="col-sm-6 Addbox2" >
+                         <h6> Product: Ashish Kumar</h6>
+                         <h6> Price: Rs: 13399/- </h6>
+                      </div>
+                      <div class="col-sm-3 Addbox3">
+                      <Link to="/editprofile/info">
+                      <button
+                        name="submit"
+                        type="submit"
+                        style={{ backgroundColor: "#dc39fc00" }}
+                      >
+                        <span>Delete</span>{" "}
+                      </button>
+                    </Link>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="Addbox">
+                    <div class="row">
+                      <div class="col-sm-3 Addbox1"  >  
+                          <p> From: Feb 20, 20</p>
+                          <p>To: May 21, 20</p>
+                      </div>
+                      <div class="col-sm-6 Addbox2" >
+                         <h6> Product: Ashish Kumar</h6>
+                         <h6> Price: Rs: 13399/- </h6>
+                      </div>
+                      <div class="col-sm-3 Addbox3">
+                      <Link to="/editprofile/info">
+                      <button
+                        name="submit"
+                        type="submit"
+                        style={{ backgroundColor: "#dc39fc00" }}
+                      >
+                        <span>Delete</span>{" "}
+                      </button>
+                    </Link>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="Addbox">
+                    <div class="row">
+                      <div class="col-sm-3 Addbox1"  >  
+                          <p> From: Feb 20, 20</p>
+                          <p>To: May 21, 20</p>
+                      </div>
+                      <div class="col-sm-6 Addbox2" >
+                         <h6> Product: Ashish Kumar</h6>
+                         <h6> Price: Rs: 13399/- </h6>
+                      </div>
+                      <div class="col-sm-3 Addbox3">
+                      <Link to="/editprofile/info">
+                      <button
+                        name="submit"
+                        type="submit"
+                        style={{ backgroundColor: "#dc39fc00" }}
+                      >
+                        <span>Delete</span>{" "}
+                      </button>
+                    </Link>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="Addbox">
+                    <div class="row">
+                      <div class="col-sm-3 Addbox1"  >  
+                          <p> From: Feb 20, 20</p>
+                          <p>To: May 21, 20</p>
+                      </div>
+                      <div class="col-sm-6 Addbox2" >
+                         <h6> Product: Ashish Kumar</h6>
+                         <h6> Price: Rs: 13399/- </h6>
+                      </div>
+                      <div class="col-sm-3 Addbox3">
+                      <Link to="/editprofile/info">
+                      <button
+                        name="submit"
+                        type="submit"
+                        style={{ backgroundColor: "#dc39fc00" }}
+                      >
+                        <span>Delete</span>{" "}
+                      </button>
+                    </Link>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="Addbox">
+                    <div class="row">
+                      <div class="col-sm-3 Addbox1"  >  
+                          <p> From: Feb 20, 20</p>
+                          <p>To: May 21, 20</p>
+                      </div>
+                      <div class="col-sm-6 Addbox2" >
+                         <h6> Product: Ashish Kumar</h6>
+                         <h6> Price: Rs: 13399/- </h6>
+                      </div>
+                      <div class="col-sm-3 Addbox3">
+                      <Link to="/editprofile/info">
+                      <button
+                        name="submit"
+                        type="submit"
+                        style={{ backgroundColor: "#dc39fc00" }}
+                      >
+                        <span>Delete</span>{" "}
+                      </button>
+                    </Link>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

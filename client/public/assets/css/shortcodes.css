@@ -2258,6 +2258,11 @@ blockquote .author::before {
 .login-page .form-create-item {
     padding: 72px 70px;
     width: 100%;
+    display: flex;
+    padding: 72px 70px;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .login-page .sc-heading {

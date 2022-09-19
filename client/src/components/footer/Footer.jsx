@@ -138,7 +138,10 @@ const Footer = () => {
                             </div>
                         </div>
                         <div className="col-lg-2 col-md-6 col-sm-6 col-6">
-                            <div className="widget widget-menu menu-marketplace">
+                            
+                        </div>
+                        <div className="col-lg-3 col-md-6 col-sm-6 col-6">
+                        <div className="widget widget-menu menu-marketplace">
                                 <h5 className="title-widget">Marketplace</h5>
                                 <ul>
                                     {
@@ -149,34 +152,13 @@ const Footer = () => {
                                 </ul>
                             </div>
                         </div>
-                        <div className="col-lg-3 col-md-6 col-sm-6 col-6">
-                            <div className="widget widget-menu menu-supports">
+                        <div className="col-lg-4 col-md-6 col-sm-12 col-12">
+                        <div className="widget widget-menu menu-supports">
                                 <h5 className="title-widget">Supports</h5>
                                 <ul>
                                     {
                                         dataSupport.map((item,index)=> (
                                             <li key={index}><Link to={item.link}>{item.title}</Link></li>
-                                        ))
-                                    }
-                                </ul>
-                            </div>
-                        </div>
-                        <div className="col-lg-4 col-md-6 col-sm-12 col-12">
-                            <div className="widget widget-post">
-                                <h5 className="title-widget">News & Post</h5>
-                                <ul className="post-new">
-                                    {
-                                        dataRecent.map((item,index)=> (
-                                            <li key={index}>
-                                                <div className="post-img">
-                                                    <img src={item.img} alt="Post New" />
-                                                </div>
-                                                <div className="post-content">
-                                                    <h6 className="title"><Link to="/blog-details">{item.title}</Link></h6>
-                                                    <Link to="/blog-details" className="post-date"><i
-                                                            className="far fa-calendar-week"></i> {item.time}</Link>
-                                                </div>
-                                            </li>
                                         ))
                                     }
                                 </ul>
@@ -188,8 +170,13 @@ const Footer = () => {
             <div className="bottom">
                 <div className="container">
                     <div className="bottom-inner">
-                        Copyright © 2022 Bidzen | NFT Marketplace React Js Template. Designed by <a
-                            href="https://themeforest.net/user/themesflat/portfolio"> Themesflat</a>
+                        Copyright © 2022 CheapStore | NFT Marketplace React Js Template. Designed by <a
+                            href="https://themeforest.net/user/themesflat/portfolio"> Basu,</a>
+                            <a
+                            href="https://themeforest.net/user/themesflat/portfolio"> Ashish &</a>
+                            <a
+                            href="https://themeforest.net/user/themesflat/portfolio"> Soumik</a>
+
                     </div>
                 </div>
             </div>

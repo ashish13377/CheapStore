@@ -1,9 +1,4 @@
-/**
-  * Name:  |
-  * Version: 1.0.1
-  * Author: Ashish 
-  * Author URI: 
-*/
+
 @import "ntfs.css";
 @import "shortcodes.css";
 @import "responsive.css";
@@ -2261,8 +2256,8 @@ a:focus {
   margin-bottom: 22px;
 }
 .widget-logo .logo-footer img {
-  width: 151px;
-  height: 45px;
+  width: 180px;
+ 
 }
 .widget-logo .sub-widget-logo {
   padding-right: 35px;

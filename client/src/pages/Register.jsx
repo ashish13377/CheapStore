@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import DarkMode from "../components/header/DarkMode";
 import img from "../assets/images/background/img-register.jpg";
@@ -56,10 +57,12 @@ const Register = () => {
 
   return (
     <div>
-      <section className="tf-section login-page register-page">
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", paddingBottom: "5px" }}>
+        <DarkMode />
+      </div>
+      <section className=" login-page register-page">
         <div className="container">
           <div className="row">
-            <DarkMode />
             <div className="col-md-12">
               <div className="form-create-item-content">
                 <div className="form-create-item">
@@ -162,6 +165,7 @@ const Register = () => {
                       <span>Register Now</span>
                     </button>
                   </form>
+                  <p style={{fontSize: "16px", textAlign: "center", padding: "10px"}}>If you already has an account, just <Link to="/login">Login</Link>. We've missed you!</p>
                 </div>
                 <div className="form-background">
                   <img src={img} alt="Bidzen" />

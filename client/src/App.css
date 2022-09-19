@@ -328,6 +328,36 @@
 }
 
 
+.Addbox{
+  background-color: var(--color-3);
+  padding: 10px 10px 10px;
+  border: 1px solid var(--border-color-1);
+  box-sizing: border-box;
+  border-radius: 20px;
+  margin: 20px;
+}
+
+.Addbox1{
+  border-left: 3px solid rgba(170, 51, 218, 0.849);
+  border-radius: 5px;
+}
+
+.Addbox2{
+  display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.Addbox3{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+
 /* 404 page */
 #notfound {
   position: relative;

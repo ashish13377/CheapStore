@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../components/header/Header';
-import Slider01 from '../components/slider/Slider01';
+import Slider01 from '../components/slider/Slider';
 import dataSlider from '../assets/fake-data/dataSlider';
 import LiveAution from '../components/layouts/home/LiveAution';
 import dataLiveAution from '../assets/fake-data/dataLiveAution'
