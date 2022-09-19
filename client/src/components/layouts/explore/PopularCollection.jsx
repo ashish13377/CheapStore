@@ -15,6 +15,7 @@ const PopularCollection = (props) => {
   // Getting all products
 
   const getAllProducts = async () => {
+    setCategory("All");
     try {
       const res = await axios.get("http://localhost:4000/api/get/products", {
         withCredentials: true,
@@ -27,6 +28,7 @@ const PopularCollection = (props) => {
     }
   };
   const getAllProductsByFilter = async (cat) => {
+    setCategory(cat);
     try {
       const res = await axios.post(
         "http://localhost:4000/api/get/products/filter",

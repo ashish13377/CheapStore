@@ -191,14 +191,14 @@ router.post("/api/user/create/item", auth, async (req, res) => {
       sellerEmail,
       sellerDepartment,
       sellerLocation,
-      sellerCollegeName:req.rootUser.collegeName,
+      sellerCollegeName: req.rootUser.collegeName,
       category: req.body.name,
       sellerID: req.user_id,
       sellerImage: req.rootUser.profileimage,
       images: req.body.images,
     });
     await item.save();
-    console.log(req.body.images);
+
     res.status(200).json({
       msg: "Item Added successfully",
     });
@@ -213,8 +213,27 @@ router.get("/api/get/products", async (req, res) => {
   console.log("HIT");
   try {
     const products = await Item.find();
-    console.log(products);
+
     res.status(200).json({ msg: "Products sent", products });
+  } catch (err) {
+    res.status(422).json({ msg: "Sent Failed" });
+  }
+});
+router.get("/api/get/products/name", async (req, res) => {
+  try {
+    const products = await Item.find();
+    const productsName = products.map((item) => item.itemName);
+    res.status(200).json({ msg: "Products sent", productsName });
+  } catch (err) {
+    res.status(422).json({ msg: "Sent Failed" });
+  }
+});
+router.get("/api/get/colleges", async (req, res) => {
+  try {
+    const products = await Item.find();
+    const productsName = products.map((item) => item.sellerCollegeName);
+    console.log(productsName);
+    res.status(200).json({ msg: "Products sent", productsName });
   } catch (err) {
     res.status(422).json({ msg: "Sent Failed" });
   }
@@ -223,9 +242,19 @@ router.get("/api/get/products", async (req, res) => {
 // sending all product deatails
 
 router.post("/api/get/products/filter", async (req, res) => {
-  console.log(req.body.cat);
   try {
     const products = await Item.find({ category: req.body.cat });
+    console.log(products);
+    res.status(200).json({ msg: "Products sent", products });
+  } catch (err) {
+    res.status(422).json({ msg: "Sent Failed" });
+  }
+});
+router.post("/api/get/products/filter/name", async (req, res) => {
+  try {
+    const products = await Item.find({
+      $or: [{ itemname: req.body.name }, { sellerCollegeName: req.body.name }],
+    });
     console.log(products);
     res.status(200).json({ msg: "Products sent", products });
   } catch (err) {

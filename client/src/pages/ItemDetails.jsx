@@ -164,77 +164,11 @@ const ItemDetails = () => {
                   </li>
                 </ul>
                 <Link
-                  to="/connect-wallet"
+                  to={`/chat/${product.sellerID}`}
                   className="sc-button style letter style-2 style-item-details"
                 >
                   <span>Chat with Seller</span>
                 </Link>
-                {/* <div className="flat-tabs themesflat-tabs">
-                                <Tabs>
-                                        <TabList>
-                                        <Tab>Bid</Tab>
-                                        <Tab>History</Tab>
-                                        <Tab>Details</Tab>
-                                        </TabList>
-
-                                        <TabPanel>
-                                            <ul className="bid-history-list">
-                                            {
-                                                dataHistory.map((item, index) => (
-                                                    <li key={index}>
-                                                        <div className="content">
-                                                            <div className="author-item">
-                                                                <div className="avatar">
-                                                                    <img src={item.img} alt="Bidzen" />
-                                                                </div>
-                                                                <div className="infor">
-                                                                    <p>Bid listed for <span className="status">{item.price}</span> 
-                                                                    {item.time}
-                                                                        by <span className="creator">{item.name}</span> </p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                ))
-                                            }
-                                            </ul>
-                                        </TabPanel>
-                                        <TabPanel>
-                                            <ul className="bid-history-list">
-                                                <li>
-                                                    <div className="content">
-                                                        <div className="author-item">
-                                                            <div className="avatar">
-                                                                <img src={img1} alt="Bidzen" />
-                                                            </div>
-                                                            <div className="infor">
-                                                                <p>Bid listed for <span className="status">25 ETH 8</span>
-                                                                    hours ago
-                                                                    by <span className="creator">@Johnson</span> </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </TabPanel>
-                                        <TabPanel>
-                                            <div className="provenance">
-                                                <p>lorem Ipsum is simply dummy text of the printing and typesetting
-                                                    industry.
-                                                    Lorem Ipsum has been the industry's standard dummy text ever since
-                                                    the 1500s,
-                                                    when an unknown printer took a galley of type and scrambled it to
-                                                    make a type specimen book.
-                                                    It has survived not only five centuries, but also the leap into
-                                                    electronic typesetting,
-                                                    remaining essentially unchanged. It was popularised in the 1960s
-                                                    with the release of Letraset sheets containing Lorem Ipsum passages,
-                                                    and more recently with desktop publishing software like Aldus
-                                                    PageMaker including versions of Lorem Ipsum.</p>
-                                            </div>
-                                        </TabPanel>
-                                    </Tabs>
-                                </div> */}
               </div>
             </div>
           </div>
