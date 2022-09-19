@@ -16,6 +16,7 @@ const Header = () => {
   const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(false);
   const [searchText, setSearchText] = useState("");
+  const [searchCollegeText, setSearchCollegeText] = useState("");
   const [colleges, setColleges] = useState([]);
   const [userData, setUserData] = useState({});
   const headerRef = useRef(null);
@@ -97,6 +98,10 @@ const Header = () => {
     e.preventDefault();
     navigate(`/search/${searchText}`);
   };
+  const getAllProductsByFilterCollege = async (e) => {
+    e.preventDefault();
+    navigate(`/search/${searchCollegeText}`);
+  };
 
   // Getting root user data
 
@@ -175,10 +180,13 @@ const Header = () => {
                     margin: "0",
                     alignItems: "center",
                   }}
+                  onSubmit={getAllProductsByFilterCollege}
                 >
                   <input
                     list="ice-cream-flavors"
                     placeholder="College Name"
+                    value={searchCollegeText}
+                    onChange={(e) => setSearchCollegeText(e.target.value)}
                     name="ice-cream-choice"
                     style={{
                       width: "200px",
@@ -192,7 +200,12 @@ const Header = () => {
 
                   <datalist id="ice-cream-flavors">
                     {colleges.map((clg) => {
-                      return <option value={clg} />;
+                      return (
+                        <option
+                          value={clg}
+                          onClick={(e) => setSearchCollegeText(clg)}
+                        />
+                      );
                     })}
                   </datalist>
                 </form>

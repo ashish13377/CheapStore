@@ -242,7 +242,6 @@ router.get("/api/get/colleges", async (req, res) => {
 // sending all product deatails
 
 router.post("/api/get/products/filter", async (req, res) => {
-  console.log(req.body.cat);
   try {
     const products = await Item.find({ category: req.body.cat });
     console.log(products);
@@ -253,7 +252,9 @@ router.post("/api/get/products/filter", async (req, res) => {
 });
 router.post("/api/get/products/filter/name", async (req, res) => {
   try {
-    const products = await Item.find({ itemName: req.body.name });
+    const products = await Item.find({
+      $or: [{ itemname: req.body.name }, { sellerCollegeName: req.body.name }],
+    });
     console.log(products);
     res.status(200).json({ msg: "Products sent", products });
   } catch (err) {
