@@ -1,16 +1,45 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import Swal from "sweetalert2";
 import ScrollToBottom from "react-scroll-to-bottom";
 import Header from "../components/header/Header";
 
 const Chat = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
   const [buyer, setBuyer] = useState({});
   const [seller, setSeller] = useState({});
   const [rooms, setRooms] = useState([]);
   const [text, setText] = useState("");
   const [message, setMessege] = useState([]);
+  const [isLogin, setIsLogin] = useState(false);
+  // Getting root user data
+
+  const getRootUser = async () => {
+    try {
+      const res = await axios.get("http://localhost:4000/api/user/islogin", {
+        withCredentials: true,
+      });
+      console.log(res);
+      if (res.status === 200) {
+        setIsLogin(true);
+      }
+    } catch (err) {
+      setIsLogin(false);
+      Swal.fire({
+        title: "Please Log in",
+        icon: "warning",
+        confirmButtonText: "OK",
+      })
+        .then((res) => navigate("/"))
+        .catch((err) => console.log(err));
+    }
+  };
+
+  useEffect(() => {
+    getRootUser();
+  }, []);
 
   // getting current user or buyer information
 

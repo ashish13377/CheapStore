@@ -33,8 +33,15 @@ const SliderItem = (props) => (
           <div className="overlay"></div>
           <div className="slider-inner flex home-1">
             <div className="slider-content">
-              <h1 className="heading">{props.item.title}</h1>
-              <p className="sub-heading">{props.item.description}</p>
+              <h1 className="heading">
+                Welcome to{" "}
+                <span style={{ fontSize: "90px", color: "#dc39fc" }}>
+                  CHEAP STORE
+                </span>
+              </h1>
+              <p className="sub-heading">
+                Novel Resell Platform For Educational Instituitions
+              </p>
               <div className="button-slider">
                 <Link
                   to="/explore-01"
@@ -46,7 +53,7 @@ const SliderItem = (props) => (
                   to="/post"
                   className="sc-button btn-bordered-white style file"
                 >
-                  <span>Create Now</span>
+                  <span>Sell Now</span>
                 </Link>
               </div>
             </div>

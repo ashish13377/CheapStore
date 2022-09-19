@@ -7,37 +7,12 @@ import "react-tabs/style/react-tabs.css";
 import Newsletters from "../components/layouts/Newsletters";
 import Footer from "../components/footer/Footer";
 
-import img1 from "../assets/images/avatar/avt-6.jpg";
-import img2 from "../assets/images/avatar/avt-2.jpg";
-import img3 from "../assets/images/avatar/avt-4.jpg";
-import imgdetail1 from "../assets/images/product-item/auction-detail.jpg";
-import avt1 from "../assets/images/avatar/avt-4.jpg";
 import axios from "axios";
 
 const ItemDetails = () => {
   const [product, setProduct] = useState({});
   const { id } = useParams();
   const [mainImage, setMainImage] = useState("");
-  const [dataHistory] = useState([
-    {
-      img: img1,
-      name: "@Johnson",
-      time: "8 hours ago ",
-      price: "25 ETH ",
-    },
-    {
-      img: img2,
-      name: "@Johnson",
-      time: "8 hours ago ",
-      price: "25 ETH ",
-    },
-    {
-      img: img3,
-      name: "@Johnson",
-      time: "8 hours ago ",
-      price: "25 ETH ",
-    },
-  ]);
 
   const getProduct = async (id) => {
     try {

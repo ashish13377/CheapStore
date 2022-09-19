@@ -10,6 +10,7 @@ import img1 from "../assets/image1.png";
 
 const Profile = () => {
   const [userData, setUserData] = useState({});
+  const [products, setProducts] = useState([]);
   const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(false);
 
@@ -37,9 +38,46 @@ const Profile = () => {
     }
   };
 
+  // Getting root user data
+
+  const getProducts = async () => {
+    try {
+      const res = await axios.get("http://localhost:4000/api/user/products", {
+        withCredentials: true,
+      });
+      console.log(res);
+      if (res.status === 200) {
+        setProducts(res.data.products);
+      }
+    } catch (err) {}
+  };
+
+  const deleteProduct = async (id) => {
+    try {
+      const res = await axios.post(
+        "http://localhost:4000/api/delete/product",
+        { id },
+        {
+          withCredentials: true,
+        }
+      );
+      if (res.status === 200) {
+        const data = res.data;
+        Swal.fire({
+          title: data.msg,
+          icon: "Success",
+          confirmButtonText: "OK",
+        });
+      }
+    } catch (err) {}
+  };
+
   useEffect(() => {
     getRootUser();
   }, []);
+  useEffect(() => {
+    getProducts();
+  });
   return (
     <div className="item-details">
       <Header />
@@ -72,9 +110,20 @@ const Profile = () => {
             <div className="container">
               <div className="row">
                 <div className="col-xl-4 col-lg-12 col-md-12">
-                  <div className="profile-pic" style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-                    <img src={userData.profileimage} alt="profile image" style={{ borderRadius: "20px", width: "50%" }} />
-                    <Link to="/editprofile/pic" >
+                  <div
+                    className="profile-pic"
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                    }}
+                  >
+                    <img
+                      src={userData.profileimage}
+                      alt="profile image"
+                      style={{ borderRadius: "20px", width: "50%" }}
+                    />
+                    <Link to="/editprofile/pic">
                       <button
                         name="submit"
                         type="submit"
@@ -141,121 +190,31 @@ const Profile = () => {
                     </button>
                   </div> */}
 
-                  <div className="Addbox">
-                    <div class="row">
-                      <div class="col-sm-3 Addbox1"  >  
-                          <p> From: Feb 20, 20</p>
-                          <p>To: May 21, 20</p>
+                  {products.map((prd) => {
+                    return (
+                      <div className="Addbox">
+                        <div class="row">
+                          <div class="col-sm-3 Addbox1">
+                            <p> From: Feb 20, 20</p>
+                          </div>
+                          <div class="col-sm-6 Addbox2">
+                            <h6> Product: {prd.itemName}</h6>
+                            <h6> Price: Rs: {prd.itemPrice}/- </h6>
+                          </div>
+                          <div class="col-sm-3 Addbox3">
+                            <button
+                              name="submit"
+                              type="submit"
+                              style={{ backgroundColor: "#dc39fc00" }}
+                              onClick={(e) => deleteProduct(prd._id)}
+                            >
+                              <span>Delete</span>{" "}
+                            </button>
+                          </div>
+                        </div>
                       </div>
-                      <div class="col-sm-6 Addbox2" >
-                         <h6> Product: Ashish Kumar</h6>
-                         <h6> Price: Rs: 13399/- </h6>
-                      </div>
-                      <div class="col-sm-3 Addbox3">
-                      <Link to="/editprofile/info">
-                      <button
-                        name="submit"
-                        type="submit"
-                        style={{ backgroundColor: "#dc39fc00" }}
-                      >
-                        <span>Delete</span>{" "}
-                      </button>
-                    </Link>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="Addbox">
-                    <div class="row">
-                      <div class="col-sm-3 Addbox1"  >  
-                          <p> From: Feb 20, 20</p>
-                          <p>To: May 21, 20</p>
-                      </div>
-                      <div class="col-sm-6 Addbox2" >
-                         <h6> Product: Ashish Kumar</h6>
-                         <h6> Price: Rs: 13399/- </h6>
-                      </div>
-                      <div class="col-sm-3 Addbox3">
-                      <Link to="/editprofile/info">
-                      <button
-                        name="submit"
-                        type="submit"
-                        style={{ backgroundColor: "#dc39fc00" }}
-                      >
-                        <span>Delete</span>{" "}
-                      </button>
-                    </Link>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="Addbox">
-                    <div class="row">
-                      <div class="col-sm-3 Addbox1"  >  
-                          <p> From: Feb 20, 20</p>
-                          <p>To: May 21, 20</p>
-                      </div>
-                      <div class="col-sm-6 Addbox2" >
-                         <h6> Product: Ashish Kumar</h6>
-                         <h6> Price: Rs: 13399/- </h6>
-                      </div>
-                      <div class="col-sm-3 Addbox3">
-                      <Link to="/editprofile/info">
-                      <button
-                        name="submit"
-                        type="submit"
-                        style={{ backgroundColor: "#dc39fc00" }}
-                      >
-                        <span>Delete</span>{" "}
-                      </button>
-                    </Link>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="Addbox">
-                    <div class="row">
-                      <div class="col-sm-3 Addbox1"  >  
-                          <p> From: Feb 20, 20</p>
-                          <p>To: May 21, 20</p>
-                      </div>
-                      <div class="col-sm-6 Addbox2" >
-                         <h6> Product: Ashish Kumar</h6>
-                         <h6> Price: Rs: 13399/- </h6>
-                      </div>
-                      <div class="col-sm-3 Addbox3">
-                      <Link to="/editprofile/info">
-                      <button
-                        name="submit"
-                        type="submit"
-                        style={{ backgroundColor: "#dc39fc00" }}
-                      >
-                        <span>Delete</span>{" "}
-                      </button>
-                    </Link>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="Addbox">
-                    <div class="row">
-                      <div class="col-sm-3 Addbox1"  >  
-                          <p> From: Feb 20, 20</p>
-                          <p>To: May 21, 20</p>
-                      </div>
-                      <div class="col-sm-6 Addbox2" >
-                         <h6> Product: Ashish Kumar</h6>
-                         <h6> Price: Rs: 13399/- </h6>
-                      </div>
-                      <div class="col-sm-3 Addbox3">
-                      <Link to="/editprofile/info">
-                      <button
-                        name="submit"
-                        type="submit"
-                        style={{ backgroundColor: "#dc39fc00" }}
-                      >
-                        <span>Delete</span>{" "}
-                      </button>
-                    </Link>
-                      </div>
-                    </div>
-                  </div>
+                    );
+                  })}
                 </div>
               </div>
             </div>
