@@ -2,13 +2,11 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/users");
 const Item = require("../models/items");
-const Room = require("../models/rooms");
+const Chat = require("../models/chats");
+const Messege = require("../models/messeges");
 const bcrypt = require("bcryptjs");
 const auth = require("../middlewares/auth");
-//Testing server
-router.get("/", (req, res) => {
-  res.send("Hello Basu");
-});
+const { v4: uuidv4 } = require("uuid");
 
 // User Registration API
 
@@ -118,6 +116,17 @@ router.post("/api/reject/request", async (req, res) => {
   }
 });
 
+router.post("/api/delete/product", async (req, res) => {
+  const { id } = req.body;
+  try {
+    const item = await Item.findOne({ _id: id });
+    const isRemoved = await item.remove();
+    res.status(200).json({ msg: "Deleted" });
+  } catch (err) {
+    res.status(422).json({ msg: "Reject Failed" });
+  }
+});
+
 //API for login user
 
 router.post("/api/login/user", async (req, res) => {
@@ -156,6 +165,17 @@ router.get("/api/user/islogin", auth, (req, res) => {
   res.status(200).json({ msg: "User is logged in", user: req.rootUser });
 });
 
+// API for getting user from id
+
+router.get("/api/user/:id", async (req, res) => {
+  try {
+    const user = await User.findOne({ _id: req.params.id });
+    res.status(200).json(user);
+  } catch (err) {
+    res.status(422).json(err);
+  }
+});
+
 router.post("/api/user/islogin", auth, async (req, res) => {
   try {
     const user = await User.findOne({ _id: req.body.id });
@@ -167,7 +187,7 @@ router.post("/api/user/islogin", auth, async (req, res) => {
 
 //API for logout user
 
-router.get("/api/user/logout", (req, res) => {
+router.get("/api/logout", (req, res) => {
   res.clearCookie("jwt", {
     sameSite: "None",
     secure: true,
@@ -220,6 +240,15 @@ router.post("/api/user/create/item", auth, async (req, res) => {
 router.get("/api/get/products", async (req, res) => {
   try {
     const products = await Item.find();
+
+    res.status(200).json({ msg: "Products sent", products });
+  } catch (err) {
+    res.status(422).json({ msg: "Sent Failed" });
+  }
+});
+router.get("/api/user/products", auth, async (req, res) => {
+  try {
+    const products = await Item.find({ sellerID: req.user_id });
 
     res.status(200).json({ msg: "Products sent", products });
   } catch (err) {
@@ -280,73 +309,55 @@ router.post("/api/get/product/byid", async (req, res) => {
   }
 });
 
-// Room creation
-
-router.post("/api/create/room", auth, async (req, res) => {
-  const user = await User.findOne({ _id: req.body.id });
-  const room = await Room.findOne({ roomID: req.body.id });
-  if (room) {
-    res.status(422).json({ msg: "Room already Exist!" });
-  } else {
-    try {
-      const room = new Room({
-        roomName: user.firstName + " " + user.lastName,
-        roomID: req.body.id,
-        roomPic: user.profileimage,
-      });
-      await room.save();
-      res.status(200).json({
-        msg: "Room Created",
-      });
-    } catch (err) {
-      res.status(422).json({ msg: "Room creation Failed" });
-    }
-  }
-}); // sending a product
-
-router.post("/api/get/product/byid", async (req, res) => {
+router.post("/api/create/chat", auth, async (req, res) => {
   try {
-    const product = await Item.findById(req.body.id);
-
-    res.status(200).json({ msg: "Products sent", product });
-  } catch (err) {
-    res.status(422).json({ msg: "Sent Failed" });
-  }
-});
-
-// Room creation
-
-router.post("/api/create/room", async (req, res) => {
-  console.log(req.body);
-  try {
-    const room = await Room.findOne({ roomID: req.body.id });
-
-    if (room) {
-      res.status(200).json({ msg: "Room already Exist!" });
+    const chat = await Chat.findOne({
+      members: { $in: [req.body.reciverID] },
+    });
+    if (chat) {
+      res.status(200).json(chat);
     } else {
-      const user = await User.findOne({ _id: req.body.id });
-      const room = new Room({
-        roomName: user.firstName,
-        roomID: req.body.id,
-        roomPic: user.profileimage,
+      const newChat = new Chat({
+        members: [req.user_id.toString(), req.body.reciverID],
       });
-      await room.save();
-      res.status(200).json({
-        msg: "Room Created",
-      });
+
+      const chat = await newChat.save();
+      res.status(200).json(chat);
     }
   } catch (err) {
-    res.status(422).json({ msg: "Room creation failed 2" });
+    res.status(422).json(err);
   }
 });
 
-// Rooms sending
-router.get("/api/get/rooms", async (req, res) => {
+router.get("/api/chat/:id", auth, async (req, res) => {
   try {
-    const rooms = await Room.find();
-    res.status(200).json({ msg: "Rooms found", rooms });
+    const chat = await Chat.find({
+      members: { $in: [req.params.id] },
+    });
+    res.status(200).json(chat);
   } catch (err) {
-    res.status(422).json({ msg: "Rooms not found" });
+    res.status(422).json(err);
+  }
+});
+
+router.post("/api/messege", async (req, res) => {
+  const newMessege = new Messege(req.body);
+  try {
+    const messege = await newMessege.save();
+    res.status(200).json(messege);
+  } catch (err) {
+    res.status(422).json(err);
+  }
+});
+
+router.get("/api/messege/:chatID", async (req, res) => {
+  try {
+    const messege = await Messege.find({
+      chatID: req.params.chatID,
+    });
+    res.status(200).json(messege);
+  } catch (err) {
+    res.status(422).json(err);
   }
 });
 

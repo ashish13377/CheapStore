@@ -8,6 +8,7 @@ const Create = ({ name }) => {
   const [itemData, setItemData] = useState({});
   const [images, setImages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [icon1, setIcon1] = useState("fa-solid fa-upload");
 
   // Update user..........................
 
@@ -21,6 +22,7 @@ const Create = ({ name }) => {
 
   const handleFile = async (e) => {
     const data = new FormData();
+
     data.append("file", e.target.files[0]);
     data.append("upload_preset", "chipstore");
     data.append("cloud_name", "basustudent");
@@ -32,6 +34,11 @@ const Create = ({ name }) => {
       );
       const dat = res.data;
       setImages([...images, dat.secure_url]);
+      Swal.fire({
+        title: "Image Selected",
+        icon: "success",
+        confirmButtonText: "OK",
+      });
       setIsLoading(false);
     } catch (err) {
       alert(err);
@@ -130,7 +137,7 @@ const Create = ({ name }) => {
                               onChange={handleFile}
                             />
                             <span className="icon">
-                              <i className="fa-solid fa-upload"></i>
+                              <i className={icon1}></i>
                             </span>
                           </label>
                         </div>

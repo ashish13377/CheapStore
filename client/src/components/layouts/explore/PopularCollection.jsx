@@ -183,7 +183,7 @@ const PopularCollection = (props) => {
                     <span>View Details</span>
                   </Link>
                   <label style={{ fontSize: "20px" }}>
-                    {"$ " + item.itemPrice}
+                    {"₹ " + item.itemPrice}
                   </label>
                 </div>
                 <div className="product-content">

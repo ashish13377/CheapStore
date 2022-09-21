@@ -122,7 +122,7 @@ const Header = () => {
   };
   const logout = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/api/user/logout", {
+      const res = await axios.get("http://localhost:4000/api/logout", {
         withCredentials: true,
       });
       console.log(res);
@@ -208,7 +208,9 @@ const Header = () => {
                       return (
                         <option
                           value={clg}
-                          onClick={(e) => setSearchCollegeText(clg)}
+                          onClick={(e) => {
+                            setSearchCollegeText(clg);
+                          }}
                         />
                       );
                     })}

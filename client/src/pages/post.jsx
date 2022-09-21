@@ -16,7 +16,7 @@ const Post = () => {
       const res = await axios.get("http://localhost:4000/api/user/islogin", {
         withCredentials: true,
       });
-      console.log(res);
+     
       if (res.status === 200) {
         setIsLogin(true);
       }

@@ -21,7 +21,7 @@ const Profile = () => {
       const res = await axios.get("http://localhost:4000/api/user/islogin", {
         withCredentials: true,
       });
-      console.log(res);
+     
       if (res.status === 200) {
         setIsLogin(true);
         setUserData(res.data.user);
@@ -45,7 +45,7 @@ const Profile = () => {
       const res = await axios.get("http://localhost:4000/api/user/products", {
         withCredentials: true,
       });
-      console.log(res);
+     
       if (res.status === 200) {
         setProducts(res.data.products);
       }
@@ -63,6 +63,7 @@ const Profile = () => {
       );
       if (res.status === 200) {
         const data = res.data;
+        getProducts();
         Swal.fire({
           title: data.msg,
           icon: "Success",
