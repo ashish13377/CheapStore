@@ -7,6 +7,7 @@ const Messege = require("../models/messeges");
 const bcrypt = require("bcryptjs");
 const auth = require("../middlewares/auth");
 const { v4: uuidv4 } = require("uuid");
+const Notification = require("../models/notifications");
 
 // User Registration API
 
@@ -356,6 +357,27 @@ router.get("/api/messege/:chatID", async (req, res) => {
       chatID: req.params.chatID,
     });
     res.status(200).json(messege);
+  } catch (err) {
+    res.status(422).json(err);
+  }
+});
+
+router.post("/api/send/notification", async (req, res) => {
+  const newNotification = new Notification(req.body);
+  try {
+    const notification = await newNotification.save();
+    res.status(200).json(notification);
+  } catch (err) {
+    res.status(422).json(err);
+  }
+});
+
+router.get("/api/get/notification", auth, async (req, res) => {
+  try {
+    const notification = await Notification.find({
+      to: req.user_id.toString(),
+    });
+    res.status(200).json(notification);
   } catch (err) {
     res.status(422).json(err);
   }

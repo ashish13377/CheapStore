@@ -143,6 +143,26 @@ const Chat = () => {
     getUser();
   }, [currentChat]);
 
+  const sendNotification = async () => {
+    try {
+      const res = await axios.post(
+        "http://localhost:4000/api/send/notification",
+        {
+          from: user._id,
+          fromName: user.firstName,
+          fromPic: user.profileimage,
+          chatID: currentChat._id,
+          to: freindID,
+        },
+        {
+          withCredentials: true,
+        }
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   // Creating messege
 
   const createMessege = async (e) => {
@@ -165,6 +185,7 @@ const Chat = () => {
       if (res.status === 200) {
         setMesseges([...messeges, res.data]);
         setNewMessege("");
+        sendNotification();
       }
     } catch (err) {
       console.log(err);
