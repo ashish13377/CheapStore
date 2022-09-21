@@ -15,6 +15,7 @@ import axios from "axios";
 const Header = () => {
   const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(false);
+  const [notification, setNotifiactions] = useState(null);
   const [searchText, setSearchText] = useState("");
   const [searchCollegeText, setSearchCollegeText] = useState("");
   const [colleges, setColleges] = useState([]);
@@ -38,6 +39,22 @@ const Header = () => {
     }
 
     console.log(products);
+  };
+
+  // Getting Notification
+
+  const getNotifications = async () => {
+    try {
+      const res = await axios.get(
+        "http://localhost:4000/api/get/notification",
+        {
+          withCredentials: true,
+        }
+      );
+      setNotifiactions(res.data.length);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   // Getting all products
@@ -74,6 +91,10 @@ const Header = () => {
   useEffect(() => {
     getAllProducts();
   }, []);
+
+  useEffect(() => {
+    getNotifications();
+  }, [userData]);
 
   useEffect(() => {
     window.addEventListener("scroll", isSticky);
@@ -275,8 +296,28 @@ const Header = () => {
                     width: "25%",
                   }}
                 >
-                  <div style={{ fontSize: "30px", margin: "0 30px" }}>
+                  <div
+                    style={{ fontSize: "30px", margin: "0 30px" }}
+                    onClick={(e) => setNotifiactions(null)}
+                  >
                     <Link to="/notification">
+                      {notification ? (
+                        <span
+                          className={!notification && "d-none"}
+                          style={{
+                            position: "absolute",
+                            top: "1px",
+                            fontSize: "27px",
+                            backgroundColor: "red",
+                            padding: "4px",
+                            textAlign: "center",
+                            borderRadius: "50%",
+                            width: "33px",
+                          }}
+                        >
+                          {notification && notification}
+                        </span>
+                      ) : null}
                       <i class="fa-sharp fa-solid fa-bell"></i>
                     </Link>
                   </div>
