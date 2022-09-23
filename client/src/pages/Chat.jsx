@@ -22,7 +22,7 @@ const Chat = () => {
   const [arrivalMessege, setArrivalMessege] = useState(null);
   const [sellerName, setSellerName] = useState("");
   const [freindID, setFreindID] = useState(id);
-  const [newMessege, setNewMessege] = useState("");
+  const [newMessege, setNewMessege] = useState(null);
   const scrollRef = useRef();
   const socket = io.connect("http://localhost:4000/");
 
@@ -248,7 +248,7 @@ const Chat = () => {
                     </div>
                     <div className="chat-history">
                       <ul className="m-b-0">
-                        {messeges.map((m) => {
+                        {messeges?.map((m) => {
                           return (
                             <div ref={scrollRef}>
                               <Messege
@@ -280,8 +280,8 @@ const Chat = () => {
                             border: "1px solid rgb(192 191 197)",
                             borderRadius: "30px",
                           }}
-                          onChange={(e) => setNewMessege(e.target.value)}
                           value={newMessege}
+                          onChange={(e) => setNewMessege(e.target.value)}
                         />
                         <button
                           type="submit"

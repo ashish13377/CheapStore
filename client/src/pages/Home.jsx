@@ -3,7 +3,6 @@ import Header from "../components/header/Header";
 import Slider01 from "../components/slider/Slider";
 import dataSlider from "../assets/fake-data/dataSlider";
 import LiveAution from "../components/layouts/home/LiveAution";
-import dataLiveAution from "../assets/fake-data/dataLiveAution";
 import PopularCollection from "../components/layouts/explore/PopularCollection";
 import dataPopularCollection from "../assets/fake-data/dataPopularCollection";
 import Footer from "../components/footer/Footer";

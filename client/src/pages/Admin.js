@@ -3,8 +3,30 @@ import { useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import DarkMode from "../components/header/DarkMode";
+import { useNavigate } from "react-router-dom";
 const Admin = () => {
   const [regRequests, setRegrequests] = useState([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Getting Admin
+
+    const getRootUser = async () => {
+      try {
+        const res = await axios.get("http://localhost:4000/api/isadmin", {
+          withCredentials: true,
+        });
+
+        if (res.status === 200) {
+        }
+      } catch (err) {
+        console.log(err);
+        navigate("/");
+      }
+    };
+    getRootUser();
+  }, []);
+
   // Geting Requests from Database
   const getRequests = async () => {
     try {
@@ -66,18 +88,54 @@ const Admin = () => {
   useEffect(() => {
     getRequests();
   });
+
+  const logout = async () => {
+    try {
+      const res = await axios.get("http://localhost:4000/api/logout", {
+        withCredentials: true,
+      });
+      console.log(res);
+      if (res.status === 200) {
+        Swal.fire({
+          title: res.data.msg,
+          icon: "success",
+          confirmButtonText: "OK",
+        })
+          .then((res) => navigate("/"))
+          .catch((err) => {});
+      }
+    } catch (err) {}
+  };
+
   return (
     <div>
       <section className="tf-section login-page">
         <div className="container">
           <div className="row">
             <DarkMode />
+            <div
+              style={{
+                fontSize: "26px",
+                marginRight: "0",
+                marginLeft: "auto",
+                textAlign: "right",
+                cursor: "pointer",
+              }}
+            >
+              <span onClick={logout}>
+                <i class="fa-solid fa-right-from-bracket"></i>
+              </span>
+            </div>
             <div className="col-md-12">
-              <table class="table m-5" style={{ fontSize: "30px" }}>
+              <table
+                class="table m-5"
+                style={{ fontSize: "30px", width: "100%" }}
+              >
                 <thead>
                   <tr>
                     <th scope="col">Name</th>
                     <th scope="col">Contact No</th>
+                    <th scope="col">College Name</th>
 
                     <th scope="col">Student ID</th>
                     <th scope="col">Id Proof</th>
@@ -90,6 +148,7 @@ const Admin = () => {
                       <tr>
                         <td>{req.firstName + " " + req.lastName}</td>
                         <td>{req.phoneNumber}</td>
+                        <td>{req.collegeName}</td>
 
                         <td>{req.studentID}</td>
                         <td style={{ cursor: "pointer" }}>Download</td>

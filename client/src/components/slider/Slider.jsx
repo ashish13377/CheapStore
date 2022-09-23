@@ -44,7 +44,7 @@ const SliderItem = (props) => (
               </p>
               <div className="button-slider">
                 <Link
-                  to="/explore-01"
+                  to="/"
                   className="sc-button btn-bordered-white style letter "
                 >
                   <span>Explore More</span>

@@ -21,7 +21,7 @@ const Profile = () => {
       const res = await axios.get("http://localhost:4000/api/user/islogin", {
         withCredentials: true,
       });
-     
+
       if (res.status === 200) {
         setIsLogin(true);
         setUserData(res.data.user);
@@ -42,10 +42,10 @@ const Profile = () => {
 
   const getProducts = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/api/user/products", {
+      const res = await axios.get("http://localhost:4000/api/products", {
         withCredentials: true,
       });
-     
+
       if (res.status === 200) {
         setProducts(res.data.products);
       }

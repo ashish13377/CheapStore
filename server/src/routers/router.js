@@ -6,6 +6,7 @@ const Chat = require("../models/chats");
 const Messege = require("../models/messeges");
 const bcrypt = require("bcryptjs");
 const auth = require("../middlewares/auth");
+const adminAuth = require("../middlewares/adminAuth");
 const { v4: uuidv4 } = require("uuid");
 const Notification = require("../models/notifications");
 
@@ -132,31 +133,43 @@ router.post("/api/delete/product", async (req, res) => {
 
 router.post("/api/login/user", async (req, res) => {
   const { userName, password } = req.body;
-  try {
-    const user = await User.findOne({ userName });
-    if (user) {
-      if (!user.isapproved) {
-        res.status(422).json({ msg: "Not yet Verified" });
-        return;
-      }
-      const bool = await bcrypt.compare(password, user.password);
-      if (!bool) {
-        res.status(422).json({ msg: "Username or password incorrect" });
+
+  if (userName === "admin" && password === process.env.ADMIN_PASSWORD) {
+    const token = process.env.ADMIN_TOKEN;
+    res.cookie("jwt", token, {
+      expires: new Date(Date.now() + 50000000),
+      sameSite: "None",
+      secure: true,
+      httpOnly: true,
+    });
+    res.status(200).json({ msg: "Welcome Admin", admin: true });
+  } else {
+    try {
+      const user = await User.findOne({ userName });
+      if (user) {
+        if (!user.isapproved) {
+          res.status(422).json({ msg: "Not yet Verified" });
+          return;
+        }
+        const bool = await bcrypt.compare(password, user.password);
+        if (!bool) {
+          res.status(422).json({ msg: "Username or password incorrect" });
+        } else {
+          const token = await user.generateAuthToken();
+          res.cookie("jwt", token, {
+            expires: new Date(Date.now() + 50000000),
+            sameSite: "None",
+            secure: true,
+            httpOnly: true,
+          });
+          res.status(200).json({ msg: "Log in succesfull", admin: false });
+        }
       } else {
-        const token = await user.generateAuthToken();
-        res.cookie("jwt", token, {
-          expires: new Date(Date.now() + 50000000),
-          sameSite: "None",
-          secure: true,
-          httpOnly: true,
-        });
-        res.status(200).json({ msg: "Log in succesfull" });
+        res.status(422).json({ msg: "No Account Found" });
       }
-    } else {
-      res.status(422).json({ msg: "No Account Found" });
+    } catch (err) {
+      res.status(422).json({ msg: "Something Went wrong" });
     }
-  } catch (err) {
-    res.status(422).json({ msg: "Something Went wrong" });
   }
 });
 
@@ -184,6 +197,11 @@ router.post("/api/user/islogin", auth, async (req, res) => {
   } catch (err) {
     res.status(422).json({ msg: "failed to get Buyer info" });
   }
+});
+
+router.get("/api/isadmin", adminAuth, async (req, res) => {
+  console.log("HIT");
+  res.status(200).json({ msg: "Admin is logged in" });
 });
 
 //API for logout user
@@ -247,7 +265,7 @@ router.get("/api/get/products", async (req, res) => {
     res.status(422).json({ msg: "Sent Failed" });
   }
 });
-router.get("/api/user/products", auth, async (req, res) => {
+router.get("/api/products", auth, async (req, res) => {
   try {
     const products = await Item.find({ sellerID: req.user_id });
 

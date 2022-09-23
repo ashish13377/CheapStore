@@ -31,16 +31,29 @@ const Login = () => {
       );
       if (res.status === 200) {
         const data = res.data;
-        Swal.fire({
-          title: data.msg,
-          icon: "success",
-          confirmButtonText: "OK",
-        });
-        setLoginData({
-          email: "",
-          passowrd: "",
-        });
-        navigate("/");
+        if (data.admin) {
+          Swal.fire({
+            title: data.msg,
+            icon: "success",
+            confirmButtonText: "OK",
+          });
+          setLoginData({
+            email: "",
+            passowrd: "",
+          });
+          navigate("/admin");
+        } else {
+          Swal.fire({
+            title: data.msg,
+            icon: "success",
+            confirmButtonText: "OK",
+          });
+          setLoginData({
+            email: "",
+            passowrd: "",
+          });
+          navigate("/");
+        }
       }
     } catch (err) {
       Swal.fire({
@@ -52,13 +65,19 @@ const Login = () => {
   };
   return (
     <div>
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", paddingBottom: "5px" }}>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          paddingBottom: "5px",
+        }}
+      >
         <DarkMode />
       </div>
       <section className="login-page">
         <div className="container" style={{ width: "1000px" }}>
           <div className="row">
-
             <div className="col-md-12">
               <div className="form-create-item-content">
                 <div className="form-create-item">
@@ -98,9 +117,11 @@ const Login = () => {
                     >
                       <span>Sign In</span>
                     </button>
-
                   </form>
-                  <p style={{ padding: "10px", font: "20px" }}><Link to="/register"> Sign-up </Link>and discover great amount of new opportunities!</p>
+                  <p style={{ padding: "10px", font: "20px" }}>
+                    <Link to="/register"> Sign-up </Link>and discover great
+                    amount of new opportunities!
+                  </p>
                 </div>
                 <div className="form-background">
                   <img src={img1} alt="Bidzen" />
