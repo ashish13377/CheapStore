@@ -31,14 +31,11 @@ const Header = () => {
     const newFilter = products.filter((val) => {
       return val.toLowerCase().includes(e.target.value.toLowerCase());
     });
-    console.log(searchText);
     if (e.target.value === "") {
       setFilterProducts([]);
     } else {
       setFilterProducts(newFilter);
     }
-
-    console.log(products);
   };
 
   // Getting Notification
@@ -94,7 +91,7 @@ const Header = () => {
 
   useEffect(() => {
     getNotifications();
-  }, [userData]);
+  }, []);
 
   useEffect(() => {
     window.addEventListener("scroll", isSticky);
@@ -164,7 +161,7 @@ const Header = () => {
     getRootUser();
     getAllColleges();
   }, []);
-  console.log(colleges);
+
   return (
     <div>
       <header
@@ -178,7 +175,12 @@ const Header = () => {
               <div id="site-header-inner" className="flex px-0">
                 <div id="site-logo" className="clearfix">
                   <div id="site-logo-inner">
-                    <Link to="/" rel="home" className="main-logo">
+                    <Link
+                      to="/"
+                      rel="home"
+                      className="main-logo"
+                      onClick={(e) => setNotifiactions(null)}
+                    >
                       <img
                         id="logo_header"
                         className="logo-dark"

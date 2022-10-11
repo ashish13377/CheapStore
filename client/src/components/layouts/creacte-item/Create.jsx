@@ -9,6 +9,13 @@ const Create = ({ name }) => {
   const [images, setImages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [icon1, setIcon1] = useState("fa-solid fa-upload");
+  const [icon2, setIcon2] = useState("fa-solid fa-upload");
+  const [icon3, setIcon3] = useState("fa-solid fa-upload");
+  const [icon4, setIcon4] = useState("fa-solid fa-upload");
+  const [icon5, setIcon5] = useState("fa-solid fa-upload");
+  const [icon6, setIcon6] = useState("fa-solid fa-upload");
+  const [icon7, setIcon7] = useState("fa-solid fa-upload");
+  const [icon8, setIcon8] = useState("fa-solid fa-upload");
 
   // Update user..........................
 
@@ -18,11 +25,11 @@ const Create = ({ name }) => {
     setItemData(newLoginData);
   };
 
-  // Hendla file
+  // Handle file
 
-  const handleFile = async (e) => {
+  const handleFile8 = async (e) => {
     const data = new FormData();
-
+    console.log(e.target.nextSibling.children[0]);
     data.append("file", e.target.files[0]);
     data.append("upload_preset", "chipstore");
     data.append("cloud_name", "basustudent");
@@ -39,6 +46,189 @@ const Create = ({ name }) => {
         icon: "success",
         confirmButtonText: "OK",
       });
+      setIcon8("fa-solid fa-check");
+      setIsLoading(false);
+    } catch (err) {
+      alert(err);
+      setIsLoading(false);
+    }
+  };
+  const handleFile1 = async (e) => {
+    const data = new FormData();
+    console.log(e.target.nextSibling.children[0]);
+    data.append("file", e.target.files[0]);
+    data.append("upload_preset", "chipstore");
+    data.append("cloud_name", "basustudent");
+    try {
+      setIsLoading(true);
+      const res = await axios.post(
+        "https://api.cloudinary.com/v1_1/basustudent/image/upload",
+        data
+      );
+      const dat = res.data;
+      setImages([...images, dat.secure_url]);
+      Swal.fire({
+        title: "Image Selected",
+        icon: "success",
+        confirmButtonText: "OK",
+      });
+      setIcon1("fa-solid fa-check");
+      setIsLoading(false);
+    } catch (err) {
+      alert(err);
+      setIsLoading(false);
+    }
+  };
+  const handleFile2 = async (e) => {
+    const data = new FormData();
+    console.log(e.target.nextSibling.children[0]);
+    data.append("file", e.target.files[0]);
+    data.append("upload_preset", "chipstore");
+    data.append("cloud_name", "basustudent");
+    try {
+      setIsLoading(true);
+      const res = await axios.post(
+        "https://api.cloudinary.com/v1_1/basustudent/image/upload",
+        data
+      );
+      const dat = res.data;
+      setImages([...images, dat.secure_url]);
+      Swal.fire({
+        title: "Image Selected",
+        icon: "success",
+        confirmButtonText: "OK",
+      });
+      setIcon2("fa-solid fa-check");
+      setIsLoading(false);
+    } catch (err) {
+      alert(err);
+      setIsLoading(false);
+    }
+  };
+  const handleFile3 = async (e) => {
+    const data = new FormData();
+    console.log(e.target.nextSibling.children[0]);
+    data.append("file", e.target.files[0]);
+    data.append("upload_preset", "chipstore");
+    data.append("cloud_name", "basustudent");
+    try {
+      setIsLoading(true);
+      const res = await axios.post(
+        "https://api.cloudinary.com/v1_1/basustudent/image/upload",
+        data
+      );
+      const dat = res.data;
+      setImages([...images, dat.secure_url]);
+      Swal.fire({
+        title: "Image Selected",
+        icon: "success",
+        confirmButtonText: "OK",
+      });
+      setIcon3("fa-solid fa-check");
+      setIsLoading(false);
+    } catch (err) {
+      alert(err);
+      setIsLoading(false);
+    }
+  };
+  const handleFile4 = async (e) => {
+    const data = new FormData();
+    console.log(e.target.nextSibling.children[0]);
+    data.append("file", e.target.files[0]);
+    data.append("upload_preset", "chipstore");
+    data.append("cloud_name", "basustudent");
+    try {
+      setIsLoading(true);
+      const res = await axios.post(
+        "https://api.cloudinary.com/v1_1/basustudent/image/upload",
+        data
+      );
+      const dat = res.data;
+      setImages([...images, dat.secure_url]);
+      Swal.fire({
+        title: "Image Selected",
+        icon: "success",
+        confirmButtonText: "OK",
+      });
+      setIcon4("fa-solid fa-check");
+      setIsLoading(false);
+    } catch (err) {
+      alert(err);
+      setIsLoading(false);
+    }
+  };
+  const handleFile5 = async (e) => {
+    const data = new FormData();
+    console.log(e.target.nextSibling.children[0]);
+    data.append("file", e.target.files[0]);
+    data.append("upload_preset", "chipstore");
+    data.append("cloud_name", "basustudent");
+    try {
+      setIsLoading(true);
+      const res = await axios.post(
+        "https://api.cloudinary.com/v1_1/basustudent/image/upload",
+        data
+      );
+      const dat = res.data;
+      setImages([...images, dat.secure_url]);
+      Swal.fire({
+        title: "Image Selected",
+        icon: "success",
+        confirmButtonText: "OK",
+      });
+      setIcon5("fa-solid fa-check");
+      setIsLoading(false);
+    } catch (err) {
+      alert(err);
+      setIsLoading(false);
+    }
+  };
+  const handleFile6 = async (e) => {
+    const data = new FormData();
+    console.log(e.target.nextSibling.children[0]);
+    data.append("file", e.target.files[0]);
+    data.append("upload_preset", "chipstore");
+    data.append("cloud_name", "basustudent");
+    try {
+      setIsLoading(true);
+      const res = await axios.post(
+        "https://api.cloudinary.com/v1_1/basustudent/image/upload",
+        data
+      );
+      const dat = res.data;
+      setImages([...images, dat.secure_url]);
+      Swal.fire({
+        title: "Image Selected",
+        icon: "success",
+        confirmButtonText: "OK",
+      });
+      setIcon6("fa-solid fa-check");
+      setIsLoading(false);
+    } catch (err) {
+      alert(err);
+      setIsLoading(false);
+    }
+  };
+  const handleFile7 = async (e) => {
+    const data = new FormData();
+    console.log(e.target.nextSibling.children[0]);
+    data.append("file", e.target.files[0]);
+    data.append("upload_preset", "chipstore");
+    data.append("cloud_name", "basustudent");
+    try {
+      setIsLoading(true);
+      const res = await axios.post(
+        "https://api.cloudinary.com/v1_1/basustudent/image/upload",
+        data
+      );
+      const dat = res.data;
+      setImages([...images, dat.secure_url]);
+      Swal.fire({
+        title: "Image Selected",
+        icon: "success",
+        confirmButtonText: "OK",
+      });
+      setIcon7("fa-solid fa-check");
       setIsLoading(false);
     } catch (err) {
       alert(err);
@@ -134,7 +324,7 @@ const Create = ({ name }) => {
                             <input
                               type="file"
                               className="inputfile form-control"
-                              onChange={handleFile}
+                              onChange={handleFile1}
                             />
                             <span className="icon">
                               <i className={icon1}></i>
@@ -146,10 +336,10 @@ const Create = ({ name }) => {
                             <input
                               type="file"
                               className="inputfile form-control"
-                              onChange={handleFile}
+                              onChange={handleFile2}
                             />
                             <span className="icon">
-                              <i className="fa-solid fa-upload"></i>
+                              <i className={icon2}></i>
                             </span>
                           </label>
                         </div>
@@ -159,10 +349,10 @@ const Create = ({ name }) => {
                             <input
                               type="file"
                               className="inputfile form-control"
-                              onChange={handleFile}
+                              onChange={handleFile3}
                             />
                             <span className="icon">
-                              <i className="fa-solid fa-upload"></i>
+                              <i className={icon3}></i>
                             </span>
                           </label>
                         </div>
@@ -172,10 +362,10 @@ const Create = ({ name }) => {
                             <input
                               type="file"
                               className="inputfile form-control"
-                              onChange={handleFile}
+                              onChange={handleFile4}
                             />
                             <span className="icon">
-                              <i className="fa-solid fa-upload"></i>
+                              <i className={icon4}></i>
                             </span>
                           </label>
                         </div>
@@ -186,10 +376,10 @@ const Create = ({ name }) => {
                             <input
                               type="file"
                               className="inputfile form-control"
-                              onChange={handleFile}
+                              onChange={handleFile5}
                             />
                             <span className="icon">
-                              <i className="fa-solid fa-upload"></i>
+                              <i className={icon5}></i>
                             </span>
                           </label>
                         </div>
@@ -198,23 +388,10 @@ const Create = ({ name }) => {
                             <input
                               type="file"
                               className="inputfile form-control"
-                              onChange={handleFile}
+                              onChange={handleFile6}
                             />
                             <span className="icon">
-                              <i className="fa-solid fa-upload"></i>
-                            </span>
-                          </label>
-                        </div>
-                        <div class="col">
-                          {" "}
-                          <label className="uploadFile">
-                            <input
-                              type="file"
-                              className="inputfile form-control"
-                              onChange={handleFile}
-                            />
-                            <span className="icon">
-                              <i className="fa-solid fa-upload"></i>
+                              <i className={icon6}></i>
                             </span>
                           </label>
                         </div>
@@ -224,10 +401,23 @@ const Create = ({ name }) => {
                             <input
                               type="file"
                               className="inputfile form-control"
-                              onChange={handleFile}
+                              onChange={handleFile7}
                             />
                             <span className="icon">
-                              <i className="fa-solid fa-upload"></i>
+                              <i className={icon7}></i>
+                            </span>
+                          </label>
+                        </div>
+                        <div class="col">
+                          {" "}
+                          <label className="uploadFile">
+                            <input
+                              type="file"
+                              className="inputfile form-control"
+                              onChange={handleFile8}
+                            />
+                            <span className="icon">
+                              <i className={icon8}></i>
                             </span>
                           </label>
                         </div>
