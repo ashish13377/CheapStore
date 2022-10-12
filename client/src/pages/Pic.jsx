@@ -137,15 +137,15 @@ const Pic = () => {
                   <div className="">
                     <h3> Profile picture</h3>
                     <hr></hr>
-                    <div class="row">
-                      <div class="col-4">
+                    <div className="row">
+                      <div className="col-4">
                         <div className="profile-pic">
                           <img
                             src={!imageurl ? userData.profileimage : imageurl}
                           />
                         </div>
                       </div>
-                      <div class="col-8">
+                      <div className="col-8">
                         <p style={{ fontSize: "15px" }}>
                           Clear photos are an important way for buyers and
                           sellers to learn about each other. Be sure doesn’t
@@ -178,7 +178,7 @@ const Pic = () => {
                               onChange={handleFile}
                             />
                             <span className="icon">
-                              <i class="fa-solid fa-upload"></i>
+                              <i className="fa-solid fa-upload"></i>
                             </span>
                           </label>
                           <button

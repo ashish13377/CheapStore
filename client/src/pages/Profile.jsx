@@ -194,15 +194,15 @@ const Profile = () => {
                   {products.map((prd) => {
                     return (
                       <div className="Addbox">
-                        <div class="row">
-                          <div class="col-sm-3 Addbox1">
+                        <div className="row">
+                          <div className="col-sm-3 Addbox1">
                             <p> From: Feb 20, 20</p>
                           </div>
-                          <div class="col-sm-6 Addbox2">
+                          <div className="col-sm-6 Addbox2">
                             <h6> Product: {prd.itemName}</h6>
                             <h6> Price: Rs: {prd.itemPrice}/- </h6>
                           </div>
-                          <div class="col-sm-3 Addbox3">
+                          <div className="col-sm-3 Addbox3">
                             <button
                               name="submit"
                               type="submit"

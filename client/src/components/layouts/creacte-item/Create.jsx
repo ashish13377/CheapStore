@@ -318,8 +318,8 @@ const Create = ({ name }) => {
                       <p style={{ paddingBottom: "20px", color: "red" }}>
                         * This field is mandatory
                       </p>
-                      <div class="row">
-                        <div class="col">
+                      <div className="row">
+                        <div className="col">
                           <label className="uploadFile">
                             <input
                               type="file"
@@ -331,7 +331,7 @@ const Create = ({ name }) => {
                             </span>
                           </label>
                         </div>
-                        <div class="col">
+                        <div className="col">
                           <label className="uploadFile">
                             <input
                               type="file"
@@ -343,7 +343,7 @@ const Create = ({ name }) => {
                             </span>
                           </label>
                         </div>
-                        <div class="col">
+                        <div className="col">
                           {" "}
                           <label className="uploadFile">
                             <input
@@ -356,7 +356,7 @@ const Create = ({ name }) => {
                             </span>
                           </label>
                         </div>
-                        <div class="col">
+                        <div className="col">
                           {" "}
                           <label className="uploadFile">
                             <input
@@ -370,8 +370,8 @@ const Create = ({ name }) => {
                           </label>
                         </div>
                       </div>
-                      <div class="row">
-                        <div class="col">
+                      <div className="row">
+                        <div className="col">
                           <label className="uploadFile">
                             <input
                               type="file"
@@ -383,7 +383,7 @@ const Create = ({ name }) => {
                             </span>
                           </label>
                         </div>
-                        <div class="col">
+                        <div className="col">
                           <label className="uploadFile">
                             <input
                               type="file"
@@ -395,7 +395,7 @@ const Create = ({ name }) => {
                             </span>
                           </label>
                         </div>
-                        <div class="col">
+                        <div className="col">
                           {" "}
                           <label className="uploadFile">
                             <input
@@ -408,7 +408,7 @@ const Create = ({ name }) => {
                             </span>
                           </label>
                         </div>
-                        <div class="col">
+                        <div className="col">
                           {" "}
                           <label className="uploadFile">
                             <input

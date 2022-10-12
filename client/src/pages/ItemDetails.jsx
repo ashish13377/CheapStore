@@ -59,11 +59,11 @@ const ItemDetails = () => {
         <div className="container">
           <div className="row">
             <div className="col-xl-6 col-lg-12 col-md-12">
-              <div class="images p-3 item-media">
-                <div class="text-center p-4 media">
+              <div className="images p-3 item-media">
+                <div className="text-center p-4 media">
                   <img id="main-image" src={mainImage} width="250" />
                 </div>
-                <div class="thumbnail text-center">
+                <div className="thumbnail text-center">
                   {product.images?.map((img) => {
                     return (
                       <img

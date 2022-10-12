@@ -183,7 +183,7 @@ const Register = () => {
                             onChange={handleFile}
                           />
                           <span className="icon">
-                            <i class="fa-solid fa-upload"></i>
+                            <i className="fa-solid fa-upload"></i>
                           </span>
                         </label>
 

@@ -172,15 +172,15 @@ const Info = () => {
                   <h5 style={{ marginBottom: "10px" }}>
                     Additional information
                   </h5>
-                  <div class="row">
-                    <div class="col-sm-8">
+                  <div className="row">
+                    <div className="col-sm-8">
                       <p style={{ fontSize: "19px" }}>Google</p>
                       <p className="desc">
                         Link your Google account to seamlessly use your contact
                         list.
                       </p>
                     </div>
-                    <div class="col-sm-4">
+                    <div className="col-sm-4">
                       <button
                         name="submit"
                         type="submit"
@@ -191,8 +191,8 @@ const Info = () => {
                     </div>
                   </div>
                   <hr></hr>
-                  <div class="row">
-                    <div class="col-6">
+                  <div className="row">
+                    <div className="col-6">
                       <button
                         name="submit"
                         type="submit"
@@ -202,7 +202,7 @@ const Info = () => {
                         <span>Discard</span>
                       </button>
                     </div>
-                    <div class="col-6">
+                    <div className="col-6">
                       <button
                         name="submit"
                         type="submit"

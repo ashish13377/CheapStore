@@ -55,22 +55,22 @@ const Notification = () => {
       <Header />
       {isLogin ? (
         <>
-          <div class="container d-flex flex-column align-items-center justify-content-center">
+          <div className="container d-flex flex-column align-items-center justify-content-center">
             {notifications.map((n) => {
               return (
                 <Link to={`/chat/${n.from}`}>
-                  <div class="card-notification mt-5 p-3 ">
-                    <div class="media">
+                  <div className="card-notification mt-5 p-3 ">
+                    <div className="media">
                       <img
                         src={n.fromPic}
-                        class="mr-3"
+                        className="mr-3"
                         style={{ width: "70px" }}
                       />
-                      <div class="media-body">
-                        <h6 class="mt-2 mb-0">
+                      <div className="media-body">
+                        <h6 className="mt-2 mb-0">
                           You have received 1 message from {n.fromName}
                         </h6>
-                        <small class="text">{n.createdAt}</small>
+                        <small className="text">{n.createdAt}</small>
                       </div>
                     </div>
                   </div>

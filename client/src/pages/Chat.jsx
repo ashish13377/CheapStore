@@ -3,7 +3,6 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
 import io from "socket.io-client";
-import ScrollToBottom from "react-scroll-to-bottom";
 import Header from "../components/header/Header";
 import Messege from "./Messege";
 import Chats from "./Chats";
@@ -307,7 +306,7 @@ const Chat = () => {
                           type="submit"
                           style={{ marginRight: "10px", fontSize: "20px" }}
                         >
-                          <i class="fa-regular fa-paper-plane"></i>
+                          <i className="fa-regular fa-paper-plane"></i>
                         </button>
                       </form>
                     </div>

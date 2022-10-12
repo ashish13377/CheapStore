@@ -131,7 +131,7 @@ const Header = () => {
       const res = await axios.get("http://localhost:4000/api/user/islogin", {
         withCredentials: true,
       });
-      console.log(res);
+
       if (res.status === 200) {
         setIsLogin(true);
         setUserData(res.data.user);
@@ -227,10 +227,11 @@ const Header = () => {
                   />
 
                   <datalist id="ice-cream-flavors">
-                    {colleges.map((clg) => {
+                    {colleges.map((clg, index) => {
                       return (
                         <option
                           value={clg}
+                          key={index}
                           onClick={(e) => {
                             setSearchCollegeText(clg);
                           }}
@@ -255,7 +256,7 @@ const Header = () => {
                     onChange={handleSearch}
                   />
                   <button type="submit" onClick={getAllProductsByFilter}>
-                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <i className="fa-solid fa-magnifying-glass"></i>
                   </button>
                 </form>
                 {filterProducts.length !== 0 && (
@@ -271,7 +272,7 @@ const Header = () => {
                     }}
                   >
                     <ul>
-                      {filterProducts?.map((fl) => {
+                      {filterProducts?.map((fl, index) => {
                         return (
                           <li
                             style={{
@@ -280,6 +281,7 @@ const Header = () => {
                               fontWeight: "bold",
                               cursor: "pointer",
                             }}
+                            key={index}
                             onClick={(e) => setSearchText(fl)}
                           >
                             {fl}
@@ -320,7 +322,7 @@ const Header = () => {
                           {notification && notification}
                         </span>
                       ) : null}
-                      <i class="fa-sharp fa-solid fa-bell"></i>
+                      <i className="fa-sharp fa-solid fa-bell"></i>
                     </Link>
                   </div>
                   <div className="button-connect-wallet res-hide">
@@ -364,7 +366,7 @@ const Header = () => {
                   className={!isLogin ? "d-none" : "d-block"}
                 >
                   <span onClick={logout}>
-                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <i className="fa-solid fa-right-from-bracket"></i>
                   </span>
                 </div>
               </div>

@@ -128,12 +128,12 @@ const Admin = () => {
               }}
             >
               <span onClick={logout}>
-                <i class="fa-solid fa-right-from-bracket"></i>
+                <i className="fa-solid fa-right-from-bracket"></i>
               </span>
             </div>
             <div className="col-md-12">
               <table
-                class="table m-5"
+                className="table m-5"
                 style={{ fontSize: "30px", width: "100%" }}
               >
                 <thead>
@@ -164,7 +164,7 @@ const Admin = () => {
                         <td>
                           <div className="d-flex align-items-center">
                             <i
-                              class="fa-solid fa-check p-2 mr-3"
+                              className="fa-solid fa-check p-2 mr-3"
                               style={{
                                 color: "green",
                                 fontSize: "40px",
@@ -173,7 +173,7 @@ const Admin = () => {
                               onClick={() => approveRequest(req._id)}
                             ></i>
                             <i
-                              class="fa-regular fa-circle-xmark p-2"
+                              className="fa-regular fa-circle-xmark p-2"
                               style={{
                                 color: "tomato",
                                 fontSize: "40px",
