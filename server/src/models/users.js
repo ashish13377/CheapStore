@@ -28,6 +28,9 @@ const UsersSchema = new mongoose.Schema({
   studentID: {
     type: String,
   },
+  collegeID: {
+    type: String,
+  },
   email: {
     type: String,
   },

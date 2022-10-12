@@ -45,7 +45,17 @@ const Chat = () => {
         console.log(err);
       }
     };
-    createChat();
+    if (user._id === id) {
+      Swal.fire({
+        title: "You can not chat to yourself",
+        icon: "warning",
+        confirmButtonText: "OK",
+      })
+        .then((res) => navigate("/"))
+        .catch((err) => console.log(err));
+    } else {
+      createChat();
+    }
   }, [user._id]);
 
   // Socket connection....
@@ -77,7 +87,17 @@ const Chat = () => {
       if (res.status === 200) {
         setIsLogin(true);
         setuser(res.data.user);
-        socket.emit("add_user", res.data.user._id);
+        if (res.data.user._id === id) {
+          Swal.fire({
+            title: "You can not chat to yourself",
+            icon: "warning",
+            confirmButtonText: "OK",
+          })
+            .then((res) => navigate("/"))
+            .catch((err) => console.log(err));
+        } else {
+          socket.emit("add_user", res.data.user._id);
+        }
       }
     } catch (err) {
       setIsLogin(false);

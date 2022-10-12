@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
+import { saveAs } from "file-saver";
 import Swal from "sweetalert2";
 import DarkMode from "../components/header/DarkMode";
 import { useNavigate } from "react-router-dom";
@@ -38,6 +39,10 @@ const Admin = () => {
     } catch (err) {
       alert(err.response.data.msg);
     }
+  };
+
+  const downloadID = (collegeID) => {
+    saveAs(collegeID, "CollegeID.jpg");
   };
 
   // Approving requsets
@@ -151,7 +156,11 @@ const Admin = () => {
                         <td>{req.collegeName}</td>
 
                         <td>{req.studentID}</td>
-                        <td style={{ cursor: "pointer" }}>Download</td>
+                        <td style={{ cursor: "pointer" }}>
+                          <button onClick={(e) => downloadID(req.collegeID)}>
+                            Download
+                          </button>
+                        </td>
                         <td>
                           <div className="d-flex align-items-center">
                             <i

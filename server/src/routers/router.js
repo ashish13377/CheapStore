@@ -20,6 +20,7 @@ router.post("/api/register/user", async (req, res) => {
     userName,
     collegeName,
     studentID,
+    collegeID,
     email,
     password,
   } = req.body;
@@ -35,6 +36,7 @@ router.post("/api/register/user", async (req, res) => {
         userName,
         collegeName,
         studentID,
+        collegeID,
         email,
         password,
       });
