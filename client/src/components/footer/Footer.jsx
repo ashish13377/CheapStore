@@ -24,27 +24,15 @@ const Footer = () => {
 
   const [dataLinkMarket] = useState([
     {
-      title: "Gaming",
+      title: "Terms & Conditions",
       link: "/item",
     },
     {
-      title: "Product",
+      title: "Privacy Policy",
       link: "/item",
     },
     {
-      title: "All NFTs",
-      link: "/item",
-    },
-    {
-      title: "Social Network",
-      link: "/item",
-    },
-    {
-      title: "Domain Names",
-      link: "/item",
-    },
-    {
-      title: "Collectibles",
+      title: "Copyrights",
       link: "/item",
     },
   ]);
@@ -59,20 +47,8 @@ const Footer = () => {
       link: "/contact",
     },
     {
-      title: "Live Auctions",
-      link: "/item",
-    },
-    {
-      title: "Item Details",
-      link: "/item-details",
-    },
-    {
       title: "24/7 Supports",
       link: "/contact",
-    },
-    {
-      title: "Blog",
-      link: "/blog",
     },
   ]);
 
@@ -147,11 +123,12 @@ const Footer = () => {
               </div>
             </div>
             <div className="col-lg-2 col-md-6 col-sm-6 col-6"></div>
-            <div className="col-lg-3 col-md-6 col-sm-6 col-6">
-              <div className="widget widget-menu menu-marketplace">
-                <h5 className="title-widget">Marketplace</h5>
+
+            <div className="col-lg-4 col-md-6 col-sm-12 col-12">
+              <div className="widget widget-menu menu-supports">
+                <h5 className="title-widget">Supports</h5>
                 <ul>
-                  {dataLinkMarket.map((item, index) => (
+                  {dataSupport.map((item, index) => (
                     <li key={index}>
                       <Link to={item.link}>{item.title}</Link>
                     </li>
@@ -159,11 +136,11 @@ const Footer = () => {
                 </ul>
               </div>
             </div>
-            <div className="col-lg-4 col-md-6 col-sm-12 col-12">
-              <div className="widget widget-menu menu-supports">
-                <h5 className="title-widget">Supports</h5>
+            <div className="col-lg-3 col-md-6 col-sm-6 col-6">
+              <div className="widget widget-menu menu-marketplace">
+                <h5 className="title-widget">Marketplace</h5>
                 <ul>
-                  {dataSupport.map((item, index) => (
+                  {dataLinkMarket.map((item, index) => (
                     <li key={index}>
                       <Link to={item.link}>{item.title}</Link>
                     </li>
@@ -177,17 +154,25 @@ const Footer = () => {
       <div className="bottom">
         <div className="container">
           <div className="bottom-inner">
-            Copyright © 2022 CheapStore | NFT Marketplace React Js Template.
-            Designed by{" "}
-            <a href="https://themeforest.net/user/themesflat/portfolio">
+            Copyright © 2022 CheapStore | Designed by{" "}
+            <a
+              href="https://www.linkedin.com/in/basudev-ghosh-33b9a5251/"
+              target="_blank"
+            >
               {" "}
               Basu,
             </a>
-            <a href="https://themeforest.net/user/themesflat/portfolio">
+            <a
+              href="https://www.linkedin.com/in/ashish-kumar-7a5b401ba/"
+              target="_blank"
+            >
               {" "}
               Ashish &
             </a>
-            <a href="https://themeforest.net/user/themesflat/portfolio">
+            <a
+              href="https://www.linkedin.com/in/soumik-roy-choudhury-770a901b4/"
+              target="_blank"
+            >
               {" "}
               Soumik
             </a>
