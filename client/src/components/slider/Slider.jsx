@@ -43,12 +43,16 @@ const SliderItem = (props) => (
                 Novel Resell Platform For Educational Instituitions
               </p>
               <div className="button-slider">
-                <Link
-                  to="/"
+                <a
+                  onClick={(e) => window.scroll({
+                    top: 860,
+                    left: 0,
+                    behavior: 'smooth'
+                  })}
                   className="sc-button btn-bordered-white style letter "
                 >
                   <span>Explore More</span>
-                </Link>
+                </a>
                 <Link
                   to="/post"
                   className="sc-button btn-bordered-white style file"
