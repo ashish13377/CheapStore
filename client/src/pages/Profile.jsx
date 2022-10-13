@@ -7,6 +7,7 @@ import "react-tabs/style/react-tabs.css";
 import Newsletters from "../components/layouts/Newsletters";
 import Footer from "../components/footer/Footer";
 import img1 from "../assets/image1.png";
+import { Helmet } from "react-helmet";
 
 const Profile = () => {
   const [userData, setUserData] = useState({});
@@ -80,6 +81,11 @@ const Profile = () => {
     getProducts();
   });
   return (
+    <> 
+      <Helmet>
+    <meta charSet="utf-8" />
+    <title>CheapStore | Profile </title>
+  </Helmet>
     <div className="item-details">
       <Header />
       {isLogin ? (
@@ -225,6 +231,9 @@ const Profile = () => {
         </>
       ) : null}
     </div>
+    
+    </>
+  
   );
 };
 

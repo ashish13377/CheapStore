@@ -3,6 +3,7 @@ import Swal from "sweetalert2";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import DarkMode from "../components/header/DarkMode";
+import { Helmet } from "react-helmet";
 
 import img1 from "../assets/images/background/img-login.jpg";
 
@@ -64,6 +65,12 @@ const Login = () => {
     }
   };
   return (
+  <>
+  
+  <Helmet>
+        <meta charSet="utf-8" />
+        <title>CheapStore | Registerion </title>
+      </Helmet>
     <div>
       <div
         style={{
@@ -132,6 +139,9 @@ const Login = () => {
         </div>
       </section>
     </div>
+  
+  </>
+    
   );
 };
 
