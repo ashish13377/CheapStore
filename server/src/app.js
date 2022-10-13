@@ -4,6 +4,7 @@ const http = require("http");
 const app = express();
 const { Server } = require("socket.io");
 const server = http.createServer(app);
+const path = require("path");
 const io = new Server(server, {
   cors: {
     origin: "*",
@@ -21,6 +22,31 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(router);
+
+
+
+
+const __dirname1 = path.resolve();
+
+if (true) {
+  app.use(express.static(path.join(__dirname1, "/client/build")));
+
+  app.get("*", (req, res) =>
+    res.sendFile(path.resolve(__dirname1, "client", "build", "index.html"))
+  );
+} else {
+  app.get("/", (req, res) => {
+    res.send("API is running..");
+  });
+}
+
+
+
+
+
+
+
+
 
 // Socket.io Connection
 
