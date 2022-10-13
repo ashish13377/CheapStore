@@ -8,7 +8,7 @@ import logo2x from "../../assets/images/logo/logo_dark@2x.png";
 import logolight from "../../assets/images/logo/logo.png";
 import logolight2x from "../../assets/images/logo/logo@2x.png";
 import DarkMode from "./DarkMode";
-
+import { serverAPI } from "../../App";
 import icon from "../../assets/images/icon/connect-wallet.svg";
 import axios from "axios";
 
@@ -43,7 +43,7 @@ const Header = () => {
   const getNotifications = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:4000/api/get/notification",
+        `${serverAPI}/get/notification`,
         {
           withCredentials: true,
         }
@@ -59,7 +59,7 @@ const Header = () => {
   const getAllProducts = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:4000/api/get/products/name",
+        `${serverAPI}/get/products/name`,
         {
           withCredentials: true,
         }
@@ -74,7 +74,7 @@ const Header = () => {
 
   const getAllColleges = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/api/get/colleges", {
+      const res = await axios.get(`${serverAPI}/get/colleges`, {
         withCredentials: true,
       });
       if (res.status === 200) {
@@ -128,7 +128,7 @@ const Header = () => {
 
   const getRootUser = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/api/user/islogin", {
+      const res = await axios.get(`${serverAPI}/user/islogin`, {
         withCredentials: true,
       });
 
@@ -136,11 +136,11 @@ const Header = () => {
         setIsLogin(true);
         setUserData(res.data.user);
       }
-    } catch (err) {}
+    } catch (err) { }
   };
   const logout = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/api/logout", {
+      const res = await axios.get(`${serverAPI}/logout`, {
         withCredentials: true,
       });
       console.log(res);
@@ -151,10 +151,10 @@ const Header = () => {
           confirmButtonText: "OK",
         })
           .then((res) => navigate("/"))
-          .catch((err) => {});
+          .catch((err) => { });
         setIsLogin(false);
       }
-    } catch (err) {}
+    } catch (err) { }
   };
 
   useEffect(() => {

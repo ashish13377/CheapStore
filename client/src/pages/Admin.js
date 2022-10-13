@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
 import { saveAs } from "file-saver";
+import { serverAPI } from "../App";
 import Swal from "sweetalert2";
 import DarkMode from "../components/header/DarkMode";
 import { useNavigate } from "react-router-dom";
@@ -16,7 +17,7 @@ const Admin = () => {
 
     const getRootUser = async () => {
       try {
-        const res = await axios.get("http://localhost:4000/api/isadmin", {
+        const res = await axios.get(`${serverAPI}/isadmin`, {
           withCredentials: true,
         });
 
@@ -33,7 +34,7 @@ const Admin = () => {
   // Geting Requests from Database
   const getRequests = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/api/get/requests");
+      const res = await axios.get(`${serverAPI}/get/requests`);
       if (res.status === 200) {
         const requests = res.data.requests;
         setRegrequests(requests);
@@ -52,7 +53,7 @@ const Admin = () => {
   const approveRequest = async (id) => {
     try {
       const res = await axios.post(
-        "http://localhost:4000/api/approve/request",
+        `${serverAPI}/approve/request`,
         {
           id,
         }
@@ -75,7 +76,7 @@ const Admin = () => {
 
   const rejectRequest = async (id) => {
     try {
-      const res = await axios.post("http://localhost:4000/api/reject/request", {
+      const res = await axios.post(`${serverAPI}/reject/request`, {
         id,
       });
       if (res.status === 200) {
@@ -98,7 +99,7 @@ const Admin = () => {
 
   const logout = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/api/logout", {
+      const res = await axios.get(`${serverAPI}/logout`, {
         withCredentials: true,
       });
       console.log(res);
@@ -109,17 +110,17 @@ const Admin = () => {
           confirmButtonText: "OK",
         })
           .then((res) => navigate("/"))
-          .catch((err) => {});
+          .catch((err) => { });
       }
-    } catch (err) {}
+    } catch (err) { }
   };
 
   return (
     <div>
-         <Helmet>
-    <meta charSet="utf-8" />
-    <title>CheapStore | Admin </title>
-  </Helmet>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>CheapStore | Admin </title>
+      </Helmet>
 
       <section className="tf-section login-page">
         <div className="container">

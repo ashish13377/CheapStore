@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import Header from "../components/header/Header";
-
+import { serverAPI } from "../App";
 import "react-tabs/style/react-tabs.css";
 
 import Newsletters from "../components/layouts/Newsletters";
@@ -17,14 +17,14 @@ const ItemDetails = () => {
   const getProduct = async (id) => {
     try {
       const res = await axios.post(
-        "http://localhost:4000/api/get/product/byid",
+        `${serverAPI}/get/product/byid`,
         { id }
       );
       if (res.status === 200) {
         setProduct(res.data.product);
         setMainImage(res.data.product.images[0]);
       }
-    } catch (err) {}
+    } catch (err) { }
   };
 
   useEffect(() => {

@@ -4,6 +4,7 @@ import Header from "../components/header/Header";
 import Newsletters from "../components/layouts/Newsletters";
 import Footer from "../components/footer/Footer";
 import { Helmet } from "react-helmet";
+import { serverAPI } from "../App";
 
 const Contact = () => {
     const [fullName, setFullname] = useState("");
@@ -36,7 +37,7 @@ const Contact = () => {
         if (!fullName || !email || !subject) {
             alert("Please fill all provided fields!");
         } else {
-            fetch("http://localhost:4000/contact/send-mail", {
+            fetch(`${serverAPI}/contact/send-mail`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -57,10 +58,10 @@ const Contact = () => {
 
     return (
         <div>
-             <Helmet>
-        <meta charSet="utf-8" />
-        <title>CheapStore | Contact Us </title>
-      </Helmet>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>CheapStore | Contact Us </title>
+            </Helmet>
             <Header />
             <section className="fl-page-title">
                 <div className="overlay"></div>

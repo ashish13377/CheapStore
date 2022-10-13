@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Loader from "../../Loader/Loader";
+import { serverAPI } from "../../../App";
 import Swal from "sweetalert2";
 import img from "../../../assets/images/background/img-create-item.jpg";
 
@@ -241,7 +242,7 @@ const Create = ({ name }) => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "http://localhost:4000/api/user/create/item",
+        `${serverAPI}/user/create/item`,
         { itemData, name, images },
         {
           withCredentials: true,

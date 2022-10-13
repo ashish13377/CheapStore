@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import Loader from "../components/Loader/Loader";
 import Swal from "sweetalert2";
+import { serverAPI } from "../App";
 import DarkMode from "../components/header/DarkMode";
 import img from "../assets/images/background/img-register.jpg";
 import { Helmet } from "react-helmet";
@@ -53,7 +54,7 @@ const Register = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:4000/api/register/user",
+        `${serverAPI}/register/user`,
         registrationData,
         {
           withCredentials: true,

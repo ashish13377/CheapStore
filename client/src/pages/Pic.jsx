@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Header from "../components/header/Header";
 import Loader from "../components/Loader/Loader";
 import "react-tabs/style/react-tabs.css";
+import { serverAPI } from "../App";
 import Newsletters from "../components/layouts/Newsletters";
 import Footer from "../components/footer/Footer";
 const Pic = () => {
@@ -16,14 +17,14 @@ const Pic = () => {
 
   const getRootUser = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/api/user/islogin", {
+      const res = await axios.get(`${serverAPI}/user/islogin`, {
         withCredentials: true,
       });
       console.log(res);
       if (res.status === 200) {
         setUserData(res.data.user);
       }
-    } catch (err) {}
+    } catch (err) { }
   };
 
   // Hendla file
@@ -51,7 +52,7 @@ const Pic = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "http://localhost:4000/api/user/update/profilepic",
+        `${serverAPI}/user/update/profilepic`,
         { imageurl: imageurl },
         {
           withCredentials: true,

@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import Header from "../components/header/Header";
 import "react-tabs/style/react-tabs.css";
+import { serverAPI } from "../App";
 import Newsletters from "../components/layouts/Newsletters";
 import Footer from "../components/footer/Footer";
 const Info = () => {
@@ -22,21 +23,21 @@ const Info = () => {
 
   const getRootUser = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/api/user/islogin", {
+      const res = await axios.get(`${serverAPI}/user/islogin`, {
         withCredentials: true,
       });
 
       if (res.status === 200) {
         setUserData(res.data.user);
       }
-    } catch (err) {}
+    } catch (err) { }
   };
 
   const updateProfileInfo = async (e) => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "http://localhost:4000/api/user/update/profileinfo",
+        `${serverAPI}/user/update/profileinfo`,
         newUserData,
         {
           withCredentials: true,

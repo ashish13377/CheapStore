@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import { serverAPI } from "../App";
 import DarkMode from "../components/header/DarkMode";
 import PostCat from "../components/layouts/Categories/PostCat";
 import postdata from "../assets/fake-data/postdata";
@@ -13,10 +14,10 @@ const Post = () => {
 
   const getRootUser = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/api/user/islogin", {
+      const res = await axios.get(`${serverAPI}/user/islogin`, {
         withCredentials: true,
       });
-     
+
       if (res.status === 200) {
         setIsLogin(true);
       }

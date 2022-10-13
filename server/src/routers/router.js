@@ -477,7 +477,7 @@ router.get("/api/get/notification", auth, async (req, res) => {
 
 // API for sending contact mail
 
-router.post("/contact/send-mail", (req, res) => {
+router.post("api/contact/send-mail", (req, res) => {
   const { fullName, email, subject } = req.body;
   // question,  fullName, email, subject
   const output = `

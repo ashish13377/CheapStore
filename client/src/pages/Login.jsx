@@ -4,6 +4,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import DarkMode from "../components/header/DarkMode";
 import { Helmet } from "react-helmet";
+import { serverAPI } from "../App";
 
 import img1 from "../assets/images/background/img-login.jpg";
 
@@ -24,7 +25,7 @@ const Login = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:4000/api/login/user",
+        `${serverAPI}/login/user`,
         loginData,
         {
           withCredentials: true,

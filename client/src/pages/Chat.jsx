@@ -1,13 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { chatServer } from "../App";
 import Swal from "sweetalert2";
 import io from "socket.io-client";
+import { serverAPI } from "../App";
 import Header from "../components/header/Header";
 import Messege from "./Messege";
 import Chats from "./Chats";
 
-const socket = io.connect("http://localhost:4000/");
+// const socket = io.connect(`${chatServer}`);
 
 const Chat = () => {
   const navigate = useNavigate();
@@ -23,14 +25,14 @@ const Chat = () => {
   const [freindID, setFreindID] = useState(id);
   const [newMessege, setNewMessege] = useState(null);
   const scrollRef = useRef();
-  const socket = io.connect("http://localhost:4000/");
+  const socket = io.connect(`${chatServer}`);
 
   // Creating Chat
   useEffect(() => {
     const createChat = async () => {
       try {
         const res = await axios.post(
-          "http://localhost:4000/api/create/chat",
+          `${serverAPI}/create/chat`,
           { senderID: user._id, reciverID: id },
           {
             withCredentials: true,
@@ -79,7 +81,7 @@ const Chat = () => {
 
   const getRootUser = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/api/user/islogin", {
+      const res = await axios.get(`${serverAPI}/user/islogin`, {
         withCredentials: true,
       });
 
@@ -118,7 +120,7 @@ const Chat = () => {
     const getChats = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:4000/api/chat/${user._id}`,
+          `${serverAPI}/chat/${user._id}`,
           {
             withCredentials: true,
           }
@@ -135,14 +137,14 @@ const Chat = () => {
 
   useEffect(() => {
     const getUser = async () => {
-      const res = await axios.get(`http://localhost:4000/api/user/${freindID}`);
+      const res = await axios.get(`${serverAPI}/user/${freindID}`);
       setSellerName(res.data.firstName);
       setSellerPic(res.data.profileimage);
     };
     const getMesseges = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:4000/api/messege/" + currentChat._id,
+          `${serverAPI}/messege/` + currentChat._id,
           {
             withCredentials: true,
           }
@@ -165,7 +167,7 @@ const Chat = () => {
   const sendNotification = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:4000/api/send/notification",
+        `${serverAPI}/send/notification`,
         {
           from: user._id,
           fromName: user.firstName,
@@ -197,7 +199,7 @@ const Chat = () => {
       text: newMessege,
     });
     try {
-      const res = await axios.post("http://localhost:4000/api/messege", msg, {
+      const res = await axios.post(`${serverAPI}/messege`, msg, {
         withCredentials: true,
       });
 

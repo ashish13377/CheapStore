@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-
+import { serverAPI } from "../App";
 const Chats = ({ chat, currentUser, setSellerName, setSellerPic }) => {
   const [user, setUser] = useState({});
 
@@ -8,7 +8,7 @@ const Chats = ({ chat, currentUser, setSellerName, setSellerPic }) => {
     const friendId = chat.members.find((m) => m !== currentUser._id);
 
     const getUser = async () => {
-      const res = await axios.get("http://localhost:4000/api/user/" + friendId);
+      const res = await axios.get(`${serverAPI}/user/` + friendId);
       setUser(res.data);
     };
     getUser();

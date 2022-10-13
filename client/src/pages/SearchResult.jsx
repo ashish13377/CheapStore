@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { serverAPI } from "../App";
 import { Link, useParams } from "react-router-dom";
 import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
@@ -11,7 +12,7 @@ const SearchResult = () => {
   const GetAllProductsByFilter = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:4000/api/get/products/filter/name",
+        `${serverAPI}/get/products/filter/name`,
         { name },
         {
           withCredentials: true,

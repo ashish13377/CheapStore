@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { Link, useNavigate } from "react-router-dom";
 import Header from "../components/header/Header";
-
+import { serverAPI } from "../App";
 const Notification = () => {
   const navigate = useNavigate();
   const [notifications, setNotifiactions] = useState([]);
@@ -13,7 +13,7 @@ const Notification = () => {
 
   const getRootUser = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/api/user/islogin", {
+      const res = await axios.get(`${serverAPI}/user/islogin`, {
         withCredentials: true,
       });
 
@@ -35,7 +35,7 @@ const Notification = () => {
   const getNotifications = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:4000/api/get/notification",
+        `${serverAPI}/get/notification`,
         {
           withCredentials: true,
         }
