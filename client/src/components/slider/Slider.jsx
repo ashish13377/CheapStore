@@ -35,9 +35,9 @@ const SliderItem = (props) => (
             <div className="slider-content">
               <h1 className="heading">
                 Welcome to{" "}
-                <span style={{ fontSize: "90px", color: "#dc39fc" }}>
+                <h2 style={{ fontSize: "80px", color: "#dc39fc" }}>
                   CHEAP STORE
-                </span>
+                </h2>
               </h1>
               <p className="sub-heading">
                 Novel Resell Platform For Educational Instituitions
