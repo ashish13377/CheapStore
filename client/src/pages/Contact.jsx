@@ -5,6 +5,9 @@ import Newsletters from "../components/layouts/Newsletters";
 import Footer from "../components/footer/Footer";
 
 const Contact = () => {
+  const [fullName, setFullname] = useState("");
+  const [email, setEmail] = useState("");
+  const [subject, setSubject] = useState("");
   const [data] = useState([
     {
       title: "Need Help? Contact With Our Hotline",
@@ -25,6 +28,32 @@ const Contact = () => {
       link: "mailto:abc@gmail.com",
     },
   ]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!fullName || !email || !subject) {
+      alert("Please fill all provided fields!");
+    } else {
+      fetch("http://localhost:4000/contact/send-mail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          fullName,
+          email,
+          subject,
+        }),
+      })
+        .then((res) => res.json())
+        .then((data) =>
+          alert("Message send! we will contact you as soon as possible.")
+        )
+        .catch((error) => alert(error));
+    }
+  };
+
   return (
     <div>
       <Header />
@@ -100,8 +129,8 @@ const Contact = () => {
                   </div>
                   <form
                     id="create-item-1"
-                    action="#"
-                    method="GET"
+                    method="POST"
+                    onSubmit={handleSubmit}
                     acceptCharset="utf-8"
                   >
                     <input

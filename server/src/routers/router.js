@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const nodemailer = require("nodemailer");
 const User = require("../models/users");
 const Item = require("../models/items");
 const Chat = require("../models/chats");
@@ -401,6 +402,49 @@ router.get("/api/get/notification", auth, async (req, res) => {
   } catch (err) {
     res.status(422).json(err);
   }
+});
+
+// API for sending contact mail
+
+router.post("/contact/send-mail", (req, res) => {
+  const { fullName, email, subject } = req.body;
+  // question,  fullName, email, subject
+  const output = `
+          <h4> Contact us form detail. </h4>
+          <p><strong>Name : </strong> ${fullName}</p>
+          <p><strong>Email : </strong> ${email}</p>
+          <p><strong>Subject : </strong> ${subject}</p>
+          <br />
+          <p>Thank you</p>
+         `;
+
+  let transporter = nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: false, // true for 465, false for other ports
+    auth: {
+      user: "basu1735@gmail.com", // generated ethereal user
+      pass: "hvcvcjbpbbslrgtm", // generated ethereal password
+    },
+  });
+
+  let mailOption = {
+    from: email, // sender address
+    to: "basu1735@gmail.com", // list of receivers
+    subject: "You got a new query for Cheap Store", // Subject line
+    text: "You got a new query for Cheap Store", // plain text body
+    html: output, // html body
+  };
+
+  // send mail with defined transport object
+  transporter.sendMail(mailOption, (error, info) => {
+    if (error) {
+      res.json(error);
+    } else {
+      const data = info.messageId;
+      res.json({ message: "Message sent", data });
+    }
+  });
 });
 
 module.exports = router;
