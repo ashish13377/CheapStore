@@ -1,6 +1,21 @@
 import React from "react";
-
+import Swal from "sweetalert2";
 export const Newsletters = () => {
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    Swal.fire({
+      title: "We will contact you soon",
+      icon: "success",
+      confirmButtonText: "OK",
+    });
+  }
+
+
+
+
+
+
   return (
     <section className="new-letter">
       <div className="container">
@@ -15,8 +30,8 @@ export const Newsletters = () => {
             <div className="form-subcribe">
               <form
                 id="subscribe-form"
-                action="#"
-                method="GET"
+                onSubmit={handleSubmit}
+                method="POST"
                 acceptCharset="utf-8"
                 className="form-submit"
               >

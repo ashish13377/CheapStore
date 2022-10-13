@@ -136,6 +136,8 @@ const Contact = () => {
                     <input
                       type="text"
                       id="name"
+                      value={fullName}
+                      onChange={(e) => setFullname(e.target.value)}
                       className="tb-my-input"
                       name="name"
                       tabIndex="1"
@@ -146,6 +148,8 @@ const Contact = () => {
                     <input
                       type="email"
                       id="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                       className="tb-my-input"
                       name="email"
                       tabIndex="2"
@@ -156,6 +160,8 @@ const Contact = () => {
                     <textarea
                       id="comment-message"
                       name="message"
+                      value={subject}
+                      onChange={(e) => setSubject(e.target.value)}
                       tabIndex="4"
                       placeholder="Write Message"
                       aria-required="true"

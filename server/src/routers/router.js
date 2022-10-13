@@ -72,7 +72,43 @@ router.post("/api/approve/request", async (req, res) => {
   try {
     const user = await User.findOne({ _id: id });
     const isUpdated = await user.updateOne({ isapproved: true });
-    res.status(200).json({ msg: "Accepetd" });
+
+    const output = `
+    <h4> Your Joining Request has been Approved </h4>
+    <p><strong>Subject : </strong> Congrats! We are glad to inform you that your joining request to Cheap Store Has been Approved By admin.
+    Happy Shopping!
+    </p>
+    <br />
+    <p>Thank you</p>
+   `;
+
+    let transporter = nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 587,
+      secure: false, // true for 465, false for other ports
+      auth: {
+        user: "basu1735@gmail.com", // generated ethereal user
+        pass: "hvcvcjbpbbslrgtm", // generated ethereal password
+      },
+    });
+    console.log(user.email);
+    let mailOption = {
+      from: 'basu1735@gmail.com', // sender address
+      to: `${user.email}`, // list of receivers
+      subject: "Your Joining Request has been Approved", // Subject line
+      text: "Your Joining Request has been Approved", // plain text body
+      html: output, // html body
+    };
+
+    // send mail with defined transport object
+    transporter.sendMail(mailOption, (error, info) => {
+      if (error) {
+        res.json(error);
+      } else {
+        const data = info.messageId;
+        res.status(200).json({ msg: "Accepetd", data });
+      }
+    });
   } catch (err) {
     res.status(422).json({ msg: "Approve Failed" });
   }
@@ -115,7 +151,42 @@ router.post("/api/reject/request", async (req, res) => {
   try {
     const user = await User.findOne({ _id: id });
     const isRemoved = await user.remove();
-    res.status(200).json({ msg: "Rejected" });
+    const output = `
+    <h4> Your Joining Request has been Declined </h4>
+    <p><strong>Subject : </strong> Sorry! We are Sad to inform you that your joining request to Cheap Store Has been Declined By admin.
+    Happy Shopping!
+    </p>
+    <br />
+    <p>Thank you</p>
+   `;
+
+    let transporter = nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 587,
+      secure: false, // true for 465, false for other ports
+      auth: {
+        user: "basu1735@gmail.com", // generated ethereal user
+        pass: "hvcvcjbpbbslrgtm", // generated ethereal password
+      },
+    });
+    console.log(user.email);
+    let mailOption = {
+      from: 'basu1735@gmail.com', // sender address
+      to: `${user.email}`, // list of receivers
+      subject: "Your Joining Request has been Declined", // Subject line
+      text: "Your Joining Request has been Declined", // plain text body
+      html: output, // html body
+    };
+
+    // send mail with defined transport object
+    transporter.sendMail(mailOption, (error, info) => {
+      if (error) {
+        res.json(error);
+      } else {
+        const data = info.messageId;
+        res.status(200).json({ msg: "Declined", data });
+      }
+    });
   } catch (err) {
     res.status(422).json({ msg: "Reject Failed" });
   }
@@ -420,7 +491,7 @@ router.post("/contact/send-mail", (req, res) => {
 
   let transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
-    port: 465,
+    port: 587,
     secure: false, // true for 465, false for other ports
     auth: {
       user: "basu1735@gmail.com", // generated ethereal user
@@ -429,7 +500,7 @@ router.post("/contact/send-mail", (req, res) => {
   });
 
   let mailOption = {
-    from: email, // sender address
+    from: "basu1735@gmail.com", // sender address
     to: "basu1735@gmail.com", // list of receivers
     subject: "You got a new query for Cheap Store", // Subject line
     text: "You got a new query for Cheap Store", // plain text body
