@@ -1,9 +1,17 @@
 import React, { useState, useEffect } from "react";
 import Moment from "react-moment";
 import axios from "axios";
+import { Helmet } from "react-helmet";
 
 const Messege = ({ messege, currentUser, own, sellerPic }) => {
   return (
+    <>
+    
+    
+    <Helmet>
+    <meta charSet="utf-8" />
+    <title>CheapStore | chatBox </title>
+  </Helmet>
     <li className="clearfix">
       <div className="message-data text-right">
         <img
@@ -29,6 +37,8 @@ const Messege = ({ messege, currentUser, own, sellerPic }) => {
         <Moment fromNow>{messege.createdAt}</Moment>
       </span>
     </li>
+    </>
+ 
   );
 };
 

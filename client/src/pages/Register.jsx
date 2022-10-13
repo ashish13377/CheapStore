@@ -5,6 +5,7 @@ import Loader from "../components/Loader/Loader";
 import Swal from "sweetalert2";
 import DarkMode from "../components/header/DarkMode";
 import img from "../assets/images/background/img-register.jpg";
+import { Helmet } from "react-helmet";
 
 const Register = () => {
   const [registrationData, setRegistrationData] = useState({});
@@ -88,6 +89,10 @@ const Register = () => {
 
   return (
     <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>CheapStore | Registerion </title>
+      </Helmet>
       {isLoading ? (
         <Loader />
       ) : (

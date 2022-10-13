@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Header from "../components/header/Header";
 import Newsletters from "../components/layouts/Newsletters";
 import Footer from "../components/footer/Footer";
+import { Helmet } from "react-helmet";
 
 const Contact = () => {
     const [fullName, setFullname] = useState("");
@@ -10,22 +11,22 @@ const Contact = () => {
     const [subject, setSubject] = useState("");
     const [data] = useState([
         {
-            title: "Need Help? Contact With Our Hotline",
-            icon: "fal fa-phone-volume",
-            info: "+012 (345) 678 88",
-            link: "tel:012345678",
+            title: 'Need Help? Contact With Our Hotline',
+            icon: 'fal fa-phone-volume',
+            info: '+91 98749 35846',
+            link: 'tel:+919874935846'
         },
         {
-            title: "Need Help? Contact With Our Hotline",
-            icon: "fal fa-map-marker-alt",
-            info: "55 Main Street, 2nd Block,3rd Floor, New York",
-            link: "",
+            title: 'Need Help? Contact With Our Hotline',
+            icon: 'fal fa-map-marker-alt',
+            info: 'Madurdaha, Hussainpur, Kolkata, West Bengal 700107',
+            link: 'https://goo.gl/maps/ukjAYGg75ZmHuhM79'
         },
         {
-            title: "Need Help? Contact With Our Hotline",
-            icon: "fal fa-envelope-open",
-            info: "hotlineinfo@gmail.com www.bidzen.net",
-            link: "mailto:abc@gmail.com",
+            title: 'Need Help? Contact With Our Hotline',
+            icon: 'fal fa-envelope-open',
+            info: 'ashish.worksspace@gmail.com www.cheapstore.com',
+            link: 'mailto:ashish.worksspace@gmail.com'
         },
     ]);
 
@@ -56,6 +57,10 @@ const Contact = () => {
 
     return (
         <div>
+             <Helmet>
+        <meta charSet="utf-8" />
+        <title>CheapStore | Contact Us </title>
+      </Helmet>
             <Header />
             <section className="fl-page-title">
                 <div className="overlay"></div>
@@ -102,16 +107,9 @@ const Contact = () => {
             <section>
                 <div className="container-fluid">
                     <div className="row">
-                        <iframe
-                            title="Bidzen"
-                            className="map-contact"
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.1583091352!2d-74.11976373946234!3d40.69766374859258!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2zVGjDoG5oIHBo4buRIE5ldyBZb3JrLCBUaeG7g3UgYmFuZyBOZXcgWW9yaywgSG9hIEvhu7M!5e0!3m2!1svi!2s!4v1640857108284!5m2!1svi!2s"
-                            width="600"
-                            height="450"
-                            style={{ border: 0 }}
-                            allowFullScreen=""
-                            loading="lazy"
-                        />
+                        <iframe title="Bidzen" className="map-contact"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3685.9794553465804!2d88.40719621495835!3d22.504953985217693!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a027385911798e5%3A0xc958e491c09d9550!2s300%2C%20Jeet%20Suniti!5e0!3m2!1sen!2sin!4v1665636455735!5m2!1sen!2sin"
+                            width="600" height="450" style={{ border: 0 }} allowFullScreen="" loading="lazy" />
                     </div>
                 </div>
             </section>

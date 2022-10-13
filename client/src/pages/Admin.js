@@ -5,6 +5,8 @@ import { saveAs } from "file-saver";
 import Swal from "sweetalert2";
 import DarkMode from "../components/header/DarkMode";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
+
 const Admin = () => {
   const [regRequests, setRegrequests] = useState([]);
   const navigate = useNavigate();
@@ -114,6 +116,11 @@ const Admin = () => {
 
   return (
     <div>
+         <Helmet>
+    <meta charSet="utf-8" />
+    <title>CheapStore | Admin </title>
+  </Helmet>
+
       <section className="tf-section login-page">
         <div className="container">
           <div className="row">
