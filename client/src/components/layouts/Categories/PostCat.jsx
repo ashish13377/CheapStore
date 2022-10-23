@@ -19,11 +19,7 @@ const PostCat = (props) => {
                   </p>
                 </div>
               </div>
-              <div className="content-right">
-                <Link to="/" className="sc-button style letter style-2">
-                  <span>Explore More</span>{" "}
-                </Link>
-              </div>
+
             </div>
           </div>
           <div className="col-md-12">
@@ -46,8 +42,8 @@ const PostCat = (props) => {
                       slidesPerView: 6,
                     },
                   }}
-                  pagination={{ clickable: false }}
-                  scrollbar={{ draggable: false }}
+                  pagination={{ clickable: true }}
+                  scrollbar={{ draggable: true }}
                 >
                   {data.map((item, index) => (
                     <SwiperSlide className={item.styleclass} key={index}>

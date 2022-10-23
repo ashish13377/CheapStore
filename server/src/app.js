@@ -5,48 +5,31 @@ const app = express();
 const { Server } = require("socket.io");
 const server = http.createServer(app);
 const path = require("path");
+const cors = require("cors");
+const port = process.env.PORT || 4000;
+
+
+
 const io = new Server(server, {
   cors: {
     origin: "*",
   },
 });
 
-const cors = require("cors");
-const cookieParser = require("cookie-parser");
+
+
 require("./db/conn");
+
+
+
+const cookieParser = require("cookie-parser");
 const router = require("./routers/router");
-const port = process.env.PORT || 4000;
 
 app.use(cors({ origin: true, credentials: true }));
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(router);
-
-
-
-
-const __dirname1 = path.resolve();
-
-if (true) {
-  app.use(express.static(path.join(__dirname1, "/client/build")));
-
-  app.get("*", (req, res) =>
-    res.sendFile(path.resolve(__dirname1, "client", "build", "index.html"))
-  );
-} else {
-  app.get("/", (req, res) => {
-    res.send("API is running..");
-  });
-}
-
-
-
-
-
-
-
-
 
 // Socket.io Connection
 
@@ -90,6 +73,7 @@ io.on("connection", (socket) => {
   });
 });
 
+
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
   const path = require("path");
@@ -97,5 +81,4 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
 }
-
 server.listen(port, () => console.log(`Server Starts on port ${port}`));

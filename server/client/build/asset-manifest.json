@@ -1,0 +1,40 @@
+{
+  "files": {
+    "main.css": "/static/css/main.324f579c.css",
+    "main.js": "/static/js/main.f8f842d0.js",
+    "static/media/img-slider-1.png": "/static/media/img-slider-1.01c53973c5b0e0ef82d2.png",
+    "static/media/img-register.jpg": "/static/media/img-register.0801c668636373b3b2ca.jpg",
+    "static/media/img-login.jpg": "/static/media/img-login.b3a0e9ba5fa234b134b2.jpg",
+    "static/media/img-newletter.png": "/static/media/img-newletter.af08cd524c3f2852c362.png",
+    "static/media/image1.png": "/static/media/image1.370d8f67574bae0903a3.png",
+    "static/media/img-create-item.jpg": "/static/media/img-create-item.2a7491656e77036e0c58.jpg",
+    "static/media/avt-5.png": "/static/media/avt-5.3976bf05759ffe320957.png",
+    "static/media/avt-2.png": "/static/media/avt-2.7cb198d8a4e3619c73f1.png",
+    "static/media/avt-3.png": "/static/media/avt-3.753dcda5deec3e96e92e.png",
+    "static/media/avt-1.png": "/static/media/avt-1.b8e27a90700314c3ec94.png",
+    "static/media/avt-6.png": "/static/media/avt-6.78c93348b5450c6f84ec.png",
+    "static/media/item-collect-11.jpg": "/static/media/item-collect-11.9faa7a14e8f1ba07923e.jpg",
+    "static/media/item-collect-9.jpg": "/static/media/item-collect-9.59060df009340b79e29b.jpg",
+    "static/media/item-collect-12.jpg": "/static/media/item-collect-12.c4ece8a03d9c11ca9a07.jpg",
+    "static/media/item-33.jpg": "/static/media/item-33.9739bf216447a8a78055.jpg",
+    "static/media/item-35.jpg": "/static/media/item-35.5093a7ab2503efae9e2d.jpg",
+    "static/media/item-36.jpg": "/static/media/item-36.ab42fe57c9646121a4fa.jpg",
+    "static/media/item-collect-10.jpg": "/static/media/item-collect-10.fad5328a5d5226c5958b.jpg",
+    "static/media/item-32.jpg": "/static/media/item-32.217d5243384adedb2e9e.jpg",
+    "static/media/item-34.jpg": "/static/media/item-34.a62032a3910934864871.jpg",
+    "static/media/item-37.jpg": "/static/media/item-37.fa5cfeda54fd73769a05.jpg",
+    "static/media/item-38.jpg": "/static/media/item-38.947c95d5b0bd2b6a7630.jpg",
+    "static/media/item-39.jpg": "/static/media/item-39.2be7627b61112a41e48a.jpg",
+    "static/media/avt-4.png": "/static/media/avt-4.84983dad085ff4d07fb2.png",
+    "static/media/logo@2x.png": "/static/media/logo@2x.eb842fe60fa53035f956.png",
+    "static/media/logo_dark@2x.png": "/static/media/logo_dark@2x.5edc8aef91798b386d9f.png",
+    "index.html": "/index.html",
+    "static/media/connect-wallet.svg": "/static/media/connect-wallet.84934838239466d742d6cc9b60ac17a7.svg",
+    "main.324f579c.css.map": "/static/css/main.324f579c.css.map",
+    "main.f8f842d0.js.map": "/static/js/main.f8f842d0.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.324f579c.css",
+    "static/js/main.f8f842d0.js"
+  ]
+}

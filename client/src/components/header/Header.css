@@ -1,13 +1,25 @@
 @media screen and (max-width: 580px) {
-    .header_1 #site-header-inner {
-        align-items: center !important;
-        justify-content: center !important;
-        padding: 10px 0px 15px 0px !important;
-    }
-    .mode_switcher {
-        margin-right: 0 !important;
-    }
-    .res-hide{
-        display: none !important;
-    }
+  .header_1 #site-header-inner {
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 10px 0px 15px px !important;
   }
+  .header_1 #site-logo .main-logo img {
+    width: 120px !important;
+    margin-left: -30px;
+  }
+
+  .mode_switcher {
+    margin-right: 0 !important;
+  }
+  .res-hide {
+    position: absolute !important;
+    top: 300px;
+  }
+  .res-hide2 {
+    display: none;
+  }
+  .res-low {
+    margin: 0 10px 0 10px !important;
+  }
+}

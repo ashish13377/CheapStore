@@ -301,6 +301,7 @@ const Header = () => {
                   }}
                 >
                   <div
+                    className="res-low"
                     style={{ fontSize: "30px", margin: "0 30px" }}
                     onClick={(e) => setNotifiactions(null)}
                   >
@@ -325,9 +326,9 @@ const Header = () => {
                       <i className="fa-sharp fa-solid fa-bell"></i>
                     </Link>
                   </div>
-                  <div className="button-connect-wallet res-hide">
+                  <div className="button-connect-wallet res-hide2">
                     <Link to="/post" className="sc-button wallet style-2">
-                      <img src={icon} alt="icon" />
+                      <img src={icon} alt="icon" className="sell-img" />
                       <span>Sell</span>
                     </Link>
                   </div>

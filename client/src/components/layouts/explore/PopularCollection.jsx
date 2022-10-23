@@ -17,7 +17,7 @@ const PopularCollection = (props) => {
   const getAllProducts = async () => {
     setCategory("All");
     try {
-      const res = await axios.get("http://localhost:4000/api/get/products", {
+      const res = await axios.get("https://cheapstoore.herokuapp.com/api/get/products", {
         withCredentials: true,
       });
       if (res.status === 200) {
@@ -31,7 +31,7 @@ const PopularCollection = (props) => {
     setCategory(cat);
     try {
       const res = await axios.post(
-        "http://localhost:4000/api/get/products/filter",
+        "https://cheapstoore.herokuapp.com/api/get/products/filter",
         { cat },
         {
           withCredentials: true,
@@ -93,7 +93,7 @@ const PopularCollection = (props) => {
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
-              <Dropdown>
+              {/* <Dropdown>
                 <Dropdown.Toggle
                   className="btn-selector nolink"
                   id="dropdown-basic"
@@ -153,7 +153,7 @@ const PopularCollection = (props) => {
               </Dropdown>
               <button className="sc-button style letter style-2">
                 <span>Filter</span>{" "}
-              </button>
+  </button>*/}
             </div>
           </div>
           {products.slice(0, visible).map((item, index) => (
