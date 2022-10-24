@@ -241,7 +241,7 @@ const Header = () => {
                   </datalist>
                 </form>
                 <form
-                  className="form-search"
+                  className="form-search res-hide"
                   style={{
                     width: "660px",
                     marginLeft: "20px",
@@ -326,7 +326,7 @@ const Header = () => {
                       <i className="fa-sharp fa-solid fa-bell"></i>
                     </Link>
                   </div>
-                  <div className="button-connect-wallet res-hide2">
+                  <div className="button-connect-wallet res-hide">
                     <Link to="/post" className="sc-button wallet style-2">
                       <img src={icon} alt="icon" className="sell-img" />
                       <span>Sell</span>

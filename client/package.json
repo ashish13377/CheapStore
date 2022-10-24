@@ -1,5 +1,4 @@
 {
-  "homepage": "http://Basu-Dev-Ghosh.github.io/CheapStore",
   "name": "hyland",
   "version": "0.1.0",
   "private": true,
@@ -32,11 +31,9 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "build": "react-scripts build"
+    "build": "BUILD_PATH='../server/client/build' react-scripts build"
   },
   "eslintConfig": {
     "extends": [

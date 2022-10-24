@@ -13,8 +13,7 @@
     margin-right: 0 !important;
   }
   .res-hide {
-    position: absolute !important;
-    top: 300px;
+    display: none !important;
   }
   .res-hide2 {
     display: none;
