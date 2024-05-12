@@ -50,7 +50,7 @@ const Create = ({ name }) => {
       setIcon8("fa-solid fa-check");
       setIsLoading(false);
     } catch (err) {
-      alert(err);
+      console.log(err);
       setIsLoading(false);
     }
   };
@@ -76,7 +76,7 @@ const Create = ({ name }) => {
       setIcon1("fa-solid fa-check");
       setIsLoading(false);
     } catch (err) {
-      alert(err);
+      console.log(err);
       setIsLoading(false);
     }
   };
@@ -102,7 +102,7 @@ const Create = ({ name }) => {
       setIcon2("fa-solid fa-check");
       setIsLoading(false);
     } catch (err) {
-      alert(err);
+      console.log(err);
       setIsLoading(false);
     }
   };
@@ -128,7 +128,7 @@ const Create = ({ name }) => {
       setIcon3("fa-solid fa-check");
       setIsLoading(false);
     } catch (err) {
-      alert(err);
+      console.log(err);
       setIsLoading(false);
     }
   };
@@ -154,7 +154,7 @@ const Create = ({ name }) => {
       setIcon4("fa-solid fa-check");
       setIsLoading(false);
     } catch (err) {
-      alert(err);
+      console.log(err);
       setIsLoading(false);
     }
   };
@@ -180,7 +180,7 @@ const Create = ({ name }) => {
       setIcon5("fa-solid fa-check");
       setIsLoading(false);
     } catch (err) {
-      alert(err);
+      console.log(err);
       setIsLoading(false);
     }
   };
@@ -206,7 +206,7 @@ const Create = ({ name }) => {
       setIcon6("fa-solid fa-check");
       setIsLoading(false);
     } catch (err) {
-      alert(err);
+      console.log(err);
       setIsLoading(false);
     }
   };
@@ -232,7 +232,7 @@ const Create = ({ name }) => {
       setIcon7("fa-solid fa-check");
       setIsLoading(false);
     } catch (err) {
-      alert(err);
+      console.log(err)
       setIsLoading(false);
     }
   };

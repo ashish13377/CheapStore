@@ -22,7 +22,7 @@ const SearchResult = () => {
         setProducts(res.data.products);
       }
     } catch (err) {
-      alert(err);
+      console.log(err)
     }
   };
 

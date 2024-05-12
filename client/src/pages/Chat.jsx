@@ -130,6 +130,7 @@ const Chat = () => {
         }
       } catch (err) {
         console.log(err);
+       
       }
     };
     getChats();

@@ -44,7 +44,7 @@ const Register = () => {
         confirmButtonText: "OK",
       });
     } catch (err) {
-      alert(err);
+      console.log(err)
       setIsLoading(false);
     }
   };

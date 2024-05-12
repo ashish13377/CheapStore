@@ -44,7 +44,7 @@ const Pic = () => {
       setImageurl(dat.secure_url);
       setIsLoading(false);
     } catch (err) {
-      alert(err);
+      console.log(err)
       setIsLoading(false);
     }
   };

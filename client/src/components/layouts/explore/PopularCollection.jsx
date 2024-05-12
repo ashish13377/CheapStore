@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { Dropdown } from "react-bootstrap";
+import { serverAPI } from "../../../App";
 
 const PopularCollection = (props) => {
   const [products, setProducts] = useState([]);
@@ -17,21 +18,22 @@ const PopularCollection = (props) => {
   const getAllProducts = async () => {
     setCategory("All");
     try {
-      const res = await axios.get("https://cheapstoore.herokuapp.com/api/get/products", {
+      // "https://cheapstoore.herokuapp.com/api/get/products" 
+      const res = await axios.get(`${serverAPI}/get/products`, {
         withCredentials: true,
       });
       if (res.status === 200) {
         setProducts(res.data.products);
       }
     } catch (err) {
-      alert(err);
+      console.log(err);
     }
   };
   const getAllProductsByFilter = async (cat) => {
     setCategory(cat);
     try {
       const res = await axios.post(
-        "https://cheapstoore.herokuapp.com/api/get/products/filter",
+        `${serverAPI}/get/products/filter`,
         { cat },
         {
           withCredentials: true,
@@ -41,7 +43,7 @@ const PopularCollection = (props) => {
         setProducts(res.data.products);
       }
     } catch (err) {
-      alert(err);
+      console.log(err)
     }
   };
 

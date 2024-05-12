@@ -68,7 +68,7 @@ const Header = () => {
         setProducts(res.data.productsName);
       }
     } catch (err) {
-      alert(err);
+      console.log(err);
     }
   };
 
@@ -81,7 +81,7 @@ const Header = () => {
         setColleges(res.data.newArray);
       }
     } catch (err) {
-      alert(err);
+      console.log(err);
     }
   };
 
